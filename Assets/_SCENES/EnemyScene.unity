@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f977b7686dd51fd43b6d1f3f7820fa5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3096015439941716381, guid: fce763ea35f684543af68bbb7e04a37b,
+  enemyPrefab: {fileID: 5740073225864137621, guid: 4d19938ed7beed94f9983ccd497b6d45,
     type: 3}
   sapwnRate: 0.5
   wayPoints:
