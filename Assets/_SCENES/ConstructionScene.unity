@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 55071804}
   - component: {fileID: 55071803}
   - component: {fileID: 55071802}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 153714960}
   - component: {fileID: 153714959}
   - component: {fileID: 153714958}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 512
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 666769220}
   - component: {fileID: 666769224}
   - component: {fileID: 666769225}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SluiceGate
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -1267,7 +1267,7 @@ GameObject:
   - component: {fileID: 868254743}
   - component: {fileID: 868254742}
   - component: {fileID: 868254741}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

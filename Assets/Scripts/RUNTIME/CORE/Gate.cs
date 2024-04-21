@@ -10,14 +10,15 @@ public class Gate : MonoBehaviour, IDamage
 
     [Header("Stats")]
     [SerializeField] private int attackDamage = 1;
-    [SerializeField] private int attackRate = 1;
+    [SerializeField] private int attackInterval = 1;
     [SerializeField] private float attackTime = 1.0f;
 
     [Header("Miscellaneous")]
     [SerializeField] private LayerMask targetLayerMask;
+    
 
     // runtime privates
-    private float currentRate = 0f;
+    private float currentInterval = 0f;
     private float currentATime = 0f;
     private bool isActive = false;
 
@@ -35,7 +36,8 @@ public class Gate : MonoBehaviour, IDamage
 
     void Start()
     {
-        currentRate = attackRate;
+        
+        currentInterval = attackInterval;
     }
 
     void Update()
@@ -46,11 +48,12 @@ public class Gate : MonoBehaviour, IDamage
         }
         else
         {
-            currentRate -= Time.deltaTime;
-            if (currentRate <= 0)
+            currentInterval -= Time.deltaTime;
+            if (currentInterval <= 0)
             {
+               
                 isActive = true;
-                currentRate = attackRate;
+                currentInterval = attackInterval;
                 currentATime = attackTime;
             }
         } 

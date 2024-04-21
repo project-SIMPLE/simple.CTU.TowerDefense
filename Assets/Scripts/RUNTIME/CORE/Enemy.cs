@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +13,7 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     [Header("Stats")]
     [SerializeField] private int health = 2;
     [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private float attackSpeed = 5f;
+    [SerializeField] private float attackInterval = 5f;
     [SerializeField] private float attackRange = 5f;
     [SerializeField] private int attackDamage = 1;
 
@@ -24,6 +23,7 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
 
     // runtime privates
     private int currentHealh;
+    private float currentInterval;
     
     // Getters
     public int Health { 
@@ -39,8 +39,21 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     void Start()
     {
         currentHealh = health;
+        currentInterval = attackInterval;
         var navAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (navAgent) navAgent.speed = moveSpeed;
+    }
+
+    void Update()
+    {
+        if (IsDead()) return;
+
+        currentInterval -= Time.deltaTime;
+        if (currentInterval <= 0)
+        {
+            Attack();
+            currentInterval = attackInterval;
+        }
     }
 
     public void TakeDamage(int damage)
@@ -56,12 +69,24 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     {
         gameObject.tag = "Water";
         gameObject.layer = LayerMask.NameToLayer("Water");
-        gameObject.GetComponent<Renderer>().material = waterColor;
+        //gameObject.GetComponent<Renderer>().material = waterColor;
     }
 
     public bool IsDead()
     {
         return (currentHealh <= 0);
+    }
+
+
+    private void Attack()
+    {
+        Collider[] nearbyTargets = Physics.OverlapSphere(transform.position, attackRange, targetLayerMask);
+
+        foreach (var target in nearbyTargets)
+        {
+            var health = target.GetComponent<IDamageable>();
+            if (health != null) DealDamage(health);
+        }
     }
 
     
@@ -74,6 +99,13 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     public void DealDamage(IDamageable target)
     {
         target.TakeDamage(attackDamage);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        //draw disable area
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
 }

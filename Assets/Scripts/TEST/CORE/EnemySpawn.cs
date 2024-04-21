@@ -11,14 +11,14 @@ public class EnemySpawn : MonoBehaviour
 
     public int maxCount = 10;
     private int count = 0;
-    void Start()
-    {
-        InvokeRepeating("Spawn", .5f, sapwnRate);
-    }
+    // void Start()
+    // {
+    //     InvokeRepeating("Spawn", .5f, sapwnRate);
+    // }
 
     void Spawn()
     {
-        GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        GameObject enemy = Instantiate(enemyPrefab, transform.position, enemyPrefab.transform.rotation);
         enemy.GetComponent<EnemyController>().SetDestination(wayPoints);
 
         count++;
@@ -27,6 +27,7 @@ public class EnemySpawn : MonoBehaviour
             CancelInvoke();
         }
     }
+
     public void SpawnTest()
     {
         count = 0;

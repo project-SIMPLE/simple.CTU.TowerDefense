@@ -6,6 +6,7 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
 {
     [Header("Basic Info")]
     [SerializeField] private string uniqueName;
+    [SerializeField] private int lvl;
 
     [Header("Stats")]
     [SerializeField] private bool freeSpawn;
@@ -18,6 +19,7 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     [Header("Miscellaneous")]
     [SerializeField] private float workRadius;
     [SerializeField] private LayerMask targetLayerMask;
+    [SerializeField] private LayerMask spawnTriggerLayerMask;
 
     // runtime privates
     private int currentHealh;
@@ -47,8 +49,11 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
             currentRate -= Time.deltaTime;
             if (currentRate <= 0)
             {
-                Spawn();
-                currentRate = spawnRate;
+                if (CanSpawn())
+                {
+                    Spawn();
+                    currentRate = spawnRate;
+                }
             }
         }
     }
@@ -81,6 +86,12 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     {
         Instantiate(spawnPrefab, spawnPoint.position, spawnPoint.rotation);
         if (!freeSpawn) TakeDamage(1);
+    }
+
+    public bool CanSpawn()
+    {
+        Collider[] nearbySpawnTriggers = Physics.OverlapSphere(transform.position, workRadius, spawnTriggerLayerMask);
+        return nearbySpawnTriggers.Length > 0;
     }
 
     void OnDrawGizmosSelected()

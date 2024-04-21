@@ -19,9 +19,9 @@ TagManager:
   - Grab
   - Enemy
   - Tree
-  - 
-  - 
-  - 
+  - Surface
+  - BuildConnector
+  - TeleportArea
   - 
   - 
   - 

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d2b26a536044448bf4d75ab6755dba, type: 3}
+  m_Name: WaterPumpConstruction
+  m_EditorClassIdentifier: 
+  modelBuildPrefab: {fileID: 8549267022764414260, guid: 42ddf2f8bab86cf469cc922d84d5b568,
+    type: 3}
+  finalPrefab: {fileID: 1853612581112970321, guid: cc4bfe05d32d26c4c933c9c7d72c1917,
+    type: 3}
+  cost: 10000
+  description: spawn pure water drops

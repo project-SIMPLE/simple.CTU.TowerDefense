@@ -1033,7 +1033,7 @@
                     "name": "",
                     "id": "95fa1419-ca7b-4c8a-8d15-7d46e58d82e3",
                     "path": "<XRController>{LeftHand}/{Primary2DAxis}",
-                    "interactions": "Sector(directions=-1,sweepBehavior=3)",
+                    "interactions": "Sector(directions=-15,sweepBehavior=3)",
                     "processors": "",
                     "groups": "Noncontinuous Move",
                     "action": "Teleport Select",
@@ -1577,6 +1577,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Secondary",
+                    "type": "Button",
+                    "id": "c94dae19-0de9-41f3-9b7a-9103995abc84",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1744,6 +1753,17 @@
                     "action": "Scale Delta",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f4927fb-8648-4f21-b8cb-f46e14e5c786",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Secondary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1829,7 +1849,7 @@
                     "name": "",
                     "id": "919c4a6c-22ed-4083-8e14-f30e91ff59fe",
                     "path": "<XRController>{RightHand}/{Primary2DAxis}",
-                    "interactions": "Sector(directions=-1,sweepBehavior=3)",
+                    "interactions": "Sector(directions=1,sweepBehavior=3)",
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Teleport Select",
