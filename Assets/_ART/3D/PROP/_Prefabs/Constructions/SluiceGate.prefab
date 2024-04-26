@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7961420268661804355, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: -882119418490021021, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -83,10 +88,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 249665378646698942, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 249665378646698942, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_Name
       value: SluiceGate
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -96,6 +121,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4293780390201531727}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8950967629153032786}
     - targetCorrespondingSourceObject: {fileID: 249665378646698942, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       insertIndex: -1
@@ -195,3 +224,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &8950967629153032786
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093121707100364710}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 550, y: 400, z: 100}
+  m_Center: {x: 0, y: 200, z: 0}

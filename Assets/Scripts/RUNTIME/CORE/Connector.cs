@@ -19,35 +19,40 @@ public class Connector : MonoBehaviour
         get { return type; }
     }
 
-    private void OnDrawGizmos() {
+private void OnDrawGizmos()
+    {
         Gizmos.color = isConnectedToLake ? Color.red : Color.blue;
         Gizmos.DrawWireSphere(transform.position, transform.lossyScale.x / 2f);
     }
 
-    public void updateConnectors(bool rootCall = false){
-        Collider[] colliders = Physics.OverlapSphere(transform.position, transform.lossyScale.x / 2f);
-        isConnectedToLake = !canConnectToLake;
+    public void updateConnectors(bool rootCall = false)
+    {
+        const float colliderRadius = 0.5f;
+        
+        Collider[] colliders = Physics.OverlapSphere(transform.position, colliderRadius * transform.lossyScale.x);
+        isConnectedToLake = false;
 
         foreach (Collider collider in colliders)
         {
-            
-            if(collider.GetInstanceID() == GetComponent<Collider>().GetInstanceID()){
+            if (collider == GetComponent<Collider>())
+            {
                 continue;
             }
-            
-            if(collider.gameObject.layer == gameObject.layer)
+
+            Connector foundConnector = collider.GetComponent<Connector>();
+            if (foundConnector != null && foundConnector.connectorParentType == SelectedBuildType.lake)
             {
-                Debug.Log(collider.gameObject.name);
-                Connector foundConnector = collider.GetComponent<Connector>();
-                if(foundConnector.connectorParentType == SelectedBuildType.lake){
-                    isConnectedToLake = true;
-                }
-                if(rootCall)
-                   foundConnector.updateConnectors();
+                isConnectedToLake = true;
+            }
+            
+            if (rootCall && foundConnector != null)
+            {
+                foundConnector.updateConnectors();
             }
         }
-
-        if(isConnectedToLake){
+        
+        if (isConnectedToLake)
+        {
             canConnectTo = false;
         }
     }

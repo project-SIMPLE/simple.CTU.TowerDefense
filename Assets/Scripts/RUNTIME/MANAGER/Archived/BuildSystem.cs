@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,37 +25,49 @@ public class BuildSystem : MonoBehaviour
     private bool isGhostInValidPosition = false;
     private Transform ModelParent = null;
 
-    private void Update(){
-        if(building){
+    public bool canPlace = true;
+    private void Update()
+    {
+        if (building)
+        {
             isBuilding = !isBuilding;
             building = !building;
         }
-        if(isBuilding){
+        if (isBuilding)
+        {
             StartBuilding();
-            if(Input.GetMouseButtonDown(0)){
+            //Debug.Log("test " +canPlace);
+            if (Input.GetMouseButtonDown(0) && canPlace)
+            {
                 Build();
             }
-            if(Input.GetKeyDown(KeyCode.B)){
+            if (Input.GetKeyDown(KeyCode.B))
+            {
                 Destroy(ghostBuildGameobject);
                 ghostBuildGameobject = null;
                 isBuilding = false;
                 building = false;
             }
-        }else if(ghostBuildGameobject){
+        }
+        else if (ghostBuildGameobject)
+        {
             Destroy(ghostBuildGameobject);
             ghostBuildGameobject = null;
         }
     }
 
-    private void StartBuilding(){
+    private void StartBuilding()
+    {
         GameObject currentBuild = getCurrentBuild();
         createGhostPrefab(currentBuild);
         moveGhostPrefabToRaycast();
         checkBuildValidity();
     }
 
-    private void createGhostPrefab(GameObject currentBuild){
-        if(ghostBuildGameobject == null){
+    private void createGhostPrefab(GameObject currentBuild)
+    {
+        if (ghostBuildGameobject == null)
+        {
             ghostBuildGameobject = Instantiate(currentBuild);
 
             ModelParent = ghostBuildGameobject.transform.GetChild(0);
@@ -65,38 +77,61 @@ public class BuildSystem : MonoBehaviour
         }
     }
 
-    private void moveGhostPrefabToRaycast(){
+    private void moveGhostPrefabToRaycast()
+    {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, Mathf.Infinity)){
-            if(currentVirtualConstruction == SelectedBuildType.turret)
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            if (currentVirtualConstruction == SelectedBuildType.turret)
                 ghostBuildGameobject.transform.position = new Vector3(hit.point.x, hit.point.y + ghostBuildGameobject.transform.localScale.y, hit.point.z);
             else
                 ghostBuildGameobject.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
         }
     }
 
-    private void checkBuildValidity(){
+    private void checkBuildValidity()
+    {
         Collider[] colliders = Physics.OverlapSphere(ghostBuildGameobject.transform.position, connectorOverlapRadius, connectorLayer);
-        if(colliders.Length > 0){
+        if (colliders.Length > 0)
+        {
             ghostConnectBuild(colliders);
         }
-        else{
+        else
+        {
             ghostSeperateBuild();
         }
     }
 
-    private void ghostConnectBuild(Collider[] colliders){
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.green;
+    //    Gizmos.DrawWireSphere(ghostBuildGameobject.transform.position, transform.lossyScale.x);
+    //}
+
+    private bool CheckCollisionWithBuiltObjects(Vector3 position, Vector3 size)
+    {
+        float radius = Mathf.Max(size.x, size.y, size.z);
+        Collider[] colliders = Physics.OverlapSphere(position, radius, LayerMask.GetMask("BuiltObjects"));
+        return colliders.Length > 0;
+    }
+
+    private void ghostConnectBuild(Collider[] colliders)
+    {
         Connector bestConnector = null;
-        foreach(Collider collider in colliders){
+
+        //bool checkCollision = CheckCollisionWithBuiltObjects(ghostBuildGameobject.transform.position, ghostBuildGameobject.transform.localScale);
+        foreach (Collider collider in colliders)
+        {
             Connector connector = collider.GetComponent<Connector>();
-            if(connector.canConnectTo){
+            if (connector.canConnectTo)
+            {
                 bestConnector = connector;
                 break;
             }
         }
-
-        if(bestConnector == null || currentVirtualConstruction == SelectedBuildType.lake && bestConnector.isConnectedToLake){
+        if (bestConnector == null || bestConnector.isConnectedToLake || canPlace == false)
+        {
             ghostifyModel(ModelParent, ghostMaterialInvalid);
             isGhostInValidPosition = false;
             return;
@@ -104,45 +139,53 @@ public class BuildSystem : MonoBehaviour
 
         snapGhostPrefabToConnector(bestConnector);
     }
-
-
-    private void snapGhostPrefabToConnector(Connector connector){
-        Transform ghostConnector = findSnapConnector(ghostBuildGameobject.transform.GetChild(1));
+    private void snapGhostPrefabToConnector(Connector connector)
+    {
+        Transform ghostConnector = findSnapConnector(connector.transform, ghostBuildGameobject.transform.GetChild(1));
         ghostBuildGameobject.transform.position = connector.transform.position - (ghostConnector.position - ghostBuildGameobject.transform.position);
         ghostifyModel(ModelParent, ghostMaterialValid);
         isGhostInValidPosition = true;
     }
 
-    private void ghostSeperateBuild(){
+    private void ghostSeperateBuild()
+    {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit)){
-            if(currentVirtualConstruction == SelectedBuildType.turret || currentVirtualConstruction == SelectedBuildType.sluiceGate){
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (currentVirtualConstruction == SelectedBuildType.turret || currentVirtualConstruction == SelectedBuildType.sluiceGate)
+            {
                 ghostifyModel(ModelParent, ghostMaterialInvalid);
                 isGhostInValidPosition = false;
                 return;
             }
-            if(hit.collider.transform.root.CompareTag("Buildables")){
-                ghostifyModel(ModelParent, ghostMaterialInvalid);
-                isGhostInValidPosition = false;
-                return;
-            }
+            // if (hit.collider.transform.root.CompareTag("Buildables"))
+            // {
+            //     ghostifyModel(ModelParent, ghostMaterialInvalid);
+            //     isGhostInValidPosition = false;
+            //     return;
+            // }
 
-            if(Vector3.Angle(hit.normal, Vector3.up) < maxGroundAngle){
+            if (Vector3.Angle(hit.normal, Vector3.up) < maxGroundAngle)
+            {
                 ghostifyModel(ModelParent, ghostMaterialValid);
                 isGhostInValidPosition = true;
             }
-            else{
+            else
+            {
                 ghostifyModel(ModelParent, ghostMaterialInvalid);
                 isGhostInValidPosition = false;
             }
         }
     }
 
-    private Transform findSnapConnector(Transform ghostConnectorParent){
+    private Transform findSnapConnector(Transform snapConnector, Transform ghostConnectorParent)
+    {
         Connector[] connectors = ghostConnectorParent.GetComponentsInChildren<Connector>();
-        foreach(Connector connector in connectors){
-            if(connector.connectorPosition == ConnectorPosition.bottom){
+        foreach (Connector connector in connectors)
+        {
+            if (connector.connectorPosition == ConnectorPosition.bottom)
+            {
                 return connector.transform;
             }
         }
@@ -151,23 +194,33 @@ public class BuildSystem : MonoBehaviour
 
 
 
-    private void ghostifyModel(Transform modelParent, Material ghostMaterial = null){
-        if(ghostMaterial != null){
+    private void ghostifyModel(Transform modelParent, Material ghostMaterial = null)
+    {
+        if (ghostMaterial != null)
+        {
             MeshRenderer[] meshRenderers = modelParent.GetComponentsInChildren<MeshRenderer>();
-            foreach(MeshRenderer meshRenderer in meshRenderers){
+            foreach (MeshRenderer meshRenderer in meshRenderers)
+            {
                 meshRenderer.material = ghostMaterial;
             }
         }
-        else{
+        else
+        {
             Collider[] modelColliders = modelParent.GetComponentsInChildren<Collider>();
-            foreach(Collider modelCollider in modelColliders){
-                modelCollider.enabled = false;
+            foreach (Collider modelCollider in modelColliders)
+            {
+                if(modelCollider is SphereCollider)
+                {
+                    modelCollider.enabled = false;
+                }
             }
         }
     }
 
-    private GameObject getCurrentBuild(){
-        switch(currentVirtualConstruction){
+    private GameObject getCurrentBuild()
+    {
+        switch (currentVirtualConstruction)
+        {
             case SelectedBuildType.lake:
                 return lakeObjects[currentBuildingIndex];
             case SelectedBuildType.turret:
@@ -180,12 +233,15 @@ public class BuildSystem : MonoBehaviour
         return null;
     }
 
-    private void Build(){
-        if(ghostBuildGameobject != null && isGhostInValidPosition){
+    private void Build()
+    {
+        if (ghostBuildGameobject != null && isGhostInValidPosition)
+        {
             GameObject newBuild = Instantiate(getCurrentBuild(), ghostBuildGameobject.transform.position, ghostBuildGameobject.transform.rotation);
 
             Destroy(ghostBuildGameobject);
             ghostBuildGameobject = null;
+
             isBuilding = false;
 
             Connector[] connectors = newBuild.GetComponentsInChildren<Connector>();
@@ -196,10 +252,12 @@ public class BuildSystem : MonoBehaviour
             }
         }
     }
+
 }
 
 [System.Serializable]
-public enum SelectedBuildType{
+public enum SelectedBuildType
+{
     lake,
     turret,
     sluiceGate,

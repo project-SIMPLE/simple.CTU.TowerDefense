@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     void EndLevel()
     {
+        UpdateScore();
         Destroy(buildSystemManager.gameObject);
         Destroy(playerResourcesManager.gameObject);
         Destroy(levelManager.gameObject);

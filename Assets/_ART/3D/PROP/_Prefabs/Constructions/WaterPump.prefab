@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 8750074640206274482}
   - component: {fileID: 1240200777917277456}
   - component: {fileID: 1827028785684644167}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WaterPump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 6892074051968169811}
   - component: {fileID: 8411334261610707974}
   - component: {fileID: 5154370223703966076}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

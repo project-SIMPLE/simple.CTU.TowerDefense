@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - WaterPump
   - Water
+  - Construction
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Surface
   - BuildConnector
   - TeleportArea
-  - 
+  - Construction
   - 
   - 
   - 

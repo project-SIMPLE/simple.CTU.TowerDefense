@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2080119779493634437}
   - component: {fileID: 16795067490330035}
   - component: {fileID: 3675068027391368778}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Lake_Base_SM_Lake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1410653612988941642}
   - component: {fileID: 4145989694785429910}
   - component: {fileID: 3940472841688298790}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Lake_SM_Lake_water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7374906012932318151}
   - component: {fileID: 7618970014155875794}
-  m_Layer: 0
+  - component: {fileID: 6887285241040540669}
+  m_Layer: 12
   m_Name: Lake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,6 +227,27 @@ MonoBehaviour:
   spawnTriggerLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!65 &6887285241040540669
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2151319126291896459}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 2, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2669802580682963687
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7751012939865227421}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Lake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2669802580682963687}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.033645168, z: -0, w: 0.9994339}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01053947, y: 0.01053947, z: 0.0088361865}
   m_ConstrainProportionsScale: 0
@@ -258,4 +280,4 @@ Transform:
   - {fileID: 2080119779493634437}
   - {fileID: 1410653612988941642}
   m_Father: {fileID: 7374906012932318151}
-  m_LocalEulerAnglesHint: {x: 0, y: -3.856, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
