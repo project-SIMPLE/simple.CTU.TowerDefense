@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildSystemManager : MonoBehaviour
 {
+    [SerializeField] private PlayerResourcesManager playerResourcesManager;
     [SerializeField] private List<ConstructionSO> constructions;
     [SerializeField] private float connectorRadius = 1;
     [SerializeField] private LayerMask connectorLayerMask;
@@ -33,6 +34,8 @@ public class BuildSystemManager : MonoBehaviour
 
     public void StartBuilding(int constructionIndex)
     {
+        if (!playerResourcesManager.Supply(constructions[constructionIndex].cost)) return;
+
         isBuilding = true;
         currentBuildingIndex = constructionIndex;
         validPosition = false;
@@ -57,11 +60,15 @@ public class BuildSystemManager : MonoBehaviour
             Connector[] connectors = ghostConstruction.GetComponentsInChildren<Connector>();
             foreach (Connector connector in connectors)
             {
-                Debug.Log("Update Connector");
                 connector.updateConnectors(true);
             }
             FinishBuilding();
         }
+    }
+
+    public string GetConstructionInfo(int constructionIndex)
+    {
+        return constructions[constructionIndex].description;
     }
 
     private void ProcessBuilding(){

@@ -316,7 +316,7 @@ MonoBehaviour:
   health: 2
   moveSpeed: 3.5
   attackInterval: 4
-  attackRange: 8
+  attackRange: 12
   attackDamage: 2
   waterColor: {fileID: 2100000, guid: 44daa41d2827b9e429633ff7fc73bb74, type: 2}
   targetLayerMask:

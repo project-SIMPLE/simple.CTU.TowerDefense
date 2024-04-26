@@ -16,5 +16,10 @@ MonoBehaviour:
     type: 3}
   finalPrefab: {fileID: 1853612581112970321, guid: cc4bfe05d32d26c4c933c9c7d72c1917,
     type: 3}
-  cost: 10000
-  description: spawn pure water drops
+  cost: 7500
+  description: 'Cost: 7500
+
+    spawn pure water
+
+    Better than Lake'
+  useIdentityRotation: 0

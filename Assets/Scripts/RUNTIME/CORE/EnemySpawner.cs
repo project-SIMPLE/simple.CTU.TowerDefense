@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour, ISpawner
     {
         if (!spawnPrefab) return;
 
-        GameObject spawn = Instantiate(spawnPrefab, transform.position, Quaternion.identity);
+        GameObject spawn = Instantiate(spawnPrefab, transform.position, Quaternion.identity, this.gameObject.transform);
         spawn.GetComponent<EnemyController>().SetDestination(wayPoints);
         count++;
         if(count >= spawnCount)

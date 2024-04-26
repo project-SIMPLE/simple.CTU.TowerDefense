@@ -28,14 +28,27 @@ public class LevelManager : MonoBehaviour
     public int CurrentWave {
         get { return currentWave + 1; }
     } 
+    public int MaxWave {
+        get { return waves.Count; }
+    }
     public float CurrentTime {
         get { return currentTime; }
     }
     public string CurrentWaveStep {
         get { return currentWaveStep.ToString(); }
-    } 
+    }
 
-    void Start()
+    public float CurrentWaveStepTime {
+        get { 
+            if ( currentWaveStep == WaveStep.Preparation )
+                return waves[ currentWave ].preparationTime; 
+            else
+                return waves[ currentWave ].waveTime; 
+        }
+    }  
+
+
+    void Awake()
     {
         currentWaveStep = WaveStep.Preparation;
         currentWave = 0;
@@ -56,8 +69,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             ExecuteDefenseStep();
-        }  
-        //Debug.Log("Wave"+(currentWave+1)+"-Step-"+currentWaveStep+"-Time: "+currentTime);      
+        }   
     }
 
     bool MoveToDefenseStep()
@@ -98,7 +110,6 @@ public class LevelManager : MonoBehaviour
         int start = currentWaveSpawnIndex;
         for (int i = start; i< waves[currentWave].waveSpawns.Count; i++)
         {
-            Debug.Log("check i: " + i);
             float spawnTimeFrame = waves[currentWave].waveSpawns[i].timeFrame;
             if (waves[currentWave].waveTime - currentTime >= spawnTimeFrame)
             {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerResourcesManager : MonoBehaviour, ISupply
 {
     [Header("Stats")]
+    [SerializeField] private int initialAmount = 0;
     [SerializeField] private float workRadius = 10f;
     [SerializeField] private float refillInterval = 2f;
     [SerializeField] private int refillAmount = 1;
@@ -16,6 +17,7 @@ public class PlayerResourcesManager : MonoBehaviour, ISupply
     // runtime privates
     private int currentAmount;
     private float currentInterval;
+    private int currentRefillSources;
 
     // Getters
     public int CurrentAmount { 
@@ -30,11 +32,16 @@ public class PlayerResourcesManager : MonoBehaviour, ISupply
     public int RefillAmount { 
         get { return refillAmount; }
     }
+    public int CurrentRefillSources {
+        get { return currentRefillSources; }
+    }
 
-    void Start()
+    void Awake()
     {
-        currentAmount = 0;
+        currentAmount = initialAmount;
         currentInterval = refillInterval;
+        currentRefillSources = 1;
+        InvokeRepeating("CheckRefillSources", 0, .5f);
     }
 
     void Update()
@@ -45,7 +52,15 @@ public class PlayerResourcesManager : MonoBehaviour, ISupply
             Refill();
             currentInterval = refillInterval;
         }
+        
     }
+    
+    void CheckRefillSources()
+    {
+        Collider[] nearbyTargets = Physics.OverlapSphere(transform.position, workRadius, targetLayerMask);
+        currentRefillSources = nearbyTargets.Length;
+    }
+
 
     // for subtract resoucres when build a construction
     public bool Supply(int amount)
@@ -60,8 +75,7 @@ public class PlayerResourcesManager : MonoBehaviour, ISupply
 
     public void Refill()
     {
-        Collider[] nearbyTargets = Physics.OverlapSphere(transform.position, workRadius, targetLayerMask);
-        currentAmount += refillAmount * nearbyTargets.Length;
+        currentAmount += refillAmount * currentRefillSources;
     }
 
     public bool IsEmpty()
