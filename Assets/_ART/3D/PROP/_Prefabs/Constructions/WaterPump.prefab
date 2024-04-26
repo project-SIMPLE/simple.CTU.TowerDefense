@@ -262,7 +262,7 @@ MonoBehaviour:
   spawnPrefab: {fileID: 4237668515956274239, guid: 8d8e4c11a0d797b4fb022c7857a3cd4c,
     type: 3}
   spawnPoint: {fileID: 321757292230126162}
-  workRadius: 15
+  workRadius: 10
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 256
