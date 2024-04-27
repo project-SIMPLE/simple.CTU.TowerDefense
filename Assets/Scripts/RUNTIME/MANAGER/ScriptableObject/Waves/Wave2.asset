@@ -22,37 +22,22 @@ MonoBehaviour:
     spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
       type: 3}
     spawnAmount: 5
-    spawnPoint: 2
-  - timeFrame: 0
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
-      type: 3}
-    spawnAmount: 5
     spawnPoint: 3
   - timeFrame: 7
     spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
       type: 3}
-    spawnAmount: 5
+    spawnAmount: 6
     spawnPoint: 1
   - timeFrame: 7
     spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
       type: 3}
-    spawnAmount: 5
-    spawnPoint: 2
-  - timeFrame: 7
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
-      type: 3}
-    spawnAmount: 5
+    spawnAmount: 6
     spawnPoint: 3
   - timeFrame: 15
     spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
       type: 3}
     spawnAmount: 7
     spawnPoint: 1
-  - timeFrame: 15
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
-      type: 3}
-    spawnAmount: 7
-    spawnPoint: 2
   - timeFrame: 15
     spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
       type: 3}

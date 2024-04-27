@@ -257,12 +257,12 @@ MonoBehaviour:
   uniqueName: Water Pump
   lvl: 1
   freeSpawn: 0
-  health: 30
+  health: 15
   spawnRate: 2
   spawnPrefab: {fileID: 4237668515956274239, guid: 8d8e4c11a0d797b4fb022c7857a3cd4c,
     type: 3}
   spawnPoint: {fileID: 321757292230126162}
-  workRadius: 10
+  workRadius: 7
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 256
