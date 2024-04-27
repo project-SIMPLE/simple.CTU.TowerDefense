@@ -194,7 +194,7 @@ MonoBehaviour:
   uniqueName: Pure Water Drop
   lvl: 1
   health: 1
-  moveSpeed: 4.5
+  moveSpeed: 6
   detectRange: 15
   attackDamage: 1
   targetLayerMask:

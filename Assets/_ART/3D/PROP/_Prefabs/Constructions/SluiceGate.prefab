@@ -155,8 +155,8 @@ MonoBehaviour:
   uniqueName: Sluice Gate
   lvl: 1
   attackDamage: 1
-  attackInterval: 7
-  attackTime: 4
+  attackInterval: 5
+  attackTime: 0.5
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 128
