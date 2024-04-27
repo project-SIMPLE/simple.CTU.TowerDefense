@@ -16,8 +16,8 @@ MonoBehaviour:
     type: 3}
   finalPrefab: {fileID: 7768694941360884037, guid: ecba122ed6d647144a7ac2c6ff632238,
     type: 3}
-  cost: 7500
-  description: 'Cost: 7500
+  cost: 7000
+  description: 'Cost: 7000
 
     spawn pure water
 

@@ -156,7 +156,7 @@ MonoBehaviour:
   lvl: 1
   attackDamage: 1
   attackInterval: 5
-  attackTime: 0.5
+  attackTime: 2.5
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 128

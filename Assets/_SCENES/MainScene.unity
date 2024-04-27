@@ -5532,10 +5532,25 @@ PrefabInstance:
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 300849546}
+    - target: {fileID: 499951337372565472, guid: b88ddee5105847f4c9c2269523d46f1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.9999962
+      objectReference: {fileID: 0}
     - target: {fileID: 1673274075244021874, guid: b88ddee5105847f4c9c2269523d46f1c,
         type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184229652205264145, guid: b88ddee5105847f4c9c2269523d46f1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2760799906456498841, guid: b88ddee5105847f4c9c2269523d46f1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.000004
       objectReference: {fileID: 0}
     - target: {fileID: 5591481509940591019, guid: b88ddee5105847f4c9c2269523d46f1c,
         type: 3}
@@ -5610,7 +5625,7 @@ PrefabInstance:
     - target: {fileID: 7360364117007630020, guid: b88ddee5105847f4c9c2269523d46f1c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 7360364117007630020, guid: b88ddee5105847f4c9c2269523d46f1c,
         type: 3}
@@ -12574,7 +12589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialAmount: 5000
   workRadius: 40
-  refillInterval: 10
+  refillInterval: 7
   refillAmount: 10
   targetLayerMask:
     serializedVersion: 2
@@ -14649,7 +14664,7 @@ PrefabInstance:
       propertyPath: m_text
       value: 'LEVEL 1
 
-        WAVES: 2'
+        WAVES: 3'
       objectReference: {fileID: 0}
     - target: {fileID: 1673274075244021874, guid: 7cd1dfd2d4d589448b0d423f24210c80,
         type: 3}
