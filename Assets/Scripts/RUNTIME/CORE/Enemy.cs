@@ -18,8 +18,10 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     [SerializeField] private int attackDamage = 1;
 
     [Header("Miscellaneous")]
-    public Material waterColor;
-    public LayerMask targetLayerMask;
+    [SerializeField] Animator actionAnimator;
+    [SerializeField] Animator emotionAnimator;
+    [SerializeField] LayerMask targetLayerMask;
+    
 
     // runtime privates
     private int currentHealh;
@@ -58,10 +60,12 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
 
     public void TakeDamage(int damage)
     {
+        if (emotionAnimator) emotionAnimator.Play("Attacked");
         currentHealh -= damage;
         if(currentHealh <= 0)
         {
             Die();
+            if (emotionAnimator) emotionAnimator.Play("Neutralized");
         }
     }
 
@@ -69,7 +73,6 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     {
         gameObject.tag = "Water";
         gameObject.layer = LayerMask.NameToLayer("Water");
-        //gameObject.GetComponent<Renderer>().material = waterColor;
     }
 
     public bool IsDead()
@@ -77,6 +80,10 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
         return (currentHealh <= 0);
     }
 
+    public void PassThrough()
+    {
+        if (actionAnimator) actionAnimator.Play("Slide");
+    }
 
     private void Attack()
     {
@@ -87,6 +94,7 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
             var health = target.GetComponent<IDamageable>();
             if (health != null) DealDamage(health);
         }
+        if (actionAnimator) actionAnimator.Play("Attack");
     }
 
     

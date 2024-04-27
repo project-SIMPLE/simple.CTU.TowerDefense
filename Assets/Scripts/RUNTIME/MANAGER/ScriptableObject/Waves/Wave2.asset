@@ -14,49 +14,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveSpawns:
   - timeFrame: 0
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
     spawnAmount: 5
     spawnPoint: 1
   - timeFrame: 0
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
     spawnAmount: 5
     spawnPoint: 2
   - timeFrame: 0
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
     spawnAmount: 5
     spawnPoint: 3
-  - timeFrame: 5
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
+  - timeFrame: 7
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
-    spawnAmount: 7
+    spawnAmount: 5
     spawnPoint: 1
-  - timeFrame: 5
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
+  - timeFrame: 7
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
     spawnAmount: 5
     spawnPoint: 2
-  - timeFrame: 10
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
+  - timeFrame: 7
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
-    spawnAmount: 10
+    spawnAmount: 5
     spawnPoint: 3
   - timeFrame: 15
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
     spawnAmount: 7
     spawnPoint: 1
-  - timeFrame: 20
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
+  - timeFrame: 15
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
-    spawnAmount: 5
+    spawnAmount: 7
     spawnPoint: 2
-  - timeFrame: 25
-    spawnEnemy: {fileID: 3262956377855350980, guid: 7feb7dcdc0679fc40837a76db6894b95,
+  - timeFrame: 15
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
-    spawnAmount: 20
-    spawnPoint: 2
+    spawnAmount: 7
+    spawnPoint: 3
   waveTime: 30
   preparationTime: 20

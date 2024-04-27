@@ -45,6 +45,12 @@ public class GhostConstruction : MonoBehaviour
             collide = true;           
     }
 
+    void OnTriggerStay(Collider other)
+    {
+        if (collideLayerMask == (collideLayerMask | (1 << other.gameObject.layer)))
+            collide = true;           
+    }
+
     void OnTriggerExit(Collider other)
     {
         if (collideLayerMask == (collideLayerMask | (1 << other.gameObject.layer)))

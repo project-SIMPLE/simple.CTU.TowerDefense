@@ -27,7 +27,6 @@ public class GateUI : MonoBehaviour
         {
             renderer.material.SetColor("_BaseColor", Color.red);
             if (animator) animator.SetBool("CloseGate",false);
-        }
-           
+        } 
     }
 }

@@ -16,6 +16,7 @@ public class Ally : MonoBehaviour, IDamageable, IDamage
 
     [Header("Miscellaneous")]
     [SerializeField] private LayerMask targetLayerMask;
+    [SerializeField] private Animator animator;
 
     // runtime privates
     private int currentHealh;
@@ -58,7 +59,7 @@ public class Ally : MonoBehaviour, IDamageable, IDamage
 
     void OnTriggerEnter(Collider other)
     {
-        if (HasValidTarget(other.gameObject))
+        if (HasValidTarget(other.gameObject) && !IsDead())
         {
             Enemy enemy = other.GetComponent<Enemy>();
             enemy.TakeDamage(attackDamage);
@@ -104,7 +105,9 @@ public class Ally : MonoBehaviour, IDamageable, IDamage
 
     public void Die()
     {
-        Destroy(gameObject);
+        //navAgent.enabled = false;
+        if (animator) animator.Play("Disappear");
+        Destroy(gameObject,2f);
     }
 
     public bool IsDead()

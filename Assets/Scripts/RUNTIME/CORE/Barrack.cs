@@ -20,6 +20,7 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     [SerializeField] private float workRadius;
     [SerializeField] private LayerMask targetLayerMask;
     [SerializeField] private LayerMask spawnTriggerLayerMask;
+    [SerializeField] private Animator animator;
 
     // runtime privates
     private int currentHealh;
@@ -72,7 +73,6 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, workRadius, transform.forward, Mathf.Infinity, targetLayerMask);
         foreach(RaycastHit hit in hits)
         {
-            Debug.Log(hit.transform.name);
             Destroy(hit.transform.gameObject);
         }
     }
@@ -85,6 +85,7 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     public void Spawn()
     {
         Instantiate(spawnPrefab, spawnPoint.position, spawnPoint.rotation);
+        if (animator) animator.Play("Spawn");
         if (!freeSpawn) TakeDamage(1);
     }
 

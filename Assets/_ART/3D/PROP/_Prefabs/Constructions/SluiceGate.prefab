@@ -120,11 +120,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4293780390201531727}
+      addedObject: {fileID: 8950967629153032786}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8950967629153032786}
+      addedObject: {fileID: 3967708480181123798}
     - targetCorrespondingSourceObject: {fileID: 249665378646698942, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       insertIndex: -1
@@ -132,11 +132,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 249665378646698942, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6761366829208306263}
-    - targetCorrespondingSourceObject: {fileID: 249665378646698942, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6831750933897098944}
+      addedObject: {fileID: 8081633766325091520}
   m_SourcePrefab: {fileID: 100100000, guid: 6451f8f3ca8d94a4290f3181c6afd61e, type: 3}
 --- !u!1 &1349909584342305097 stripped
 GameObject:
@@ -159,33 +155,12 @@ MonoBehaviour:
   uniqueName: Sluice Gate
   lvl: 1
   attackDamage: 1
-  attackInterval: 4
+  attackInterval: 7
   attackTime: 4
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 128
---- !u!65 &6761366829208306263
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349909584342305097}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 291.182, y: 189.46875, z: 30}
-  m_Center: {x: 0, y: 89.4003, z: 0.046878338}
---- !u!114 &6831750933897098944
+--- !u!114 &8081633766325091520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,7 +178,28 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1282728523113259767}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &4293780390201531727
+--- !u!65 &8950967629153032786
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093121707100364710}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 550, y: 400, z: 100}
+  m_Center: {x: 0, y: 200, z: 0}
+--- !u!95 &3967708480181123798
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -224,24 +220,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &8950967629153032786
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093121707100364710}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 550, y: 400, z: 100}
-  m_Center: {x: 0, y: 200, z: 0}

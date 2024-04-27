@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750ac0a6f3e7762418faf4018a63b1fc, type: 3}
+  m_Name: Wave3
+  m_EditorClassIdentifier: 
+  waveSpawns:
+  - timeFrame: 0
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 7
+    spawnPoint: 1
+  - timeFrame: 0
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 7
+    spawnPoint: 2
+  - timeFrame: 0
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 7
+    spawnPoint: 3
+  - timeFrame: 10
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 8
+    spawnPoint: 1
+  - timeFrame: 10
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 8
+    spawnPoint: 2
+  - timeFrame: 10
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 8
+    spawnPoint: 3
+  - timeFrame: 20
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 10
+    spawnPoint: 1
+  - timeFrame: 20
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 10
+    spawnPoint: 2
+  - timeFrame: 20
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 10
+    spawnPoint: 3
+  waveTime: 30
+  preparationTime: 20

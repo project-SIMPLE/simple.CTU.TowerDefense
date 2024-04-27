@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d2b26a536044448bf4d75ab6755dba, type: 3}
   m_Name: WaterPumpConstruction
   m_EditorClassIdentifier: 
-  modelBuildPrefab: {fileID: 8549267022764414260, guid: 42ddf2f8bab86cf469cc922d84d5b568,
+  modelBuildPrefab: {fileID: 1551184798410912710, guid: 423f0fa805c5c5c44ac012e024861581,
     type: 3}
-  finalPrefab: {fileID: 1853612581112970321, guid: cc4bfe05d32d26c4c933c9c7d72c1917,
+  finalPrefab: {fileID: 7768694941360884037, guid: ecba122ed6d647144a7ac2c6ff632238,
     type: 3}
   cost: 7500
   description: 'Cost: 7500
