@@ -22,6 +22,10 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     [SerializeField] private LayerMask spawnTriggerLayerMask;
     [SerializeField] private Animator animator;
 
+    [Header("Subsidence Settings")]
+    [SerializeField] private GameObject subsidencePrefab;
+    [SerializeField] private Transform subsidenceSpawnPoint;
+
     // runtime privates
     private int currentHealh;
     private float currentRate;
@@ -70,11 +74,16 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     }
     public void Die()
     {
+        if (subsidencePrefab) 
+        {
+            var subsidence = Instantiate(subsidencePrefab,subsidenceSpawnPoint.position, subsidenceSpawnPoint.rotation);
+        }
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, workRadius, transform.forward, Mathf.Infinity, targetLayerMask);
         foreach(RaycastHit hit in hits)
         {
             Destroy(hit.transform.gameObject);
         }
+        Destroy(gameObject);
     }
 
     public bool IsDead()

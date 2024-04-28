@@ -407,6 +407,7 @@ Transform:
   m_Children:
   - {fileID: 5928876231028971303}
   - {fileID: 2906389987529082241}
+  - {fileID: 1421501102688482827}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2070450876921889639
@@ -445,7 +446,7 @@ MonoBehaviour:
   uniqueName: Water Pump
   lvl: 1
   freeSpawn: 0
-  health: 50
+  health: 1
   spawnRate: 2
   spawnPrefab: {fileID: 4734616565040637847, guid: b61018e78a76d4241b83ba09947734f2,
     type: 3}
@@ -458,6 +459,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   animator: {fileID: 200142665923943407}
+  subsidencePrefab: {fileID: 6212659186786696198, guid: 44365f84bf284914fa74b0f786b9325b,
+    type: 3}
+  subsidenceSpawnPoint: {fileID: 1421501102688482827}
 --- !u!114 &4061739769855132853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,3 +475,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: {fileID: 1958711536132553818}
+--- !u!1 &7858987094406230733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1421501102688482827}
+  m_Layer: 12
+  m_Name: CrackGroundSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1421501102688482827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7858987094406230733}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.4, z: -0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6487592043741156807}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
