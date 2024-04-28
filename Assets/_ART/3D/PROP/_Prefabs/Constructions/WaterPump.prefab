@@ -446,7 +446,7 @@ MonoBehaviour:
   uniqueName: Water Pump
   lvl: 1
   freeSpawn: 0
-  health: 1
+  health: 80
   spawnRate: 2
   spawnPrefab: {fileID: 4734616565040637847, guid: b61018e78a76d4241b83ba09947734f2,
     type: 3}
