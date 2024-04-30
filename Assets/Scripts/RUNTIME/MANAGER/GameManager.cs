@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("WINNNNNNNNN");
                 EndLevel();
             }
+            // Losse Condition
             if (playerResourcesManager.CurrentRefillSources <= 0)
             {
                 gameStatus = GameStatus.Lose;

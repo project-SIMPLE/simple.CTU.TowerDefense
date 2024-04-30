@@ -452,7 +452,7 @@ MonoBehaviour:
   health: 2
   moveSpeed: 3
   attackInterval: 4
-  attackRange: 9
+  attackRange: 9.5
   attackDamage: 1
   actionAnimator: {fileID: 4236646826230012177}
   emotionAnimator: {fileID: 6291549279252108224}
