@@ -13,12 +13,24 @@ public class EnemySpawner : MonoBehaviour, ISpawner
     private int count = 0;
 
     // Getters
-    public string SpawnName {
+    public string SpawnName
+    {
         get { return spawnPrefab.name; }
     }
-    public float SpawnRate {
+    public float SpawnRate
+    {
         get { return spawnRate; }
     }
+    private bool created = false;
+    void Update()
+    {
+        if (!created && GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+        {
+            GameUI.Instance.UpdatePlayerPosition(gameObject);
+            created = true;
+        }
+    }
+
 
     public void Spawn()
     {
@@ -27,7 +39,7 @@ public class EnemySpawner : MonoBehaviour, ISpawner
         GameObject spawn = Instantiate(spawnPrefab, transform.position, Quaternion.identity, this.gameObject.transform);
         spawn.GetComponent<EnemyController>().SetDestination(wayPoints);
         count++;
-        if(count >= spawnCount)
+        if (count >= spawnCount)
         {
             CancelInvoke();
         }

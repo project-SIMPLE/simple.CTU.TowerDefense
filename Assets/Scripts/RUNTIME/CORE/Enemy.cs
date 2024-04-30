@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     [Header("Basic Info")]
     [SerializeField] private string uniqueName;
     [SerializeField] private int lvl;
-    
+
     [Header("Stats")]
     [SerializeField] private int health = 2;
     [SerializeField] private float moveSpeed = 2f;
@@ -21,21 +21,24 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     [SerializeField] Animator actionAnimator;
     [SerializeField] Animator emotionAnimator;
     [SerializeField] LayerMask targetLayerMask;
-    
+
 
     // runtime privates
     private int currentHealh;
     private float currentInterval;
-    
+
     // Getters
-    public int Health { 
-        get { return currentHealh; } 
+    public int Health
+    {
+        get { return currentHealh; }
     }
-    public float Range {
-        get { return attackRange; } 
+    public float Range
+    {
+        get { return attackRange; }
     }
-    public int Damage { 
-        get { return attackDamage; } 
+    public int Damage
+    {
+        get { return attackDamage; }
     }
 
     void Start()
@@ -50,6 +53,10 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     {
         if (IsDead()) return;
 
+        if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+        {
+            GameUI.Instance.UpdatePlayerPosition(gameObject);
+        }
         currentInterval -= Time.deltaTime;
         if (currentInterval <= 0)
         {
@@ -62,8 +69,12 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     {
         if (emotionAnimator) emotionAnimator.Play("Attacked");
         currentHealh -= damage;
-        if(currentHealh <= 0)
+        if (currentHealh <= 0)
         {
+            if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+            {
+                GameUI.Instance.DeletePlayer(gameObject);
+            }
             Die();
             if (emotionAnimator) emotionAnimator.Play("Neutralized");
         }
@@ -97,7 +108,7 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
         if (actionAnimator) actionAnimator.Play("Attack");
     }
 
-    
+
     public bool HasValidTarget(GameObject target)
     {
         Debug.Log(target.name);

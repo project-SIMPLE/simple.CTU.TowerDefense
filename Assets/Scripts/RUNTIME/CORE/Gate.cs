@@ -15,7 +15,7 @@ public class Gate : MonoBehaviour, IDamage
 
     [Header("Miscellaneous")]
     [SerializeField] private LayerMask targetLayerMask;
-    
+
 
     // runtime privates
     private float currentInterval = 0f;
@@ -24,24 +24,31 @@ public class Gate : MonoBehaviour, IDamage
 
 
     // Getters
-    public float Range { 
+    public float Range
+    {
         get { return 0; }
     }
-    public int Damage { 
-        get { return attackDamage; } 
+    public int Damage
+    {
+        get { return attackDamage; }
     }
-    public bool Active {
+    public bool Active
+    {
         get { return isActive; }
     }
 
     void Start()
     {
-        
+
         currentInterval = attackInterval;
     }
 
     void Update()
     {
+        if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+        {
+            GameUI.Instance.UpdatePlayerPosition(gameObject);
+        }
         if (isActive)
         {
             Block();
@@ -51,17 +58,17 @@ public class Gate : MonoBehaviour, IDamage
             currentInterval -= Time.deltaTime;
             if (currentInterval <= 0)
             {
-               
+
                 isActive = true;
                 currentInterval = attackInterval;
                 currentATime = attackTime;
             }
-        } 
+        }
     }
 
     public void Block()
     {
-        currentATime-= Time.deltaTime;
+        currentATime -= Time.deltaTime;
         if (currentATime <= 0)
         {
             isActive = false;
@@ -74,12 +81,12 @@ public class Gate : MonoBehaviour, IDamage
             if (HasValidTarget(collider.gameObject))
             {
                 var target = collider.gameObject.GetComponent<IDamageable>();
-                if (target != null) 
+                if (target != null)
                 {
                     DealDamage(target);
                     if (target.IsDead()) Destroy(collider.gameObject);
                 }
-                    
+
             }
         }
     }

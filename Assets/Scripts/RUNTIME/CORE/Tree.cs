@@ -11,20 +11,34 @@ public class Tree : MonoBehaviour, IDamageable
     private int currentHealh;
 
     // Getters
-    public int Health { 
-        get { return currentHealh; } 
+    public int Health
+    {
+        get { return currentHealh; }
     }
 
     void Start()
     {
         currentHealh = health;
     }
+    private bool created = false;
+    void Update()
+    {
+        if (!created && GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+        {
+            GameUI.Instance.UpdatePlayerPosition(gameObject);
+            created = true;
+        }
+    }
 
     public void TakeDamage(int damage)
     {
         currentHealh -= damage;
-        if(currentHealh <= 0)
+        if (currentHealh <= 0)
         {
+            if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+            {
+                GameUI.Instance.DeletePlayer(gameObject);
+            }
             Die();
         }
     }

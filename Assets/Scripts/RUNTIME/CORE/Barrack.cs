@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barrack : MonoBehaviour, ISpawner, IDamageable 
+public class Barrack : MonoBehaviour, ISpawner, IDamageable
 {
     [Header("Basic Info")]
     [SerializeField] private string uniqueName;
@@ -11,7 +11,7 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     [Header("Stats")]
     [SerializeField] private bool freeSpawn;
     [SerializeField] private int health;
-    
+
     [SerializeField] private float spawnRate;
     [SerializeField] private GameObject spawnPrefab;
     [SerializeField] private Transform spawnPoint;
@@ -31,13 +31,16 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     private float currentRate;
 
     // Getters
-    public int Health {
-        get { return currentHealh; } 
+    public int Health
+    {
+        get { return currentHealh; }
     }
-    public string SpawnName {
+    public string SpawnName
+    {
         get { return spawnPrefab.name; }
     }
-    public float SpawnRate {
+    public float SpawnRate
+    {
         get { return spawnRate; }
     }
 
@@ -51,6 +54,10 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     {
         if (!IsDead())
         {
+            if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+            {
+                GameUI.Instance.UpdatePlayerPosition(gameObject);
+            }
             currentRate -= Time.deltaTime;
             if (currentRate <= 0)
             {
@@ -67,19 +74,19 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     public void TakeDamage(int damage)
     {
         currentHealh -= damage;
-        if(currentHealh <= 0)
+        if (currentHealh <= 0)
         {
             Die();
         }
     }
     public void Die()
     {
-        if (subsidencePrefab) 
+        if (subsidencePrefab)
         {
-            var subsidence = Instantiate(subsidencePrefab,subsidenceSpawnPoint.position, subsidenceSpawnPoint.rotation);
+            var subsidence = Instantiate(subsidencePrefab, subsidenceSpawnPoint.position, subsidenceSpawnPoint.rotation);
         }
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, workRadius, transform.forward, Mathf.Infinity, targetLayerMask);
-        foreach(RaycastHit hit in hits)
+        foreach (RaycastHit hit in hits)
         {
             Destroy(hit.transform.gameObject);
         }

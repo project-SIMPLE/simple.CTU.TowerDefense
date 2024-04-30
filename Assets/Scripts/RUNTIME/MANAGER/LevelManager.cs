@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum WaveStep 
+public enum WaveStep
 {
     Preparation,
     Defense
@@ -22,30 +22,37 @@ public class LevelManager : MonoBehaviour
     private int currentWaveSpawnIndex;
 
     // Getters
-    public bool Finished {
+    public bool Finished
+    {
         get { return finished; }
-    } 
-    public int CurrentWave {
+    }
+    public int CurrentWave
+    {
         get { return currentWave + 1; }
-    } 
-    public int MaxWave {
+    }
+    public int MaxWave
+    {
         get { return waves.Count; }
     }
-    public float CurrentTime {
+    public float CurrentTime
+    {
         get { return currentTime; }
     }
-    public string CurrentWaveStep {
+    public string CurrentWaveStep
+    {
         get { return currentWaveStep.ToString(); }
     }
 
-    public float CurrentWaveStepTime {
-        get { 
-            if ( currentWaveStep == WaveStep.Preparation )
-                return waves[ currentWave ].preparationTime; 
+    public float CurrentWaveStepTime
+    {
+        get
+        {
+            if (currentWaveStep == WaveStep.Preparation)
+                return waves[currentWave].preparationTime;
             else
-                return waves[ currentWave ].waveTime; 
+                return waves[currentWave].waveTime;
         }
-    }  
+    }
 
 
     void Awake()
@@ -55,11 +62,16 @@ public class LevelManager : MonoBehaviour
         currentTime = waves[0].preparationTime;
         currentWaveSpawnIndex = 0;
     }
-    
+
     void Update()
     {
         if (finished) return;
 
+
+        if (currentTime == waves[currentWave].preparationTime && GameUI.Instance != null)
+        {
+            GameUI.Instance.UpdatePlayerPosition(waves[currentWave].waveSpawns[0].spawnEnemy.gameObject);
+        }
         currentTime -= Time.deltaTime;
         if (currentTime <= 0)
         {
@@ -69,7 +81,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             ExecuteDefenseStep();
-        }   
+        }
     }
 
     bool MoveToDefenseStep()
@@ -85,10 +97,10 @@ public class LevelManager : MonoBehaviour
 
     bool MoveToNextWave()
     {
-        if(currentWaveStep == WaveStep.Defense)
+        if (currentWaveStep == WaveStep.Defense)
         {
             currentWave++;
-            if (currentWave > waves.Count-1)
+            if (currentWave > waves.Count - 1)
             {
                 finished = true;
             }
@@ -96,7 +108,7 @@ public class LevelManager : MonoBehaviour
             {
                 currentWaveStep = WaveStep.Preparation;
                 currentTime = waves[currentWave].preparationTime;
-                currentWaveSpawnIndex = 0;            
+                currentWaveSpawnIndex = 0;
             }
             return true;
         }
@@ -108,17 +120,17 @@ public class LevelManager : MonoBehaviour
         if (currentWaveStep != WaveStep.Defense) return;
 
         int start = currentWaveSpawnIndex;
-        for (int i = start; i< waves[currentWave].waveSpawns.Count; i++)
+        for (int i = start; i < waves[currentWave].waveSpawns.Count; i++)
         {
             float spawnTimeFrame = waves[currentWave].waveSpawns[i].timeFrame;
             if (waves[currentWave].waveTime - currentTime >= spawnTimeFrame)
             {
                 int spawnPointIndex = waves[currentWave].waveSpawns[i].spawnPoint - 1;
-                spawns[ spawnPointIndex ].StartAutoSpawn(
+                spawns[spawnPointIndex].StartAutoSpawn(
                     waves[currentWave].waveSpawns[i].spawnEnemy.gameObject,
                     waves[currentWave].waveSpawns[i].spawnAmount
                 );
-                currentWaveSpawnIndex = i+1; 
+                currentWaveSpawnIndex = i + 1;
             }
             else
             {
