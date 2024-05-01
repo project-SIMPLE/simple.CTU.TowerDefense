@@ -21,16 +21,6 @@ public class EnemySpawner : MonoBehaviour, ISpawner
     {
         get { return spawnRate; }
     }
-    private bool created = false;
-    void Update()
-    {
-        if (!created && GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
-        {
-            GameUI.Instance.UpdatePlayerPosition(gameObject);
-            created = true;
-        }
-    }
-
 
     public void Spawn()
     {

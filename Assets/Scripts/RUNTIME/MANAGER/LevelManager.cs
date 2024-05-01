@@ -70,7 +70,17 @@ public class LevelManager : MonoBehaviour
 
         if (currentTime == waves[currentWave].preparationTime && GameUI.Instance != null)
         {
-            GameUI.Instance.UpdatePlayerPosition(waves[currentWave].waveSpawns[0].spawnEnemy.gameObject);
+            if (currentWave > 0)
+            {
+                GameUI.Instance.DeletePlayer(spawns[0].gameObject);
+            }
+
+            for (int i = currentWaveSpawnIndex; i < waves[currentWave].waveSpawns.Count; i++)
+            {
+                int spawnPointIndex = waves[currentWave].waveSpawns[i].spawnPoint - 1;
+
+                GameUI.Instance.UpdatePlayerPosition(spawns[spawnPointIndex].gameObject);
+            }
         }
         currentTime -= Time.deltaTime;
         if (currentTime <= 0)

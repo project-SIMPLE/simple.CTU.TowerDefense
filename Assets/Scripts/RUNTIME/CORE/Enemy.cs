@@ -53,10 +53,10 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     {
         if (IsDead()) return;
 
-        if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
-        {
-            GameUI.Instance.UpdatePlayerPosition(gameObject);
-        }
+        // if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+        // {
+        //     GameUI.Instance.UpdatePlayerPosition(gameObject);
+        // }
         currentInterval -= Time.deltaTime;
         if (currentInterval <= 0)
         {
@@ -71,10 +71,10 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
         currentHealh -= damage;
         if (currentHealh <= 0)
         {
-            if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
-            {
-                GameUI.Instance.DeletePlayer(gameObject);
-            }
+            // if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+            // {
+            //     GameUI.Instance.DeletePlayer(gameObject);
+            // }
             Die();
             if (emotionAnimator) emotionAnimator.Play("Neutralized");
         }

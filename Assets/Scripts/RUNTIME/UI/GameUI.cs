@@ -94,6 +94,33 @@ public class GameUI : MonoBehaviour
     public int precision = 1;
 
 
+    public void UpdatePlayer()
+    {
+        Vector2 vF = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z);
+        Vector2 vR = new Vector2(transform.forward.x, transform.forward.z);
+        vF.Normalize();
+        vR.Normalize();
+        float c = vF.x * vR.x + vF.y * vR.y;
+        float s = vF.x * vR.y - vF.y * vR.x;
+
+        int angle = (int)(((s > 0) ? -1.0 : 1.0) * (180 / Math.PI) * Math.Acos(c) * 1);
+        List<float> p = toGAMACRS3D(Camera.main.transform.position);
+
+        Dictionary<string, string> args = new Dictionary<string, string> {
+            {"id",  ("\"mainPlayer\"") },
+            {"x", "" +p[0]},
+            {"y", "" +p[1]},
+            {"z", "" +p[2]},
+            {"angle", "" +angle}
+        };
+        SendExecutableAsk("simulation[0]", "move_player_main", args);
+        // ConnectionManager.Instance.SendExecutableExpression("do move_player_external($id," + p[0] + "," + p[1] + "," + angle + ");");
+
+    }
+    void FixedUpdate()
+    {
+        UpdatePlayer();
+    }
     public void Restart()
     {
         Dictionary<string, string> args = new Dictionary<string, string> {
@@ -150,7 +177,7 @@ public class GameUI : MonoBehaviour
     public void StartUI()
     {
         // PlayerPrefs.SetString("IP", "localhost");
-        PlayerPrefs.SetString("PORT", "1000"); 
+        PlayerPrefs.SetString("PORT", "1000");
         PlayerPrefs.SetString("IP", playerTextOutput.text);
         PlayerPrefs.Save();
 
