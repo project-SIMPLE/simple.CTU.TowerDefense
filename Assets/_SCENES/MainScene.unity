@@ -14829,10 +14829,35 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4785586659752514013, guid: 7cd1dfd2d4d589448b0d423f24210c80,
+        type: 3}
+      propertyPath: m_Name
+      value: ' BtnStart'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785586659752514015, guid: 7cd1dfd2d4d589448b0d423f24210c80,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 920664852}
+    - target: {fileID: 4785586659752514015, guid: 7cd1dfd2d4d589448b0d423f24210c80,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785586659752514015, guid: 7cd1dfd2d4d589448b0d423f24210c80,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameUI, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5591481509940591019, guid: 7cd1dfd2d4d589448b0d423f24210c80,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866193842611133984, guid: 7cd1dfd2d4d589448b0d423f24210c80,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7078541387893506787, guid: 7cd1dfd2d4d589448b0d423f24210c80,
         type: 3}
@@ -15029,9 +15054,16 @@ MonoBehaviour:
   finalText: {fileID: 937186031}
   winText: YOU WON!!!
   loseText: YOU LOST!!!
+  GamaCRSCoefX: 1
+  GamaCRSCoefY: 1
+  GamaCRSCoefZ: 1
+  GamaCRSOffsetX: 0.001
+  GamaCRSOffsetY: 0.001
+  GamaCRSOffsetZ: 0.001
+  precision: 1
 --- !u!1 &920664853 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1261988691433289397, guid: 7cd1dfd2d4d589448b0d423f24210c80,
+  m_CorrespondingSourceObject: {fileID: 9159978549432181841, guid: 7cd1dfd2d4d589448b0d423f24210c80,
     type: 3}
   m_PrefabInstance: {fileID: 920664849}
   m_PrefabAsset: {fileID: 0}
@@ -39131,7 +39163,7 @@ Transform:
   m_GameObject: {fileID: 6159015267736684834}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.46, y: 0, z: 19.45}
+  m_LocalPosition: {x: 28.46, y: 2, z: 19.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
