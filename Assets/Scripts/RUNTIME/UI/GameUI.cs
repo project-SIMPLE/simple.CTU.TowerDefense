@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using WebSocketSharp;
 using Newtonsoft.Json.Linq;
@@ -26,6 +27,14 @@ public class GameUI : MonoBehaviour
     public static GameUI Instance = null;
     void Start()
     {
+        string ip = PlayerPrefs.GetString("IP");
+        if (NotValid(ip))
+            ip = "127.0.0.1";
+
+        playerTextOutput = GameObject.FindGameObjectWithTag("textIP").GetComponentInChildren<TextMeshProUGUI>();
+
+        playerTextOutput.text = ip;
+        ready = false;
         transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
         startContent.SetActive(true);
         finalContent.SetActive(false);
@@ -39,6 +48,7 @@ public class GameUI : MonoBehaviour
     }
     void Update()
     {
+        ready = true;
         if (gameManager.CurrentGameStatus() == GameStatus.Win || gameManager.CurrentGameStatus() == GameStatus.Lose)
         {
             transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
@@ -127,17 +137,21 @@ public class GameUI : MonoBehaviour
             {"z", "" +p[2]},
             {"angle", "" +angle}
         };
- 
+
         // Debug.Log("move_player_external: " + player + " " + p[0] + "," + p[1] + "," + p[2]);
 
         SendExecutableAsk("simulation[0]", "move_player_external", args);
     }
     protected string host;
     protected string port;
+    private static bool ready = false;
+    private TextMeshProUGUI playerTextOutput;
+
     public void StartUI()
     {
-        PlayerPrefs.SetString("IP", "localhost");
-        PlayerPrefs.SetString("PORT", "1000");
+        // PlayerPrefs.SetString("IP", "localhost");
+        PlayerPrefs.SetString("PORT", "1000"); 
+        PlayerPrefs.SetString("IP", playerTextOutput.text);
         PlayerPrefs.Save();
 
         port = PlayerPrefs.GetString("PORT");
@@ -148,6 +162,44 @@ public class GameUI : MonoBehaviour
 
         gameManager.StartLevel();
         startContent.SetActive(false);
+    }
+    private static bool NotValid(string ip)
+    {
+        if (ip == null || ip.Length == 0) return false;
+        string[] ipb = ip.Split(".");
+        return (ipb.Length != 4);
+    }
+
+
+    public void OnTriggerEnterBtn(Text text)
+    {
+        string t = text.text;
+
+        if (ready)
+        {
+            playerTextOutput.text += t;
+
+        }
+    }
+
+    public void OnTriggerEnterDelete()
+    {
+
+        if (ready && playerTextOutput.text.Length > 0)
+        {
+            playerTextOutput.text = playerTextOutput.text.Substring(0, playerTextOutput.text.Length - 1);
+
+        }
+    }
+
+    public void OnTriggerEnterCancel()
+    {
+
+        if (ready && playerTextOutput.text.Length > 0)
+        {
+            playerTextOutput.text = "";
+
+        }
     }
     protected void HandleConnectionOpen(object sender, System.EventArgs e)
     {
@@ -187,7 +239,10 @@ public class GameUI : MonoBehaviour
 
     void OnDestroy()
     {
-        socket.Close();
+        if (socket != null)
+        {
+            socket.Close();
+        }
     }
     public void RetryUI()
     {
