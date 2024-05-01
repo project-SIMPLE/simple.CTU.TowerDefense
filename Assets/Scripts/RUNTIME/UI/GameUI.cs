@@ -101,7 +101,7 @@ public class GameUI : MonoBehaviour
             {"id",  ("\""+player+" "+player.GetInstanceID()+"\"") }
         };
 
-        Debug.Log("DeletePlayer: " + player);
+        // Debug.Log("DeletePlayer: " + player);
 
         SendExecutableAsk("simulation[0]", "DeletePlayer", args);
     }
@@ -127,14 +127,22 @@ public class GameUI : MonoBehaviour
             {"z", "" +p[2]},
             {"angle", "" +angle}
         };
-
-        Debug.Log("move_player_external: " + player + " " + p[0] + "," + p[1] + "," + p[2]);
+ 
+        // Debug.Log("move_player_external: " + player + " " + p[0] + "," + p[1] + "," + p[2]);
 
         SendExecutableAsk("simulation[0]", "move_player_external", args);
     }
+    protected string host;
+    protected string port;
     public void StartUI()
     {
-        socket = new WebSocket("ws://localhost:1000/");
+        PlayerPrefs.SetString("IP", "localhost");
+        PlayerPrefs.SetString("PORT", "1000");
+        PlayerPrefs.Save();
+
+        port = PlayerPrefs.GetString("PORT");
+        host = PlayerPrefs.GetString("IP");
+        socket = new WebSocket("ws://" + host + ":" + port + "/");
         socket.OnOpen += HandleConnectionOpen;
         socket.Connect();
 
