@@ -47,6 +47,18 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     void Start()
     {
         currentHealh = health;
+
+        Collider[] nearbyTargets = Physics.OverlapSphere(transform.position, 5f, targetLayerMask);
+        foreach (var target in nearbyTargets)
+        {
+            var health = target.GetComponent<ISpawner>();
+
+            if (health != null)
+            {
+                // Debug.Log("" + target);
+                if (currentHealh > 20) currentHealh -= 20;
+            }
+        }
         currentRate = spawnRate;
     }
 
@@ -58,6 +70,7 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
             {
                 GameUI.Instance.UpdatePlayerPosition(gameObject);
             }
+
             currentRate -= Time.deltaTime;
             if (currentRate <= 0)
             {

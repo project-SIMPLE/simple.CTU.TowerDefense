@@ -454,7 +454,7 @@ MonoBehaviour:
   workRadius: 10
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 4352
   spawnTriggerLayerMask:
     serializedVersion: 2
     m_Bits: 128
