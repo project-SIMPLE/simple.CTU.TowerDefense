@@ -74,9 +74,7 @@ jobs:
           body: |
             Alpha release for SIMPLE's CTU TowerDefense game. Please test and report issues.
             It has been built on the commit ${{ github.event.pull_request.head.sha }}.
-          file: |
-            build/Android/Android.apk
-            Android/Android.apk
+          file: build/*
           file_glob: true
           make_latest: false
           promote: false
