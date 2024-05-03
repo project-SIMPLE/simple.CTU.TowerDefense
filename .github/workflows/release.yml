@@ -5,8 +5,9 @@ on:
     inputs:
       DO_RELEASE:
         description: 'Should the APK be pre-release on Github repository?'
-        type: bool
-        default: true
+        required: true
+        default: true 
+        type: boolean
 
 jobs:
   build:
