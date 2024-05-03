@@ -1,6 +1,12 @@
 name: Test and release
 
-on: [push, workflow_dispatch]
+on: 
+  workflow_dispatch:
+    inputs:
+      DO_RELEASE:
+        description: 'Should the APK be pre-release on Github repository?'
+        type: bool
+        default: true
 
 jobs:
   build:
@@ -59,3 +65,20 @@ jobs:
         with:
           name: Build
           path: build
+
+      - name: Publish alpha to Github 🎉
+        uses: svenstaro/upload-release-action@2.9.0
+        if: "${{ github.event.inputs.DO_RELEASE }}"
+        with:
+          body: |
+            Alpha release for SIMPLE's CTU TowerDefense game. Please test and report issues.
+            It has been built on the commit ${{ github.event.pull_request.head.sha }}.
+          file: build/*
+          file_glob: true
+          make_latest: false
+          promote: false
+          prerelease: true
+          overwrite: true
+          release_name: Alpha Version ${{ github.event.pull_request.head.sha }}
+          repo_token: ${{ secrets.SIMPLE_ORGA_TOKEN }}
+          
