@@ -144,7 +144,7 @@ public class GameUI : MonoBehaviour
     }
     public void UpdatePlayerPosition(GameObject player)
     {
-        if (!connected) return;
+        if (!connected || finalContent.activeSelf) return;
         Vector2 vF = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z);
         Vector2 vR = new Vector2(transform.forward.x, transform.forward.z);
         vF.Normalize();
