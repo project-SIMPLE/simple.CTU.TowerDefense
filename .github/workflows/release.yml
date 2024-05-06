@@ -68,18 +68,12 @@ jobs:
           path: build
 
       - name: Publish alpha to Github 🎉
-        uses: svenstaro/upload-release-action@2.9.0
-        if: "${{ github.event.inputs.DO_RELEASE }}"
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          body: |
-            Alpha release for SIMPLE's CTU TowerDefense game. Please test and report issues.
-            It has been built on the commit ${{ github.event.pull_request.head.sha }}.
-          file: build/*
-          file_glob: true
-          make_latest: false
-          promote: false
+          files: build/Android/Android.apk
           prerelease: true
-          overwrite: true
-          release_name: Alpha Version ${{ github.event.pull_request.head.sha }}
-          repo_token: ${{ secrets.SIMPLE_ORGA_TOKEN }}
-          
+          name: "Alpha Version"
+          tag_name: alpha
+          fail_on_unmatched_files: true
+          generate_release_notes: yes
