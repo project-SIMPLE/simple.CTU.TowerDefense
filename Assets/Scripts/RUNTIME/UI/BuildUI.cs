@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
@@ -8,12 +9,29 @@ public class BuildUI : MonoBehaviour
     [SerializeField] private BuildSystemManager buildManager;
     [SerializeField] private GameObject content;
     [SerializeField] private TextMeshProUGUI currentBuildInfo;
-    
+    [SerializeField] private List<TextMeshProUGUI> currentQuantities;
+    [SerializeField] private List<Image> imageCooldownList;
+
+    public List<Image> ImageCooldownList
+    {
+        get { return imageCooldownList; }
+    }
     void Start()
     {
         content.SetActive(false);
     }
 
+    private void Update()
+    {
+        for(int i = 0; i < currentQuantities.Count; i++)
+        {
+            currentQuantities[i].text = buildManager.Constructions[i].CurrentQuantity.ToString();
+            if(imageCooldownList[i].fillAmount != 0)
+            {
+                imageCooldownList[i].fillAmount -= 1.0f / buildManager.Constructions[i].cooldownTime * Time.deltaTime;
+            }
+        }
+    }
     public void ChoseConstruction(int constructionIndex)
     {
         buildManager.StartBuilding(constructionIndex);

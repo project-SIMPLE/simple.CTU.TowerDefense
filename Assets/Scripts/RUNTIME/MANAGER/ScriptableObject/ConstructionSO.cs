@@ -11,5 +11,48 @@ public class ConstructionSO : ScriptableObject
     [TextAreaAttribute]
     public string description;
     public bool useIdentityRotation;
+    public int maxQuantity;
+    public float cooldownTime;
+    private int currentQuantity;
+    private float currentTime;
 
+    public int CurrentQuantity
+    {
+        get { return currentQuantity; }
+    }
+
+    public float CurrentTime
+    {
+        get { return currentTime; }
+    }
+    private void OnEnable()
+    {
+        InitializeValues();
+    }
+    private void InitializeValues()
+    {
+        currentQuantity = maxQuantity;
+        currentTime = 0;
+    }
+
+    public void ResetCooldown()
+    {
+        currentTime = cooldownTime;
+    }
+
+    public void DecreaseQuantity()
+    {
+        if(currentQuantity > 0)
+        {
+            currentQuantity--;
+        }
+    }
+
+    public void DecreaseCooldown(float deltaTime)
+    {
+        if(currentTime > 0)
+        {
+            currentTime -= deltaTime;
+        }
+    }
 }

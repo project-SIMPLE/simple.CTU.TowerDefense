@@ -17,9 +17,9 @@ MonoBehaviour:
   finalPrefab: {fileID: 7768694941360884037, guid: ecba122ed6d647144a7ac2c6ff632238,
     type: 3}
   cost: 2000
-  description: 'Cost: 2000
-
-    spawn pure water
+  description: 'Spawn pure water
 
     Better than Lake'
   useIdentityRotation: 0
+  maxQuantity: 4
+  cooldownTime: 30
