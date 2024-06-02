@@ -26,7 +26,11 @@ public class InputManager : MonoBehaviour
         if (buildActive.action.triggered)
         {
             if (buildManager.IsBuilding) buildManager.FinishBuilding();
-            else buildUI.ToggleMenu();
+            else
+            {
+                buildUI.ToggleMenu();
+                buildUI.ToggleRemoveConstruction(false);
+            }
             
         }
         buildRay.SetActive(buildManager.IsBuilding);

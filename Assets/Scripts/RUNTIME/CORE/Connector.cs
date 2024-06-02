@@ -9,23 +9,36 @@ public class Connector : MonoBehaviour
     public ConnectorPosition connectorPosition;
     public SelectedBuildType connectorParentType;
 
-    [HideInInspector] public bool isConnectedToLake = false;
     [HideInInspector] public bool canConnectTo = true;
 
-    [SerializeField] private bool canConnectToLake = true;
 
     //Getters
     public ConnectorType Type {
         get { return type; }
     }
 
-private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
-        Gizmos.color = isConnectedToLake ? Color.red : Color.blue;
+        Gizmos.color = canConnectTo ? Color.blue : Color.red;
         Gizmos.DrawWireSphere(transform.position, transform.lossyScale.x / 2f);
     }
 
-    public void updateConnectors(bool rootCall = false)
+    public void UpdateConnector(bool value)
+    {
+        const float colliderRadius = 0.5f;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, colliderRadius * transform.lossyScale.x);
+        foreach (Collider collider in colliders)
+        {
+            Connector foundConnector = collider.GetComponent<Connector>();
+            if (foundConnector)
+            {
+                foundConnector.canConnectTo = false;
+            }
+        }
+        canConnectTo = value;
+    }
+
+    /*public void updateConnectors(bool rootCall = false)
     {
         const float colliderRadius = 0.5f;
         
@@ -55,7 +68,7 @@ private void OnDrawGizmos()
         {
             canConnectTo = false;
         }
-    }
+    }*/
 
 
 }

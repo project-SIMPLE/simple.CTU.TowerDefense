@@ -130,7 +130,7 @@ public class BuildSystem : MonoBehaviour
                 break;
             }
         }
-        if (bestConnector == null || bestConnector.isConnectedToLake || canPlace == false)
+        if (bestConnector == null || bestConnector.canConnectTo || canPlace == false)
         {
             ghostifyModel(ModelParent, ghostMaterialInvalid);
             isGhostInValidPosition = false;
@@ -248,7 +248,7 @@ public class BuildSystem : MonoBehaviour
 
             foreach (Connector connector in connectors)
             {
-                connector.updateConnectors(true);
+                connector.UpdateConnector(false);
             }
         }
     }

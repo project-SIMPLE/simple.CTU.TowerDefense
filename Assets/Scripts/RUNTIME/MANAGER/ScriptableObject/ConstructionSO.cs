@@ -48,6 +48,14 @@ public class ConstructionSO : ScriptableObject
         }
     }
 
+    public void IncreaseQuantity()
+    {
+        if(currentQuantity < maxQuantity)
+        {
+            currentQuantity++;
+        }
+    }
+
     public void DecreaseCooldown(float deltaTime)
     {
         if(currentTime > 0)

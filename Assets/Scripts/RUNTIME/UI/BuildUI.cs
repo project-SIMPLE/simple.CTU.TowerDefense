@@ -12,6 +12,8 @@ public class BuildUI : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> currentQuantities;
     [SerializeField] private List<Image> imageCooldownList;
 
+    [SerializeField] private GameObject removeConstructionRay;
+
     public List<Image> ImageCooldownList
     {
         get { return imageCooldownList; }
@@ -32,10 +34,16 @@ public class BuildUI : MonoBehaviour
             }
         }
     }
+
     public void ChoseConstruction(int constructionIndex)
     {
         buildManager.StartBuilding(constructionIndex);
         if (buildManager.IsBuilding) ToggleMenu();
+    }
+
+    public void ToggleRemoveConstruction(bool toggle)
+    {
+        removeConstructionRay.SetActive(toggle);
     }
 
     public void ToggleMenu()

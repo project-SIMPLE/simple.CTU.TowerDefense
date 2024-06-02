@@ -92,6 +92,7 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
             Die();
         }
     }
+
     public void Die()
     {
         if (subsidencePrefab)

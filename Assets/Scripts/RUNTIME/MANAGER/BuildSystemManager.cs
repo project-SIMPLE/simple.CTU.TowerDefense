@@ -54,6 +54,7 @@ public class BuildSystemManager : MonoBehaviour
             return true;
         }else return false;
     }
+    
     public void FinishBuilding()
     {
         Destroy(ghostConstruction.gameObject);
@@ -69,11 +70,12 @@ public class BuildSystemManager : MonoBehaviour
                 ghostConstruction.transform.position, 
                 constructions[ currentBuildingIndex ].useIdentityRotation ? Quaternion.identity :ghostConstruction.transform.rotation
             );
+            construction.GetComponent<ConstructionRemover>().buildSystemManager = this;
 
             Connector[] connectors = ghostConstruction.GetComponentsInChildren<Connector>();
             foreach (Connector connector in connectors)
             {
-                connector.updateConnectors(true);
+                connector.UpdateConnector(false);
             }
             FinishBuilding();
             
