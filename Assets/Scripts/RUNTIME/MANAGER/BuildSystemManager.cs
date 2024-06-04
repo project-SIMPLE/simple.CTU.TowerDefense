@@ -13,6 +13,8 @@ public class BuildSystemManager : MonoBehaviour
     private int currentBuildingIndex;
     private GameObject ghostConstruction;
 
+    [SerializeField] private SubsidenceManager subsidenceManager;
+
     // Getters
     public bool IsBuilding {
         get { return isBuilding; }
@@ -77,6 +79,8 @@ public class BuildSystemManager : MonoBehaviour
             {
                 connector.UpdateConnector(false);
             }
+            subsidenceManager.IncreaseSubsidenceLevel();
+            subsidenceManager.DecreaseWaterLevel();
             FinishBuilding();
             
         }
