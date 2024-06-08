@@ -70,7 +70,7 @@ public class BuildSystemManager : MonoBehaviour
             GameObject construction = Instantiate(
                 constructions[ currentBuildingIndex ].finalPrefab,
                 ghostConstruction.transform.position, 
-                constructions[ currentBuildingIndex ].useIdentityRotation ? Quaternion.identity :ghostConstruction.transform.rotation
+                ghostConstruction.GetComponent<GhostConstruction>().UseIdentityRotation ? Quaternion.identity :ghostConstruction.transform.rotation
             );
             construction.GetComponent<ConstructionRemover>().buildSystemManager = this;
 
@@ -100,10 +100,7 @@ public class BuildSystemManager : MonoBehaviour
         if(ghostConstruction == null)
         {
             ghostConstruction = Instantiate( constructions[currentBuildingIndex].modelBuildPrefab, constructionAnchor);
-            if (constructions[currentBuildingIndex].useIdentityRotation)
-                ghostConstruction.GetComponent<GhostConstruction>().UseIdentityRotation();
-        }
-            
+        }     
     }
 
 }

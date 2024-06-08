@@ -8,7 +8,8 @@ public enum GameStatus
     Wait,
     InProgress,
     Lose,
-    Win
+    Win,
+    Tutorial
 }
 
 public class GameManager : MonoBehaviour
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private BuildSystemManager buildSystemManager;
     [SerializeField] private PlayerResourcesManager playerResourcesManager;
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] private TutorialManager tutorialManager;
+    
 
     [SerializeField] private BuildUI buildUI;
     [SerializeField] private HUD hud;
@@ -73,6 +76,16 @@ public class GameManager : MonoBehaviour
         buildUI.gameObject.SetActive(true);
         hud.gameObject.SetActive(true);
         gameStatus = GameStatus.InProgress;
+    }
+
+    public void StartTutorial()
+    {
+        buildSystemManager.gameObject.SetActive(true);
+        levelManager.gameObject.SetActive(true);
+        levelManager.ToggleLoop();
+        buildUI.gameObject.SetActive(true);
+        tutorialManager.gameObject.SetActive(true);
+        gameStatus = GameStatus.Tutorial;
     }
 
     // Update is called once per frame

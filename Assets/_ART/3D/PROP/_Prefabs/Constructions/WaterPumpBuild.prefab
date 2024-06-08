@@ -76,6 +76,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   connectorCheckRadius: 1
+  useIdentityRotation: 0
   validMaterial: {fileID: 2100000, guid: 606a98202cf7c1b41818dfcc32885bb2, type: 2}
   invalidMaterial: {fileID: 2100000, guid: 232a0ace03f2f554592c2b5b28a3c112, type: 2}
 --- !u!54 &6317546227431965884
@@ -153,9 +154,7 @@ MonoBehaviour:
   type: 1
   connectorPosition: 0
   connectorParentType: 0
-  isConnectedToLake: 0
   canConnectTo: 1
-  canConnectToLake: 1
 --- !u!135 &6401459746116677343
 SphereCollider:
   m_ObjectHideFlags: 0

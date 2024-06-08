@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    [Header("Teleportation Input")]
+    [Header("Teleportation Input--------------------")]
     public GameObject teleportationRay;
     public InputActionProperty teleportActive;
 
-    [Header("Building Input")]
+    [Header("Building Input-------------------------")]
     public BuildSystemManager buildManager;
     public BuildUI buildUI;
     public InputActionProperty buildActive;

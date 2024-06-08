@@ -10,7 +10,6 @@ public class ConstructionSO : ScriptableObject
     public int cost;
     [TextAreaAttribute]
     public string description;
-    public bool useIdentityRotation;
     public int maxQuantity;
     public float cooldownTime;
     private int currentQuantity;

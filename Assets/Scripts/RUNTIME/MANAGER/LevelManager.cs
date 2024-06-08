@@ -11,6 +11,7 @@ public enum WaveStep
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private bool loop = false;
     [SerializeField] private List<WaveSO> waves;
     [SerializeField] private List<EnemySpawner> spawns;
 
@@ -54,13 +55,14 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void ToggleLoop()
+    {
+        loop = !loop;
+    }
 
     void Awake()
     {
-        currentWaveStep = WaveStep.Preparation;
-        currentWave = 0;
-        currentTime = waves[0].preparationTime;
-        currentWaveSpawnIndex = 0;
+        InitLevel();
     }
 
     void Update()
@@ -94,6 +96,14 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    void InitLevel()
+    {
+        currentWaveStep = WaveStep.Preparation;
+        currentWave = 0;
+        currentTime = waves[0].preparationTime;
+        currentWaveSpawnIndex = 0;
+    }
+
     bool MoveToDefenseStep()
     {
         if (currentWaveStep == WaveStep.Preparation)
@@ -112,7 +122,8 @@ public class LevelManager : MonoBehaviour
             currentWave++;
             if (currentWave > waves.Count - 1)
             {
-                finished = true;
+                if (loop) InitLevel();
+                else finished = true;
             }
             else
             {

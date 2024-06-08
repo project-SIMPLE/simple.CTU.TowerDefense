@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private TutorialManager tutorialManager;
     [SerializeField] private Transform head;
     [SerializeField] private float spawnDistance;
 
@@ -58,16 +59,45 @@ public class GameUI : MonoBehaviour
             if (gameManager.CurrentGameStatus() == GameStatus.Win)
             {
                 finalText.text = winText;
-                finalText.text += "\nSCORE: " + gameManager.Score;
             }
             if (gameManager.CurrentGameStatus() == GameStatus.Lose)
             {
                 finalText.text = loseText;
             }
+            // Add Report Text Here
         }
 
         transform.LookAt(new Vector3(head.position.x, transform.position.y, head.position.z));
         transform.forward *= -1;
+    }
+
+    public void StartTutorialUI()
+    {
+        gameManager.StartTutorial();
+        startContent.gameObject.SetActive(false);
+    }
+
+    public void StartUI()
+    {
+        // PlayerPrefs.SetString("IP", "localhost");
+        PlayerPrefs.SetString("PORT", "1000");
+        PlayerPrefs.SetString("IP", playerTextOutput.text);
+        PlayerPrefs.Save();
+
+        port = PlayerPrefs.GetString("PORT");
+        host = PlayerPrefs.GetString("IP");
+        socket = new WebSocket("ws://" + host + ":" + port + "/");
+        socket.OnOpen += HandleConnectionOpen;
+        socket.Connect();
+
+        gameManager.StartLevel();
+        startContent.SetActive(false);
+    }
+
+    public void RetryUI()
+    {
+        Restart();
+        gameManager.RestartLevel();
     }
 
     public List<float> toGAMACRS3D(Vector3 pos)
@@ -174,22 +204,6 @@ public class GameUI : MonoBehaviour
     private static bool ready = false;
     private TextMeshProUGUI playerTextOutput;
 
-    public void StartUI()
-    {
-        // PlayerPrefs.SetString("IP", "localhost");
-        PlayerPrefs.SetString("PORT", "1000");
-        PlayerPrefs.SetString("IP", playerTextOutput.text);
-        PlayerPrefs.Save();
-
-        port = PlayerPrefs.GetString("PORT");
-        host = PlayerPrefs.GetString("IP");
-        socket = new WebSocket("ws://" + host + ":" + port + "/");
-        socket.OnOpen += HandleConnectionOpen;
-        socket.Connect();
-
-        gameManager.StartLevel();
-        startContent.SetActive(false);
-    }
     private static bool NotValid(string ip)
     {
         if (ip == null || ip.Length == 0) return false;
@@ -270,10 +284,5 @@ public class GameUI : MonoBehaviour
         {
             socket.Close();
         }
-    }
-    public void RetryUI()
-    {
-        Restart();
-        gameManager.RestartLevel();
     }
 }

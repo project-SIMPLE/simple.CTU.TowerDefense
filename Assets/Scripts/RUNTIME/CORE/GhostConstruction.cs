@@ -7,6 +7,7 @@ public class GhostConstruction : MonoBehaviour
     [SerializeField] LayerMask collideLayerMask;
     [SerializeField] private LayerMask connectorLayerMask;
     [SerializeField] private float connectorCheckRadius = 1;
+    [SerializeField] private bool useIdentityRotation = false;
 
     [Header("Ghost Construction Material Settings")]
     [SerializeField] private Material validMaterial;
@@ -15,11 +16,13 @@ public class GhostConstruction : MonoBehaviour
 
     private bool buildable;
     private bool collide = false;
-    private bool useIdentityRotation;
 
     // Getter
     public bool IsBuildable {
         get { return buildable; }
+    }
+    public bool UseIdentityRotation {
+        get { return useIdentityRotation; }
     }
 
     void Start()
@@ -55,11 +58,6 @@ public class GhostConstruction : MonoBehaviour
     {
         if (collideLayerMask == (collideLayerMask | (1 << other.gameObject.layer)))
             collide = false;
-    }
-
-    public void UseIdentityRotation()
-    {
-        useIdentityRotation = true;
     }
 
     private void UpdateConstructionValidity(){
