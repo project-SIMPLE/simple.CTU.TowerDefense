@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     [SerializeField] Animator emotionAnimator;
     [SerializeField] LayerMask targetLayerMask;
 
-
     // runtime privates
     private int currentHealh;
     private float currentInterval;
@@ -84,6 +83,7 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     {
         gameObject.tag = "Water";
         gameObject.layer = LayerMask.NameToLayer("Water");
+        StatisticsManager.Instance.IncreaseEnemyKillCount();
     }
 
     public bool IsDead()

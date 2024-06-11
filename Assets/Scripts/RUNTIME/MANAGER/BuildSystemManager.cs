@@ -81,6 +81,20 @@ public class BuildSystemManager : MonoBehaviour
             }
             subsidenceManager.IncreaseSubsidenceLevel();
             subsidenceManager.DecreaseWaterLevel();
+
+            if (currentBuildingIndex == 0)
+            {
+                StatisticsManager.Instance.IncreateSluiceGateCount();
+            }
+            else if (currentBuildingIndex == 1)
+            {
+                StatisticsManager.Instance.IncreateWaterPumpCount();
+            }
+            else if (currentBuildingIndex == 2)
+            {
+                StatisticsManager.Instance.IncreateLakeCount();
+            }
+
             FinishBuilding();
             
         }

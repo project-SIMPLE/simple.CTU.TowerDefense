@@ -23,9 +23,17 @@ public class GameUI : MonoBehaviour
     [SerializeField] private string winText = "YOU WON!!!";
     [SerializeField] private string loseText = "YOU LOST!!!";
 
+    [SerializeField] private PlayerResourcesManager playerResourcesManager;
+    private SubsidenceManager subsidenceManager;
+
+
     private WebSocket socket;
     private bool connected = false;
     public static GameUI Instance = null;
+
+    private string reportText = "";
+    [SerializeField] private TextMeshProUGUI reportTextMeshPro;
+
     void Start()
     {
         string ip = PlayerPrefs.GetString("IP");
@@ -43,9 +51,8 @@ public class GameUI : MonoBehaviour
     }
     void Awake()
     {
-
         Instance = this;
-
+        subsidenceManager = FindObjectOfType<SubsidenceManager>();
     }
     void Update()
     {
@@ -65,6 +72,17 @@ public class GameUI : MonoBehaviour
                 finalText.text = loseText;
             }
             // Add Report Text Here
+            reportText = "Living Trees: " + playerResourcesManager.CurrentRefillSources + "\n" +
+                         "Dead Trees: " + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources) + "\n" +
+                         "Lake Structures Built: " + StatisticsManager.Instance.LakeCount + "\n" +
+                         "WaterPump Structures Built: " + StatisticsManager.Instance.WaterPumpCount + "\n" +
+                         "SluiceGate Structures Built: " + StatisticsManager.Instance.SluiceGateCount + "\n" +
+                         "Enemies Neutralized: " + StatisticsManager.Instance.EnemyKillCount + "\n" +
+                         "Remaining Groundwater Level (Local): " + subsidenceManager.RemainingWaterLevelLocal + "\n" +
+                         "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal + "\n" +
+                         "Subsidence Score: " + subsidenceManager.SubsidenceScore;
+
+            reportTextMeshPro.text = reportText;
         }
 
         transform.LookAt(new Vector3(head.position.x, transform.position.y, head.position.z));
