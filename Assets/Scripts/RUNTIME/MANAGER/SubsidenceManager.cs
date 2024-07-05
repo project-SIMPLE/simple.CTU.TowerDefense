@@ -23,6 +23,20 @@ public class SubsidenceManager : MonoBehaviour
 
     [SerializeField] private Vector3 rotationModifier = Vector3.one;
 
+    //Getter
+    public float RemainingWaterLevelLocal
+    {
+        get { return currentWaterLevel; }
+    }
+    public float RemainingWaterLevelGlobal
+    { 
+        get { return currentWaterLevel; } 
+    }
+    public float SubsidenceScore
+    {
+        get { return currentSubsidenceLevel; }
+    }
+
     public void IncreaseSubsidenceLevel()
     {
         currentSubsidenceLevel += subsidenceLevelRatio;

@@ -18,7 +18,7 @@ public class PlayerResourcesManager : MonoBehaviour, ISupply
     private int currentAmount;
     private float currentInterval;
     private int currentRefillSources;
-
+    private int totalTree;
     // Getters
     public int CurrentAmount { 
         get { return currentAmount; }
@@ -35,6 +35,9 @@ public class PlayerResourcesManager : MonoBehaviour, ISupply
     public int CurrentRefillSources {
         get { return currentRefillSources; }
     }
+    public int TotalTree { 
+        get { return totalTree; } 
+    }
 
     void Awake()
     {
@@ -42,8 +45,13 @@ public class PlayerResourcesManager : MonoBehaviour, ISupply
         currentInterval = refillInterval;
         currentRefillSources = 1;
         InvokeRepeating("CheckRefillSources", 0, .5f);
+        GetTotalTree();
     }
-
+    void GetTotalTree()
+    {
+        CheckRefillSources();
+        totalTree = currentRefillSources;
+    }
     void Update()
     {
         currentInterval -= Time.deltaTime;
