@@ -8,35 +8,40 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8835562174671130976, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3eb2ee18d99a2584ababa423a0e0076f, type: 2}
     - target: {fileID: -8679921383154817045, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.01
+      value: 0.023054976
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.01
+      value: 0.023054976
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.01
+      value: 0.023054976
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000009536743
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
@@ -78,6 +83,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: -7260502207556862457, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94f5f05b0e105d941a1d8428b82f633f, type: 2}
     - target: {fileID: -882119418490021021, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -175,7 +185,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349909584342305097}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0375097271a2c784984dd63ff3d80454, type: 3}
   m_Name: 

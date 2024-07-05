@@ -385,7 +385,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 42.406, y: 3.25, z: 5.414}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1602178807713106147}
@@ -450,7 +450,7 @@ MonoBehaviour:
   uniqueName: Salt Water
   lvl: 1
   health: 2
-  moveSpeed: 3
+  moveSpeed: 4
   attackInterval: 4
   attackRange: 9.5
   attackDamage: 1
