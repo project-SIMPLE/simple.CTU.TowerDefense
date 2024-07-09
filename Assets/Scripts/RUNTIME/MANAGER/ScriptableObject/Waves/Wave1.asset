@@ -106,17 +106,17 @@ MonoBehaviour:
   - timeFrame: 210
     spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
-    spawnAmount: 6
+    spawnAmount: 8
     spawnPoint: 1
   - timeFrame: 210
     spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
-    spawnAmount: 6
+    spawnAmount: 8
     spawnPoint: 2
   - timeFrame: 210
     spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
       type: 3}
-    spawnAmount: 6
+    spawnAmount: 8
     spawnPoint: 3
   - timeFrame: 220
     spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,

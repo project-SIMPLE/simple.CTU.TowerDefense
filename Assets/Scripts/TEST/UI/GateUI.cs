@@ -20,12 +20,12 @@ public class GateUI : MonoBehaviour
         var  renderer = gameObject.GetComponent<Renderer>();
         if (gate.Active)
         {
-            renderer.material.SetColor("_BaseColor", Color.green);
+            //renderer.material.SetColor("_BaseColor", Color.green);
             if (animator) animator.SetBool("CloseGate",true);
         }   
         else
         {
-            renderer.material.SetColor("_BaseColor", Color.red);
+            //renderer.material.SetColor("_BaseColor", Color.red);
             if (animator) animator.SetBool("CloseGate",false);
         } 
     }

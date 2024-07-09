@@ -10,6 +10,7 @@ public class Gate : MonoBehaviour, IDamage
 
     [Header("Stats")]
     [SerializeField] private int attackDamage = 1;
+    [SerializeField] private Vector3 attackBox;
     [SerializeField] private int attackInterval = 1;
     [SerializeField] private float attackTime = 1.0f;
 
@@ -75,7 +76,7 @@ public class Gate : MonoBehaviour, IDamage
             return;
         }
 
-        Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2, transform.rotation);
+        Collider[] colliders = Physics.OverlapBox(transform.position, attackBox, transform.rotation);
         foreach (Collider collider in colliders)
         {
             if (HasValidTarget(collider.gameObject))
@@ -99,6 +100,14 @@ public class Gate : MonoBehaviour, IDamage
     public void DealDamage(IDamageable target)
     {
         target.TakeDamage(attackDamage);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
+            //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+            Gizmos.DrawWireCube(transform.position,attackBox);
     }
 
 }

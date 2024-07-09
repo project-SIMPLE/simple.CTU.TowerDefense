@@ -143,10 +143,6 @@ public class SubsidenceManager : MonoBehaviour
             {
                 subsidenceLevels[i].SetActive(true);
             }
-            else
-            {
-                subsidenceLevels[i].SetActive(false);
-            }
         }
     }
     void ApplyWaterLevelEffect()

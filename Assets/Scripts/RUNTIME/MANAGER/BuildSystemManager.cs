@@ -59,12 +59,8 @@ public class BuildSystemManager : MonoBehaviour
     {
         ConstructionSO construction = constructions[constructionIndex];
         if (construction.CurrentTime <= 0 && construction.CurrentQuantity > 0)
-        {
-            construction.ResetCooldown();
-            construction.DecreaseQuantity();
-            buildIU.ImageCooldownList[constructionIndex].fillAmount = 1;
             return true;
-        }else return false;
+        return false;
     }
     
     public void FinishBuilding()
@@ -83,6 +79,10 @@ public class BuildSystemManager : MonoBehaviour
                 ghostConstruction.GetComponent<GhostConstruction>().UseIdentityRotation ? Quaternion.identity :ghostConstruction.transform.rotation
             );
             construction.GetComponent<ConstructionRemover>().buildSystemManager = this;
+
+            constructions[ currentBuildingIndex ].ResetCooldown();
+            constructions[ currentBuildingIndex ].DecreaseQuantity();
+            buildIU.ImageCooldownList[ currentBuildingIndex ].fillAmount = 1;
 
             Connector[] connectors = ghostConstruction.GetComponentsInChildren<Connector>();
             foreach (Connector connector in connectors)

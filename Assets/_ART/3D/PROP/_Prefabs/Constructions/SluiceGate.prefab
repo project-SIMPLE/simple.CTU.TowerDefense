@@ -16,17 +16,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.012
+      value: 0.013
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.012
+      value: 0.013
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.012
+      value: 0.013
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6451f8f3ca8d94a4290f3181c6afd61e,
         type: 3}
@@ -178,6 +178,7 @@ MonoBehaviour:
   uniqueName: Sluice Gate
   lvl: 1
   attackDamage: 1
+  attackBox: {x: 3.5, y: 3, z: 1}
   attackInterval: 5
   attackTime: 2.5
   targetLayerMask:
