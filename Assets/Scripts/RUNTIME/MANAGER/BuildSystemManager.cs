@@ -24,7 +24,17 @@ public class BuildSystemManager : MonoBehaviour
     {
         get { return constructions; }
     }
-    private void Update(){
+
+    public void Start()
+    {
+        foreach (ConstructionSO c in constructions)
+        {
+            c.Init();
+        }
+    }
+
+    private void Update()
+    {
         UpdateCooldowns(Time.deltaTime);
         if(isBuilding){
             ProcessBuilding();

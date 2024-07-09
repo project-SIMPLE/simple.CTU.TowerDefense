@@ -24,11 +24,9 @@ public class ConstructionSO : ScriptableObject
     {
         get { return currentTime; }
     }
-    private void OnEnable()
-    {
-        InitializeValues();
-    }
-    private void InitializeValues()
+
+
+    public void Init()
     {
         currentQuantity = maxQuantity;
         currentTime = 0;
