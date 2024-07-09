@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6367587, g: 1.086724, b: 1.2181494, a: 1}
+  m_IndirectSpecularColor: {r: 0.63674253, g: 1.0858473, b: 1.2184618, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16374,6 +16374,8 @@ MonoBehaviour:
   finalText: {fileID: 937186031}
   winText: YOU WON!!!
   loseText: YOU LOST!!!
+  playerResourcesManager: {fileID: 0}
+  reportTextMeshPro: {fileID: 0}
   GamaCRSCoefX: 1
   GamaCRSCoefY: 1
   GamaCRSCoefZ: 1
