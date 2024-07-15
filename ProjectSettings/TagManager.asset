@@ -10,6 +10,7 @@ TagManager:
   - WaterPump
   - Water
   - Construction
+  - textIP
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - TeleportArea
   - Construction
   - Lake
-  - 
+  - PlayerPositionInMap
   - 
   - 
   - 
