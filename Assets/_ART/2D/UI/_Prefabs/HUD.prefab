@@ -326,10 +326,10 @@ MonoBehaviour:
   wave: {fileID: 8173715424162235905}
   step: {fileID: 8141995450274274937}
   resoucre: {fileID: 7221077630588322914}
-  waveText: "Phi\xEAn:"
+  waveText: 'Wave:'
   waveStepTexts:
-  - "Chu\u1EA9n B\u1ECB"
-  - "Ph\xF2ng Th\u1EE7"
+  - Preparation
+  - Defense
 --- !u!1 &2417431415127148274
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4d2b26a536044448bf4d75ab6755dba, type: 3}
-  m_Name: WaterPumpConstruction
+  m_Name: LakeConstruction
   m_EditorClassIdentifier: 
-  modelBuildPrefab: {fileID: 1551184798410912710, guid: 423f0fa805c5c5c44ac012e024861581,
+  modelBuildPrefab: {fileID: 5879607818833158384, guid: 0d520bcf5de342a4f8614324bad3d6fb,
     type: 3}
-  finalPrefab: {fileID: 7768694941360884037, guid: ecba122ed6d647144a7ac2c6ff632238,
+  finalPrefab: {fileID: 2151319126291896459, guid: 878d8a568c78f2c47b97eebf9442010f,
     type: 3}
   cost: 0
-  description: "S\u1EA3n sinh c\xE1c ra\ngi\u1ECDt n\u01B0\u1EDBc tinh khi\u1EBFt,\nhI\u1EC7u
-    qu\u1EA3 h\u01A1n H\u1ED3"
+  description: Spawn pure water
   maxQuantity: 10
-  cooldownTime: 30
+  cooldownTime: 15
