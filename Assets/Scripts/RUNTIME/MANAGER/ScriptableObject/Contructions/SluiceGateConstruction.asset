@@ -17,7 +17,6 @@ MonoBehaviour:
   finalPrefab: {fileID: 2093121707100364710, guid: 401215b31ff87864b85d6e670dbd043b,
     type: 3}
   cost: 0
-  description: Slown down enemy
-  useIdentityRotation: 1
+  description: "L\xE0m ch\u1EADm n\u01B0\u1EDBc m\u1EB7n"
   maxQuantity: 10
   cooldownTime: 20
