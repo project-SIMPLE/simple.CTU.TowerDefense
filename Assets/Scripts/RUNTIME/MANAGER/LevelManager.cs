@@ -39,9 +39,9 @@ public class LevelManager : MonoBehaviour
     {
         get { return currentTime; }
     }
-    public string CurrentWaveStep
+    public WaveStep CurrentWaveStep
     {
-        get { return currentWaveStep.ToString(); }
+        get { return currentWaveStep; }
     }
 
     public float CurrentWaveStepTime

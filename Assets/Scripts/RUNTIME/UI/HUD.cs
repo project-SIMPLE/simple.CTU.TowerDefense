@@ -14,6 +14,10 @@ public class HUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI wave;
     [SerializeField] private TextMeshProUGUI step;
     [SerializeField] private TextMeshProUGUI resoucre;
+
+    [SerializeField] private string waveText;
+    [SerializeField] private string[] waveStepTexts;
+
     
     // Update is called once per frame
     void Update()
@@ -39,8 +43,16 @@ public class HUD : MonoBehaviour
             string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
             time.text = niceTime;
         }
-        wave.text = "WAVE " + levelManager.CurrentWave + "/" + levelManager.MaxWave;
-        step.text = levelManager.CurrentWaveStep;
+        wave.text = waveText + levelManager.CurrentWave + "/" + levelManager.MaxWave;
+        switch (levelManager.CurrentWaveStep)
+        {
+            case WaveStep.Preparation:
+                step.text = waveStepTexts[0];
+                break;
+            case WaveStep.Defense:
+                step.text = waveStepTexts[1];
+                break;
+        }
     }
 
     void UpdateResourcesUI()
