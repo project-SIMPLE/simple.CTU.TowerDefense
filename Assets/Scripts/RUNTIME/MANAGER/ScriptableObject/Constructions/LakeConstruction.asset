@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d2b26a536044448bf4d75ab6755dba, type: 3}
   m_Name: LakeConstruction
   m_EditorClassIdentifier: 
+  name: Lake
   modelBuildPrefab: {fileID: 5879607818833158384, guid: 0d520bcf5de342a4f8614324bad3d6fb,
     type: 3}
   finalPrefab: {fileID: 2151319126291896459, guid: 878d8a568c78f2c47b97eebf9442010f,

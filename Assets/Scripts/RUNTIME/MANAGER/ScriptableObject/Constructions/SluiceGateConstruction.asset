@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d2b26a536044448bf4d75ab6755dba, type: 3}
   m_Name: SluiceGateConstruction
   m_EditorClassIdentifier: 
+  name: Sluice Gate
   modelBuildPrefab: {fileID: 4342403424689640617, guid: 835ec794b66442546b1eedbcda5e999b,
     type: 3}
   finalPrefab: {fileID: 2093121707100364710, guid: 401215b31ff87864b85d6e670dbd043b,

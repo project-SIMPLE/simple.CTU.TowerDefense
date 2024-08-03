@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
 
     void EndLevel()
     {
+        PDFMaker.Instance.MakePDF();
         UpdateScore();
         Destroy(buildSystemManager.gameObject);
         Destroy(playerResourcesManager.gameObject);

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d2b26a536044448bf4d75ab6755dba, type: 3}
   m_Name: WaterPumpConstruction
   m_EditorClassIdentifier: 
+  name: Water Pump
   modelBuildPrefab: {fileID: 1551184798410912710, guid: 423f0fa805c5c5c44ac012e024861581,
     type: 3}
   finalPrefab: {fileID: 7768694941360884037, guid: ecba122ed6d647144a7ac2c6ff632238,

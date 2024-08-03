@@ -23,6 +23,11 @@ public class ConstructionRemover : MonoBehaviour
                 foundConnector.canConnectTo = true;
             }
         }
+        StatisticsManager.Instance.AddActionHistory(
+            "Remove",
+            buildSystemManager.Constructions[constructionID].name,
+            transform.position
+        );
         // destroy object
         Destroy(this.gameObject);
         

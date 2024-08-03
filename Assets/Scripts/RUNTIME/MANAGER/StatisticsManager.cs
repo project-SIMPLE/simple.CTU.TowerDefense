@@ -1,6 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+public class ActionHistory
+{
+    public string datetime;
+    public string action;
+    public string construction;
+    public Vector2 position;
+
+    public ActionHistory(string action, string construction, Vector2 position)
+    {
+        datetime = DateTime.Now.ToString("M/d/yyyy hh:mm:ss");
+        this.action = action;
+        this.construction = construction;
+        this.position = position;
+    }
+}
 
 public class StatisticsManager : MonoBehaviour
 {
@@ -10,6 +27,13 @@ public class StatisticsManager : MonoBehaviour
     private int currentWaterPumpCount = 0;
     private int currentSluiceGateCount = 0;
     private int currentEnemyCount = 0;
+    
+    [HideInInspector] public List<ActionHistory> histories;
+
+    private void Start()
+    {
+        histories = new List<ActionHistory>();
+    }
 
     private void Awake()
     {
@@ -33,6 +57,17 @@ public class StatisticsManager : MonoBehaviour
     public void IncreaseEnemyKillCount()
     {
         currentEnemyCount += 1;
+    }
+
+    public void AddActionHistory(string action, string construction, Vector2 position)
+    {
+        histories.Add(
+            new ActionHistory(action,construction,position)
+        );
+        Debug.Log(histories[histories.Count-1].datetime);
+        Debug.Log(histories[histories.Count-1].action);
+        Debug.Log(histories[histories.Count-1].construction);
+        Debug.Log(histories[histories.Count-1].position);
     }
 
 

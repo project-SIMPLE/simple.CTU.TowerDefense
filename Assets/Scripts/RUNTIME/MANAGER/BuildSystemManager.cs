@@ -104,6 +104,11 @@ public class BuildSystemManager : MonoBehaviour
             {
                 StatisticsManager.Instance.IncreateLakeCount();
             }
+            StatisticsManager.Instance.AddActionHistory(
+                "Build",
+                constructions[ currentBuildingIndex ].name,
+                ghostConstruction.transform.position
+            );
 
             FinishBuilding();
             
