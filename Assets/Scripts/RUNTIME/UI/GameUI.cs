@@ -40,9 +40,10 @@ public class GameUI : MonoBehaviour
         if (NotValid(ip))
             ip = "127.0.0.1";
 
-        playerTextOutput = GameObject.FindGameObjectWithTag("textIP").GetComponentInChildren<TextMeshProUGUI>();
+        // playerTextOutput = GameObject.FindGameObjectWithTag("textIP").GetComponentInChildren<TextMeshProUGUI>();
 
-        playerTextOutput.text = ip;
+        //playerTextOutput.text = ip;
+        
         ready = false;
         transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
         startContent.SetActive(true);
@@ -99,7 +100,8 @@ public class GameUI : MonoBehaviour
     {
         // PlayerPrefs.SetString("IP", "localhost");
         PlayerPrefs.SetString("PORT", "1000");
-        PlayerPrefs.SetString("IP", playerTextOutput.text);
+        PlayerPrefs.SetString("IP", "127.0.0.1");
+        //PlayerPrefs.SetString("IP", playerTextOutput.text);
         PlayerPrefs.Save();
 
         port = PlayerPrefs.GetString("PORT");
