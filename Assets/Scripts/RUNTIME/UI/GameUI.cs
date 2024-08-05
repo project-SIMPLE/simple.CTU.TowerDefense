@@ -39,9 +39,8 @@ public class GameUI : MonoBehaviour
         string ip = PlayerPrefs.GetString("IP");
         if (NotValid(ip))
             ip = "127.0.0.1";
-
+        // Son: turn_off IP
         // playerTextOutput = GameObject.FindGameObjectWithTag("textIP").GetComponentInChildren<TextMeshProUGUI>();
-
         //playerTextOutput.text = ip;
         
         ready = false;
@@ -101,6 +100,7 @@ public class GameUI : MonoBehaviour
         // PlayerPrefs.SetString("IP", "localhost");
         PlayerPrefs.SetString("PORT", "1000");
         PlayerPrefs.SetString("IP", "127.0.0.1");
+        // Son: turn_off IP
         //PlayerPrefs.SetString("IP", playerTextOutput.text);
         PlayerPrefs.Save();
 
