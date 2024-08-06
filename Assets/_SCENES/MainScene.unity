@@ -11449,6 +11449,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.002, y: 0.005267141, z: 0.002}
   m_Center: {x: 4.6566145e-10, y: 5.8207675e-11, z: 0.0000000037252903}
+--- !u!1 &323079187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9159978549432181841, guid: 7cd1dfd2d4d589448b0d423f24210c80,
+    type: 3}
+  m_PrefabInstance: {fileID: 206732879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &324991031
 GameObject:
   m_ObjectHideFlags: 0
@@ -73583,7 +73589,7 @@ MonoBehaviour:
   tutorialManager: {fileID: 160313994}
   head: {fileID: 941960879811302117}
   spawnDistance: 5
-  startContent: {fileID: 2024114491}
+  startContent: {fileID: 323079187}
   finalContent: {fileID: 1066022396}
   finalText: {fileID: 1248596033}
   winText: YOU WON!!!
