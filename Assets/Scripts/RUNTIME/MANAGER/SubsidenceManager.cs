@@ -83,11 +83,20 @@ public class SubsidenceManager : MonoBehaviour
             waterSurface.SetActive(false);
         }
     }
+    int tick=0;
     void Update()
     {
         HandleSubsidence();
         ActivateSubsidenceLevels();
         ApplyWaterLevelEffect();
+        GameManager gg=FindObjectOfType<GameManager>();
+        if(gg!=null && gg.CurrentGameStatus()==GameStatus.InProgress){
+            tick++;
+            if(tick>=1000){
+                // Debug.Log("Ask GAMA");
+                tick=0;
+            }
+        }
     }
 
     void HandleSubsidence()
