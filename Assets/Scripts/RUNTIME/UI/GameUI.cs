@@ -34,6 +34,15 @@ public class GameUI : MonoBehaviour
     private string reportText = "";
     [SerializeField] private TextMeshProUGUI reportTextMeshPro;
 
+    // Son: Update final Menu
+    [SerializeField] private TextMeshProUGUI reportLivingTreesNumber;
+    [SerializeField] private TextMeshProUGUI reportDeadTreesNumber;
+    [SerializeField] private TextMeshProUGUI reportLakeNumber;
+    [SerializeField] private TextMeshProUGUI reportPumpNumber;
+    [SerializeField] private TextMeshProUGUI reportWaterGateNumber;
+    [SerializeField] private TextMeshProUGUI reportEnemiesNumber;
+    [SerializeField] private TextMeshProUGUI reportRemainingGroundwaterLevelLocal;
+    [SerializeField] private TextMeshProUGUI reportRemainingGroundwaterLevelGlobal;
     void Start()
     {
         string ip = PlayerPrefs.GetString("IP");
@@ -82,7 +91,16 @@ public class GameUI : MonoBehaviour
                          "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal + "\n" +
                          "Subsidence Score: " + subsidenceManager.SubsidenceScore;
 
+            // Son: Setup Final Report
             reportTextMeshPro.text = reportText;
+            reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
+            reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
+            reportLakeNumber.text = "" + StatisticsManager.Instance.LakeCount;
+            reportPumpNumber.text =  "" + StatisticsManager.Instance.WaterPumpCount;
+            reportWaterGateNumber.text = "" + StatisticsManager.Instance.SluiceGateCount;
+            reportEnemiesNumber.text = "" + StatisticsManager.Instance.EnemyKillCount;
+            reportRemainingGroundwaterLevelLocal.text = "Remaining Groundwater Level (Local): " + subsidenceManager.RemainingWaterLevelLocal;
+            reportRemainingGroundwaterLevelGlobal.text = "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal;
         }
 
         transform.LookAt(new Vector3(head.position.x, transform.position.y, head.position.z));
