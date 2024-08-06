@@ -106,9 +106,9 @@ public class GameUI : MonoBehaviour
 
         port = PlayerPrefs.GetString("PORT");
         host = PlayerPrefs.GetString("IP");
-        socket = new WebSocket("ws://" + host + ":" + port + "/");
-        socket.OnOpen += HandleConnectionOpen;
-        socket.Connect();
+        // socket = new WebSocket("ws://" + host + ":" + port + "/");
+        // socket.OnOpen += HandleConnectionOpen;
+        // socket.Connect();
 
         gameManager.StartLevel();
         startContent.SetActive(false);
