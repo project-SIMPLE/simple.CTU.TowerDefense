@@ -83944,6 +83944,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 863642263}
     m_Modifications:
+    - target: {fileID: 986221800223871427, guid: fdb178aaaca30422baf9d46d24ae1afb,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 986221800223871427, guid: fdb178aaaca30422baf9d46d24ae1afb,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2979138700369784228, guid: fdb178aaaca30422baf9d46d24ae1afb,
         type: 3}
       propertyPath: head
@@ -83954,6 +83964,11 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 863642264}
+    - target: {fileID: 2979138700369784228, guid: fdb178aaaca30422baf9d46d24ae1afb,
+        type: 3}
+      propertyPath: spawnDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2979138700369784228, guid: fdb178aaaca30422baf9d46d24ae1afb,
         type: 3}
       propertyPath: tutorialManager
@@ -83973,6 +83988,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626845453189892287, guid: fdb178aaaca30422baf9d46d24ae1afb,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626845453189892287, guid: fdb178aaaca30422baf9d46d24ae1afb,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7330931079296537253, guid: fdb178aaaca30422baf9d46d24ae1afb,
         type: 3}
