@@ -210,7 +210,7 @@ public class GameUI : MonoBehaviour
 
         SendExecutableAsk("simulation[0]", "DeletePlayer", args);
     }
-    public void UpdateConstructionPosition(GameObject player)
+    public void UpdateConstructionPosition(GameObject obj)
     {
         // if (GetSocket() == null || !connected || finalContent.activeSelf) return;
 
@@ -227,14 +227,15 @@ public class GameUI : MonoBehaviour
             float s = vF.x * vR.y - vF.y * vR.x;
             int angle = (int)(((s > 0) ? -1.0 : 1.0) * (180 / Math.PI) * Math.Acos(c) * precision);
 
-            List<float> p = toGAMACRS3D(player.transform.position);
+            List<float> p = toGAMACRS3D(obj.transform.position);
+int instanceId = obj.GetInstanceID();
 
             // Vector3 v = new Vector3(Camera.main.transform.position.x, player.transform.position.y, Camera.main.transform.position.z);
             // List<float> p = toGAMACRS3D(v);
             Dictionary<string, string> args = new Dictionary<string, string> {
             {"idP",ConnectionManager.Instance.GetConnectionId() },
-            {"id", ""+  player },
-            {"iid",""+   player.GetInstanceID() },
+            {"id", ""+  obj },
+            {"iid",  ""+instanceId },
             {"x", "" +p[0]},
             {"y", "" +p[1]},
             {"z", "" +p[2]},
@@ -244,7 +245,7 @@ public class GameUI : MonoBehaviour
             // Debug.Log("move_player_external: " + player + " " + p[0] + "," + p[1] + "," + p[2]);
 
 
-            Debug.Log("sent to GAMA: " + player.GetInstanceID());
+            Debug.Log("sent to GAMA: " + instanceId);
             ConnectionManager.Instance.SendExecutableAsk("construction_message", args);
             // SendExecutableAsk("simulation[0]", "move_player_external", args);
         }
