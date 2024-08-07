@@ -245,7 +245,7 @@ int instanceId = obj.GetInstanceID();
             // Debug.Log("move_player_external: " + player + " " + p[0] + "," + p[1] + "," + p[2]);
 
 
-            Debug.Log("sent to GAMA: " + instanceId);
+            // Debug.Log("sent to GAMA: " + instanceId);
             ConnectionManager.Instance.SendExecutableAsk("construction_message", args);
             // SendExecutableAsk("simulation[0]", "move_player_external", args);
         }
