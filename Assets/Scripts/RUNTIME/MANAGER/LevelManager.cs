@@ -81,7 +81,10 @@ public class LevelManager : MonoBehaviour
             {
                 int spawnPointIndex = waves[currentWave].waveSpawns[i].spawnPoint - 1;
 
-                GameUI.Instance.UpdatePlayerPosition(spawns[spawnPointIndex].gameObject);
+                if (GameUI.Instance != null && gameObject != null)
+                {
+                    GameUI.Instance.UpdateConstructionPosition(spawns[spawnPointIndex].gameObject);
+                }
             }
         }
         currentTime -= Time.deltaTime;

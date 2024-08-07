@@ -66,9 +66,9 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     {
         if (!IsDead())
         {
-            if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+            if (GameUI.Instance != null && gameObject != null)
             {
-                GameUI.Instance.UpdatePlayerPosition(gameObject);
+                GameUI.Instance.UpdateConstructionPosition(gameObject);
             }
 
             currentRate -= Time.deltaTime;
