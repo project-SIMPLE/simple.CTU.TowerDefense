@@ -22479,7 +22479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPrefab: {fileID: 0}
-  spawnRate: 0.5
+  spawnRate: 3
   wayPoints:
   - {fileID: 886385589}
   - {fileID: 1113554649}
@@ -22652,7 +22652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPrefab: {fileID: 0}
-  spawnRate: 0.5
+  spawnRate: 3
   wayPoints:
   - {fileID: 1376115672}
   - {fileID: 1783434527}
@@ -34491,7 +34491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPrefab: {fileID: 0}
-  spawnRate: 0.5
+  spawnRate: 3
   wayPoints:
   - {fileID: 966717435}
   - {fileID: 215105683}
