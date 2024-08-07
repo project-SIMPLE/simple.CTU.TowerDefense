@@ -48,7 +48,7 @@ public class SendReceiveMessageExample : SimulationManager
 public class GAMAMessage
 {
 
-   
+    public bool subside;
     public int cycle;
 
     public static GAMAMessage CreateFromJSON(string jsonString)

@@ -980,7 +980,7 @@ public class SimulationManager : MonoBehaviour
     }
     protected virtual void ManageOtherMessages(string content)
     {
-
+        Debug.Log(content);
     }
 
     private async void HandleServerMessageReceived(String firstKey, String content)
