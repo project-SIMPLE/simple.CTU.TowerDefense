@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5646566, g: 0.601079, b: 0.5943025, a: 1}
+  m_IndirectSpecularColor: {r: 0.19784193, g: 0.34197962, b: 0.45886195, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9007,6 +9007,7 @@ GameObject:
   - component: {fileID: 273224567}
   - component: {fileID: 273224569}
   - component: {fileID: 273224568}
+  - component: {fileID: 273224570}
   m_Layer: 0
   m_Name: "SM_Barri\xE8re_001 (8)"
   m_TagString: Untagged
@@ -9079,6 +9080,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273224566}
   m_Mesh: {fileID: 5533132466022808054, guid: b0eefe834028ba54c8ac375653df9cc7, type: 3}
+--- !u!65 &273224570
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273224566}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1818131, y: 1.0129049, z: 0.07729353}
+  m_Center: {x: 0.49588573, y: 0.5064009, z: 0.0010200578}
 --- !u!1 &281379892
 GameObject:
   m_ObjectHideFlags: 0
@@ -9780,6 +9802,7 @@ GameObject:
   - component: {fileID: 298780831}
   - component: {fileID: 298780833}
   - component: {fileID: 298780832}
+  - component: {fileID: 298780834}
   m_Layer: 0
   m_Name: "SM_Barri\xE8re_001 (9)"
   m_TagString: Untagged
@@ -9852,6 +9875,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298780830}
   m_Mesh: {fileID: 5533132466022808054, guid: b0eefe834028ba54c8ac375653df9cc7, type: 3}
+--- !u!65 &298780834
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298780830}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.181813, y: 1.0129049, z: 0.07729349}
+  m_Center: {x: 0.49588507, y: 0.5064009, z: 0.0010208809}
 --- !u!1 &300039616
 GameObject:
   m_ObjectHideFlags: 0
@@ -19637,6 +19681,7 @@ GameObject:
   - component: {fileID: 617608072}
   - component: {fileID: 617608074}
   - component: {fileID: 617608073}
+  - component: {fileID: 617608075}
   m_Layer: 0
   m_Name: SM_House2 (3)
   m_TagString: Untagged
@@ -19709,6 +19754,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617608071}
   m_Mesh: {fileID: -2449265974190722391, guid: f7747b83a3a7fc04288fddf8d6311e30, type: 3}
+--- !u!65 &617608075
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617608071}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 429.4742, y: 341.03207, z: 495.89667}
+  m_Center: {x: -17.925695, y: 168.57123, z: 181.74088}
 --- !u!1 &619082365
 GameObject:
   m_ObjectHideFlags: 0
@@ -21042,6 +21108,7 @@ GameObject:
   - component: {fileID: 660975036}
   - component: {fileID: 660975038}
   - component: {fileID: 660975037}
+  - component: {fileID: 660975039}
   m_Layer: 0
   m_Name: "SM_Barri\xE8re_001 (11)"
   m_TagString: Untagged
@@ -21114,6 +21181,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660975035}
   m_Mesh: {fileID: 5533132466022808054, guid: b0eefe834028ba54c8ac375653df9cc7, type: 3}
+--- !u!65 &660975039
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660975035}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.181813, y: 1.0129049, z: 0.07729349}
+  m_Center: {x: 0.49588448, y: 0.5064009, z: 0.0010208809}
 --- !u!1 &663210802 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6788000314589256948, guid: 046044e06b5f5de4aaefcf083be6fad0,
@@ -21171,6 +21259,7 @@ GameObject:
   - component: {fileID: 665097996}
   - component: {fileID: 665097998}
   - component: {fileID: 665097997}
+  - component: {fileID: 665097999}
   m_Layer: 0
   m_Name: "SM_Barri\xE8re_001 (10)"
   m_TagString: Untagged
@@ -21243,6 +21332,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665097995}
   m_Mesh: {fileID: 5533132466022808054, guid: b0eefe834028ba54c8ac375653df9cc7, type: 3}
+--- !u!65 &665097999
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665097995}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.181813, y: 1.0129049, z: 0.07729349}
+  m_Center: {x: 0.49588472, y: 0.5064009, z: 0.0010208809}
 --- !u!1 &667447867
 GameObject:
   m_ObjectHideFlags: 0
@@ -22731,6 +22841,7 @@ GameObject:
   - component: {fileID: 699459466}
   - component: {fileID: 699459468}
   - component: {fileID: 699459467}
+  - component: {fileID: 699459469}
   m_Layer: 0
   m_Name: "SM_Barri\xE8re_001 (14)"
   m_TagString: Untagged
@@ -22803,6 +22914,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699459465}
   m_Mesh: {fileID: 5533132466022808054, guid: b0eefe834028ba54c8ac375653df9cc7, type: 3}
+--- !u!65 &699459469
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699459465}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1818128, y: 1.0129049, z: 0.07729353}
+  m_Center: {x: 0.49588412, y: 0.50640094, z: 0.0010228069}
 --- !u!1 &703702582 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8443666759423452309, guid: 3b22ac14feafd0e43977daa04387f07d,
@@ -34894,6 +35026,7 @@ GameObject:
   - component: {fileID: 1055045294}
   - component: {fileID: 1055045296}
   - component: {fileID: 1055045295}
+  - component: {fileID: 1055045297}
   m_Layer: 0
   m_Name: "SM_Barri\xE8re_001 (13)"
   m_TagString: Untagged
@@ -34966,6 +35099,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055045293}
   m_Mesh: {fileID: 5533132466022808054, guid: b0eefe834028ba54c8ac375653df9cc7, type: 3}
+--- !u!65 &1055045297
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055045293}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.181813, y: 1.0129049, z: 0.07729349}
+  m_Center: {x: 0.4958833, y: 0.5064008, z: 0.0010211193}
 --- !u!1 &1055175716
 GameObject:
   m_ObjectHideFlags: 0
@@ -35139,6 +35293,7 @@ GameObject:
   - component: {fileID: 1059970201}
   - component: {fileID: 1059970203}
   - component: {fileID: 1059970202}
+  - component: {fileID: 1059970204}
   m_Layer: 0
   m_Name: "SM_Barri\xE8re_001 (15)"
   m_TagString: Untagged
@@ -35211,6 +35366,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059970200}
   m_Mesh: {fileID: 5533132466022808054, guid: b0eefe834028ba54c8ac375653df9cc7, type: 3}
+--- !u!65 &1059970204
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059970200}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1818128, y: 1.0129049, z: 0.07729353}
+  m_Center: {x: 0.4958846, y: 0.50640094, z: 0.0010228069}
 --- !u!1 &1065276048 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5405080989207776711, guid: 86080dbf4bb69c94e91473b119c38f37,
@@ -35722,6 +35898,7 @@ GameObject:
   - component: {fileID: 1087344815}
   - component: {fileID: 1087344817}
   - component: {fileID: 1087344816}
+  - component: {fileID: 1087344818}
   m_Layer: 0
   m_Name: "SM_Barri\xE8re_001 (16)"
   m_TagString: Untagged
@@ -35794,6 +35971,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087344814}
   m_Mesh: {fileID: 5533132466022808054, guid: b0eefe834028ba54c8ac375653df9cc7, type: 3}
+--- !u!65 &1087344818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087344814}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1818128, y: 1.0129049, z: 0.07729353}
+  m_Center: {x: 0.4958846, y: 0.50640094, z: 0.0010228069}
 --- !u!1 &1092792656
 GameObject:
   m_ObjectHideFlags: 0
@@ -53252,6 +53450,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 3.5, z: 0.5}
   m_Center: {x: -0.07302893, y: 1.77015, z: 0.124129966}
+--- !u!1 &1580943470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4060754598851280194, guid: 1e3a77afc781f8744a73ba1d6735da31,
+    type: 3}
+  m_PrefabInstance: {fileID: 1656515609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1580943474
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580943470}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 429.4742, y: 341.03207, z: 495.89676}
+  m_Center: {x: -17.926065, y: 168.5712, z: 181.74075}
 --- !u!1001 &1583531160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55067,7 +55292,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 59
       addedObject: {fileID: 176619346}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4060754598851280194, guid: 1e3a77afc781f8744a73ba1d6735da31,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1580943474}
   m_SourcePrefab: {fileID: 100100000, guid: 1e3a77afc781f8744a73ba1d6735da31, type: 3}
 --- !u!4 &1656515610 stripped
 Transform:
@@ -60222,6 +60451,7 @@ GameObject:
   - component: {fileID: 1758042629}
   - component: {fileID: 1758042631}
   - component: {fileID: 1758042630}
+  - component: {fileID: 1758042632}
   m_Layer: 0
   m_Name: "SM_Barri\xE8re_001 (12)"
   m_TagString: Untagged
@@ -60294,6 +60524,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758042628}
   m_Mesh: {fileID: 5533132466022808054, guid: b0eefe834028ba54c8ac375653df9cc7, type: 3}
+--- !u!65 &1758042632
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758042628}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.181813, y: 1.0129049, z: 0.07729349}
+  m_Center: {x: 0.49588424, y: 0.5064008, z: 0.0010211193}
 --- !u!1 &1760220053
 GameObject:
   m_ObjectHideFlags: 0
@@ -69316,6 +69567,7 @@ GameObject:
   - component: {fileID: 2062118307}
   - component: {fileID: 2062118309}
   - component: {fileID: 2062118308}
+  - component: {fileID: 2062118310}
   m_Layer: 0
   m_Name: "SM_Barri\xE8re_001 (7)"
   m_TagString: Untagged
@@ -69388,6 +69640,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062118306}
   m_Mesh: {fileID: 5533132466022808054, guid: b0eefe834028ba54c8ac375653df9cc7, type: 3}
+--- !u!65 &2062118310
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062118306}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1818131, y: 1.0129049, z: 0.07729353}
+  m_Center: {x: 0.49588573, y: 0.50640094, z: 0.0010207135}
 --- !u!114 &2068611671
 MonoBehaviour:
   m_ObjectHideFlags: 0

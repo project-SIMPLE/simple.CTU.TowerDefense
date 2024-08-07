@@ -77,11 +77,11 @@ public class SubsidenceManager : MonoBehaviour
 
     void InitializeSurfaceWater()
     {
-        if (transform.Find("SF_Water") != null)
-        {
-            waterSurface = transform.Find("SF_Water").gameObject;
-            waterSurface.SetActive(false);
-        }
+        // if (transform.Find("SF_Water") != null)
+        // {
+        //     waterSurface = transform.Find("SF_Water").gameObject;
+        //     waterSurface.SetActive(false);
+        // }
     }
     int tick=0;
     void Update()
