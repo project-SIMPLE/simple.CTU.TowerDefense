@@ -46,9 +46,9 @@ public class Gate : MonoBehaviour, IDamage
 
     void Update()
     {
-        if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+        if (GameUI.Instance != null && gameObject != null)
         {
-            GameUI.Instance.UpdatePlayerPosition(gameObject);
+            GameUI.Instance.UpdateConstructionPosition(gameObject);
         }
         if (isActive)
         {

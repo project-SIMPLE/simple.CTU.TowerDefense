@@ -106,7 +106,7 @@ public class SimulationManager : MonoBehaviour
         mh = player.GetComponentInChildren<MoveHorizontal>();
         mv = player.GetComponentInChildren<MoveVertical>();
 
-        XROrigin = player.transform.Find("XR Origin (XR Rig)");
+        XROrigin = player.transform;//.Find("XR Origin (XR Rig)");
         playerMovement(false);
         toFollow = new List<GameObject>();
 
@@ -517,8 +517,8 @@ public class SimulationManager : MonoBehaviour
 
         if (infoWorld.position != null && infoWorld.position.Count > 1 && (initGame || !sendMessageToReactivatePositionSent))
         {
-            Vector3 pos = converter.fromGAMACRS(infoWorld.position[0], infoWorld.position[1], infoWorld.position[2]);
-            XROrigin.localPosition = pos;
+            // Vector3 pos = converter.fromGAMACRS(infoWorld.position[0], infoWorld.position[1], infoWorld.position[2]);
+            // XROrigin.localPosition = pos;
             sendMessageToReactivatePositionSent = true;
             readyToSendPosition = true;
             TimerSendPosition = TimeSendPositionAfterMoving;
@@ -980,7 +980,7 @@ public class SimulationManager : MonoBehaviour
     }
     protected virtual void ManageOtherMessages(string content)
     {
-
+        Debug.Log(content);
     }
 
     private async void HandleServerMessageReceived(String firstKey, String content)

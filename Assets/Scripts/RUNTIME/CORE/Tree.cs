@@ -23,9 +23,9 @@ public class Tree : MonoBehaviour, IDamageable
     private bool created = false;
     void Update()
     {
-        if (!created && GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+        if (!created && GameUI.Instance != null && gameObject != null)
         {
-            GameUI.Instance.UpdatePlayerPosition(gameObject);
+            GameUI.Instance.UpdateConstructionPosition(gameObject);
             created = true;
         }
     }

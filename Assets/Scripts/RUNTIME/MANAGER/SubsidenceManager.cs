@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SubsidenceManager : MonoBehaviour
 {
+    GAMAMessage message = null;
     private bool isSubsidence = false;
     private float currentWaterLevel = 1f;
     private float currentSubsidenceLevel = 0f;
@@ -29,8 +30,8 @@ public class SubsidenceManager : MonoBehaviour
         get { return currentWaterLevel; }
     }
     public float RemainingWaterLevelGlobal
-    { 
-        get { return currentWaterLevel; } 
+    {
+        get { return currentWaterLevel; }
     }
     public float SubsidenceScore
     {
@@ -77,24 +78,26 @@ public class SubsidenceManager : MonoBehaviour
 
     void InitializeSurfaceWater()
     {
-        // if (transform.Find("SF_Water") != null)
-        // {
-        //     waterSurface = transform.Find("SF_Water").gameObject;
+        if (transform.Find("SF_Water") != null)
+        {
+            waterSurface = transform.Find("SF_Water").gameObject;
         //     waterSurface.SetActive(false);
-        // }
+        }
     }
-    int tick=0;
+    int tick = 0;
     void Update()
     {
         HandleSubsidence();
         ActivateSubsidenceLevels();
         ApplyWaterLevelEffect();
-        GameManager gg=FindObjectOfType<GameManager>();
-        if(gg!=null && gg.CurrentGameStatus()==GameStatus.InProgress){
+        GameManager gg = FindObjectOfType<GameManager>();
+        if (gg != null && gg.CurrentGameStatus() == GameStatus.InProgress)
+        {
             tick++;
-            if(tick>=1000){
+            if (tick >= 1000)
+            {
                 // Debug.Log("Ask GAMA");
-                tick=0;
+                tick = 0;
             }
         }
     }
@@ -154,6 +157,14 @@ public class SubsidenceManager : MonoBehaviour
             }
         }
     }
+
+    public void Flooded()
+    {
+
+        Vector3 waterSurfacePosition = waterSurface.transform.position;
+        waterSurfacePosition.y = 1.0f;//waterSurface.transform.position.y + 1;
+        waterSurface.transform.position = waterSurfacePosition;
+    }
     void ApplyWaterLevelEffect()
     {
         if (currentWaterLevel <= 0f)
@@ -171,3 +182,4 @@ public class SubsidenceManager : MonoBehaviour
         }
     }
 }
+

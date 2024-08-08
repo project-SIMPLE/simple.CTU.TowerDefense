@@ -47,14 +47,17 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
         var navAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (navAgent) navAgent.speed = moveSpeed;
     }
-
+    int tick=0;
     void Update()
     {
         if (IsDead()) return;
-
-        // if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
-        // {
-        //     GameUI.Instance.UpdatePlayerPosition(gameObject);
+        // tick++;
+        // if(tick>=300){
+        //     tick=0;
+            if (GameUI.Instance != null && gameObject != null)
+            {
+                GameUI.Instance.UpdateConstructionPosition(gameObject);
+            }
         // }
         currentInterval -= Time.deltaTime;
         if (currentInterval <= 0)

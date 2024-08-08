@@ -51,7 +51,7 @@ public class GameUI : MonoBehaviour
         // Son: turn_off IP
         // playerTextOutput = GameObject.FindGameObjectWithTag("textIP").GetComponentInChildren<TextMeshProUGUI>();
         //playerTextOutput.text = ip;
-        
+
         ready = false;
         transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
         startContent.SetActive(true);
@@ -96,7 +96,7 @@ public class GameUI : MonoBehaviour
             reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
             reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
             reportLakeNumber.text = "" + StatisticsManager.Instance.LakeCount;
-            reportPumpNumber.text =  "" + StatisticsManager.Instance.WaterPumpCount;
+            reportPumpNumber.text = "" + StatisticsManager.Instance.WaterPumpCount;
             reportWaterGateNumber.text = "" + StatisticsManager.Instance.SluiceGateCount;
             reportEnemiesNumber.text = "" + StatisticsManager.Instance.EnemyKillCount;
             reportRemainingGroundwaterLevelLocal.text = "Remaining Groundwater Level (Local): " + subsidenceManager.RemainingWaterLevelLocal;
@@ -210,32 +210,45 @@ public class GameUI : MonoBehaviour
 
         SendExecutableAsk("simulation[0]", "DeletePlayer", args);
     }
-    public void UpdatePlayerPosition(GameObject player)
+    public void UpdateConstructionPosition(GameObject obj)
     {
-        if (!connected || finalContent.activeSelf) return;
-        Vector2 vF = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z);
-        Vector2 vR = new Vector2(transform.forward.x, transform.forward.z);
-        vF.Normalize();
-        vR.Normalize();
-        float c = vF.x * vR.x + vF.y * vR.y;
-        float s = vF.x * vR.y - vF.y * vR.x;
-        int angle = (int)(((s > 0) ? -1.0 : 1.0) * (180 / Math.PI) * Math.Acos(c) * precision);
+        // if (GetSocket() == null || !connected || finalContent.activeSelf) return;
 
-        List<float> p = toGAMACRS3D(player.transform.position);
 
-        // Vector3 v = new Vector3(Camera.main.transform.position.x, player.transform.position.y, Camera.main.transform.position.z);
-        // List<float> p = toGAMACRS3D(v);
-        Dictionary<string, string> args = new Dictionary<string, string> {
-            {"id",  ("\""+player+" "+player.GetInstanceID()+"\"") },
+        if (SimulationManager.Instance.IsGameState(GameState.GAME) && UnityEngine.Random.Range(0.0f, 1.0f) < 0.002f)
+        {
+
+
+            Vector2 vF = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z);
+            Vector2 vR = new Vector2(transform.forward.x, transform.forward.z);
+            vF.Normalize();
+            vR.Normalize();
+            float c = vF.x * vR.x + vF.y * vR.y;
+            float s = vF.x * vR.y - vF.y * vR.x;
+            int angle = (int)(((s > 0) ? -1.0 : 1.0) * (180 / Math.PI) * Math.Acos(c) * precision);
+
+            List<float> p = toGAMACRS3D(obj.transform.position);
+int instanceId = obj.GetInstanceID();
+
+            // Vector3 v = new Vector3(Camera.main.transform.position.x, player.transform.position.y, Camera.main.transform.position.z);
+            // List<float> p = toGAMACRS3D(v);
+            Dictionary<string, string> args = new Dictionary<string, string> {
+            {"idP",ConnectionManager.Instance.GetConnectionId() },
+            {"id", ""+  obj },
+            {"iid",  ""+instanceId },
             {"x", "" +p[0]},
             {"y", "" +p[1]},
             {"z", "" +p[2]},
             {"angle", "" +angle}
         };
 
-        // Debug.Log("move_player_external: " + player + " " + p[0] + "," + p[1] + "," + p[2]);
+            // Debug.Log("move_player_external: " + player + " " + p[0] + "," + p[1] + "," + p[2]);
 
-        SendExecutableAsk("simulation[0]", "move_player_external", args);
+
+            // Debug.Log("sent to GAMA: " + instanceId);
+            ConnectionManager.Instance.SendExecutableAsk("construction_message", args);
+            // SendExecutableAsk("simulation[0]", "move_player_external", args);
+        }
     }
     protected string host;
     protected string port;

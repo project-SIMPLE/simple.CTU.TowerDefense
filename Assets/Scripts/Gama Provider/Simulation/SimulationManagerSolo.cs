@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR.Interaction.Toolkit; 
+using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
 
 
@@ -11,7 +11,7 @@ public class SimulationManagerSolo : SimulationManager
 {
     protected bool isNight = false;
 
-    
+
 
     protected override void TriggerMainButton()
     {
@@ -49,11 +49,24 @@ public class SimulationManagerSolo : SimulationManager
 
     protected override void OtherUpdate()
     {
+        if (message != null)
+        {
+            // Debug.Log("received from GAMA: subside " + message.subside);
+            if(message.subside){
+                    SubsidenceManager    subsidenceManager = FindObjectOfType<SubsidenceManager>();
+
+                subsidenceManager.Flooded();
+            }
+            message = null;
+        }
+
 
     }
 
+    GAMAMessage message = null;
     protected override void ManageOtherMessages(string content)
     {
+        message = GAMAMessage.CreateFromJSON(content);
 
     }
     protected override void HoverEnterInteraction(HoverEnterEventArgs ev)
