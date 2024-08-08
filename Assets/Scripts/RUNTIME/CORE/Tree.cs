@@ -20,13 +20,19 @@ public class Tree : MonoBehaviour, IDamageable
     {
         currentHealh = health;
     }
-    private bool created = false;
+    // private bool created = false;
+    // int tick=0;
     void Update()
-    {
-        if (!created && GameUI.Instance != null && gameObject != null)
-        {
+    {           
+        //  Debug.Log("sent to GAMA: ");
+        // tick++;
+        if ( GameUI.Instance != null && gameObject != null)
+        {    
+            // tick=0;        
+            // Debug.Log("sent to GAMA: " + gameObject);
+
             GameUI.Instance.UpdateConstructionPosition(gameObject);
-            created = true;
+            // created = true;
         }
     }
 
@@ -34,8 +40,10 @@ public class Tree : MonoBehaviour, IDamageable
     {
         currentHealh -= damage;
         if (currentHealh <= 0)
-        {
-            if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
+        {            
+            // Debug.Log("DeletePlayer: ");
+
+            if (GameUI.Instance != null  && gameObject != null)
             {
                 GameUI.Instance.DeletePlayer(gameObject);
             }

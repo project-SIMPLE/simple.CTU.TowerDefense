@@ -200,15 +200,24 @@ public class GameUI : MonoBehaviour
         SendExecutableAsk("simulation[0]", "Restart", args);
     }
 
-    public void DeletePlayer(GameObject player)
+    public void DeletePlayer(GameObject obj)
     {
-        Dictionary<string, string> args = new Dictionary<string, string> {
-            {"id",  ("\""+player+" "+player.GetInstanceID()+"\"") }
-        };
+        if (SimulationManager.Instance.IsGameState(GameState.GAME))
+        {
+            int instanceId = obj.GetInstanceID();
 
-        // Debug.Log("DeletePlayer: " + player);
+            Dictionary<string, string> args = new Dictionary<string, string> {
+            {"idP",ConnectionManager.Instance.GetConnectionId() },
+            {"id", ""+  obj },
+            {"iid",  ""+instanceId },
+            };
 
-        SendExecutableAsk("simulation[0]", "DeletePlayer", args);
+            // Debug.Log("DeletePlayer: " + obj);
+
+            // SendExecutableAsk("simulation[0]", "DeletePlayer", args);
+
+            ConnectionManager.Instance.SendExecutableAsk("DeletePlayer", args);
+        }
     }
     public void UpdateConstructionPosition(GameObject obj)
     {
@@ -228,7 +237,7 @@ public class GameUI : MonoBehaviour
             int angle = (int)(((s > 0) ? -1.0 : 1.0) * (180 / Math.PI) * Math.Acos(c) * precision);
 
             List<float> p = toGAMACRS3D(obj.transform.position);
-int instanceId = obj.GetInstanceID();
+            int instanceId = obj.GetInstanceID();
 
             // Vector3 v = new Vector3(Camera.main.transform.position.x, player.transform.position.y, Camera.main.transform.position.z);
             // List<float> p = toGAMACRS3D(v);
@@ -240,7 +249,7 @@ int instanceId = obj.GetInstanceID();
             {"y", "" +p[1]},
             {"z", "" +p[2]},
             {"angle", "" +angle}
-        };
+            };
 
             // Debug.Log("move_player_external: " + player + " " + p[0] + "," + p[1] + "," + p[2]);
 

@@ -73,10 +73,10 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
         currentHealh -= damage;
         if (currentHealh <= 0)
         {
-            // if (GameUI.Instance != null && GameUI.Instance.GetSocket() != null && gameObject != null)
-            // {
-            //     GameUI.Instance.DeletePlayer(gameObject);
-            // }
+            if (GameUI.Instance != null && gameObject != null)
+            {
+                GameUI.Instance.DeletePlayer(gameObject);
+            }
             Die();
             if (emotionAnimator) emotionAnimator.Play("Neutralized");
         }
