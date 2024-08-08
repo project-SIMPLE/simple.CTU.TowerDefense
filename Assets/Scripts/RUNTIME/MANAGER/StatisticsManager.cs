@@ -79,12 +79,12 @@ public class StatisticsManager : MonoBehaviour
 
     public int WaterPumpCount
     {
-        get { return currentLakeCount; }
+        get { return currentWaterPumpCount; }
     }
 
     public int SluiceGateCount
     {
-        get { return currentLakeCount; }
+        get { return currentSluiceGateCount; }
     }
     public int EnemyKillCount
     { 
