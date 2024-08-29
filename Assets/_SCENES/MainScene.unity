@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1979925, g: 0.34465563, b: 0.45837933, a: 1}
+  m_IndirectSpecularColor: {r: 0.19784193, g: 0.34197962, b: 0.45886195, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -33432,7 +33432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &980677057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89760,6 +89760,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1575987251974367368, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
+      propertyPath: m_Name
+      value: Button_Cancel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575987251974367368, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -89783,10 +89788,25 @@ PrefabInstance:
       propertyPath: removeConstructionRay
       value: 
       objectReference: {fileID: 1532996488}
+    - target: {fileID: 3309209515693942598, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_Name
+      value: Button_Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3309209515693942598, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3319384455810940278, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_Name
+      value: Button_Pump
+      objectReference: {fileID: 0}
     - target: {fileID: 3757146434586650822, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87.5
+      value: -77.5
       objectReference: {fileID: 0}
     - target: {fileID: 4306368253761173666, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
@@ -89801,8 +89821,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5167441803554252878, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 91.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167441803554252878, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 87.5
+      value: -4.6
       objectReference: {fileID: 0}
     - target: {fileID: 5349539723449800795, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
@@ -89810,6 +89835,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 5c772fd24ff95fe459e2ffeec11b0318,
         type: 3}
+    - target: {fileID: 6480196299046273728, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480196299046273728, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480196299046273728, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480196299046273728, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 62.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6973634291777642046, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
       propertyPath: m_Pivot.x
@@ -89933,12 +89978,17 @@ PrefabInstance:
     - target: {fileID: 7280798397426622298, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -118.20003
+      value: -78.20003
       objectReference: {fileID: 0}
     - target: {fileID: 7280798397426622298, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 19.100014
+      value: 6.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280798397426622298, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.8
       objectReference: {fileID: 0}
     - target: {fileID: 7347297476183386490, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
@@ -90023,6 +90073,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 68ee2f4c6213a5c44a97c8a39f3ca1f9,
         type: 3}
+    - target: {fileID: 9171721852708339988, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_Name
+      value: Button_Lake
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171721852708339988, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
