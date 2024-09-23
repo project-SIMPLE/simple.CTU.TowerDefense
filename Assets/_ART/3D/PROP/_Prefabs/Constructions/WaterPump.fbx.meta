@@ -3,7 +3,12 @@ guid: fe866df4e24d2f74a918dc0724c68899
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AM_Pump_AM_PumpSG2
+    second: {fileID: 2100000, guid: a4781ecd29a9d43379ffe2a470ea0314, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
