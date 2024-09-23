@@ -22,4 +22,4 @@ MonoBehaviour:
 
     Better than Lake'
   maxQuantity: 10
-  cooldownTime: 30
+  cooldownTime: 0

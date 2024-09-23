@@ -148,5 +148,5 @@ MonoBehaviour:
       type: 3}
     spawnAmount: 8
     spawnPoint: 3
-  waveTime: 260
-  preparationTime: 60
+  waveTime: 240
+  preparationTime: 0
