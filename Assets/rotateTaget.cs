@@ -19,6 +19,7 @@ public class rotateTaget : MonoBehaviour
         if(target != null)
         {
             transform.LookAt(target);
+            transform.localRotation *= Quaternion.Euler(0, 180, 0);
         }
     }
 }
