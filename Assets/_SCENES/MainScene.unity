@@ -64716,6 +64716,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 19a61324e7cceae4980a644fe2697875,
         type: 3}
+    - target: {fileID: 5565646756398388591, guid: ecba122ed6d647144a7ac2c6ff632238,
+        type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 941960879811302117}
     - target: {fileID: 6244467737335934972, guid: ecba122ed6d647144a7ac2c6ff632238,
         type: 3}
       propertyPath: health

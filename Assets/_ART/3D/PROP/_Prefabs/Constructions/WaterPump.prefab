@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 100}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &319261470953563880
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c5d2ed1f5dcc6574ea9811f2fdd31fd9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19a61324e7cceae4980a644fe2697875, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -191,6 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68e56ee0f3ab4a9ebf2cead0937088e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Target: {fileID: 0}
 --- !u!1 &2199474423779453460
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,7 +539,7 @@ MonoBehaviour:
   uniqueName: Water Pump
   lvl: 1
   freeSpawn: 0
-  health: 80
+  health: 20
   spawnRate: 2
   spawnPrefab: {fileID: 4734616565040637847, guid: b61018e78a76d4241b83ba09947734f2,
     type: 3}
