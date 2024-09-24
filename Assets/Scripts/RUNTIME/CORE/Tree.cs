@@ -9,7 +9,7 @@ public class Tree : MonoBehaviour, IDamageable
 
     // runtime privates
     private int currentHealh;
-    public Animator anim;
+    // public Animator anim;
 
     // Getters
     public int Health
@@ -20,7 +20,7 @@ public class Tree : MonoBehaviour, IDamageable
     void Start()
     {
         currentHealh = health;
-        anim = GetComponent<Animator>();
+        // anim = GetComponent<Animator>();
 
     }
     // private bool created = false;
@@ -42,13 +42,14 @@ public class Tree : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         currentHealh -= damage;
-        if (currentHealh <= 7)
-        {
-            anim.Play("Tree_Bad", -1,0f);
-        }
+        // if (currentHealh <= 7)
+        // {
+        //     anim.Play("Tree_Bad", -1,0f);
+        // }
         if (currentHealh <= 0)
         {            
             // Debug.Log("DeletePlayer: ");
+            //anim.Play("Tree_Die", -1,0f);
 
             if (GameUI.Instance != null  && gameObject != null)
             {
