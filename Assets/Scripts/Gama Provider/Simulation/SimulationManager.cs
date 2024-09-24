@@ -58,7 +58,7 @@ public class SimulationManager : MonoBehaviour
     protected AllProperties propertiesGAMA;
     protected WorldJSONInfo infoWorld;
     protected AnimationInfo infoAnimation = null;
-    protected GameState currentState;
+    public GameState currentState;
 
     public static SimulationManager Instance = null;
 
