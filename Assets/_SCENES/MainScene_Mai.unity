@@ -11131,7 +11131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95.3, y: 34.7}
+  m_AnchoredPosition: {x: 91.8, y: 34.7}
   m_SizeDelta: {x: 60.56, y: 18.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &302358582
@@ -45618,6 +45618,14 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6788000314589256948, guid: 046044e06b5f5de4aaefcf083be6fad0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 663210805}
+    - targetCorrespondingSourceObject: {fileID: 6788000314589256948, guid: 046044e06b5f5de4aaefcf083be6fad0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 663210804}
     - targetCorrespondingSourceObject: {fileID: 5724985811567148468, guid: 046044e06b5f5de4aaefcf083be6fad0,
         type: 3}
       insertIndex: -1
@@ -45658,14 +45666,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 153331988}
-    - targetCorrespondingSourceObject: {fileID: 6788000314589256948, guid: 046044e06b5f5de4aaefcf083be6fad0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 663210805}
-    - targetCorrespondingSourceObject: {fileID: 6788000314589256948, guid: 046044e06b5f5de4aaefcf083be6fad0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 663210804}
     - targetCorrespondingSourceObject: {fileID: 9186171269983872847, guid: 046044e06b5f5de4aaefcf083be6fad0,
         type: 3}
       insertIndex: -1
@@ -62009,7 +62009,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.1, y: 32.1}
+  m_AnchoredPosition: {x: 4.4, y: 32.1}
   m_SizeDelta: {x: 266, y: 203.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1682279643
@@ -91670,7 +91670,7 @@ PrefabInstance:
     - target: {fileID: 839357376909687554, guid: fdb178aaaca30422baf9d46d24ae1afb,
         type: 3}
       propertyPath: m_Name
-      value: "Final_Win_Engl\xEDh"
+      value: Final_Win_English
       objectReference: {fileID: 0}
     - target: {fileID: 839357376909687554, guid: fdb178aaaca30422baf9d46d24ae1afb,
         type: 3}
