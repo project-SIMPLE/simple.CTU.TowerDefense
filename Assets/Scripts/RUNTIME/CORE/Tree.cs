@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Tree : MonoBehaviour, IDamageable
 {
@@ -8,8 +10,11 @@ public class Tree : MonoBehaviour, IDamageable
     [SerializeField] private int health = 2;
 
     // runtime privates
-    private int currentHealh;
-    // public Animator anim;
+    public static int currentHealh;
+    public Animator anim;
+    public TextMeshProUGUI hp;
+    private int count;
+    private int condition = 0;
 
     // Getters
     public int Health
@@ -20,13 +25,77 @@ public class Tree : MonoBehaviour, IDamageable
     void Start()
     {
         currentHealh = health;
-        // anim = GetComponent<Animator>();
-
+        anim = GetComponent<Animator>();
+        Debug.Log("Tree Start");
+        // Debug.Log("Tree_currentHealh"+ currentHealh);
     }
     // private bool created = false;
     // int tick=0;
+
+     public void TakeDamage(int damage)
+    {
+        currentHealh -= damage;
+        //Debug.Log("TakeDamage_currentHealh: " + currentHealh);
+        //hp.text = currentHealh.ToString();
+        
+
+        
+        if (currentHealh <= 0)
+        {            
+            Debug.Log("currentHealh < 0: ");
+            // anim.Play("Tree_Die", -1,0f);
+
+            if (GameUI.Instance != null  && gameObject != null)
+            {
+                GameUI.Instance.DeletePlayer(gameObject);
+            }
+            Die();
+        }
+        // return currentHealh;
+    }
+
     void Update()
     {           
+        count = currentHealh;
+        //Debug.Log("VoidUpdate_currentHealh: " + count);
+        hp.text = count.ToString();
+
+        // Test Animation
+        if(Input.GetKeyDown("1"))
+        {
+        anim.Play("Tree_Good", -1,0f);
+        }
+        if(Input.GetKeyDown("2"))
+        {
+        anim.Play("Tree_Bad", -1,0f);
+        }
+        if(Input.GetKeyDown("3"))
+        {
+        anim.Play("Tree_Die", -1,0f);
+        }
+
+
+        // Check Condition Tree
+        if (count <= 60)
+        {
+            condition = 1; 
+        }
+        else if (count <= 0)
+        {
+            condition = 2;
+        }
+        else condition = 0;
+        
+        // Control animation 
+        if(condition==1)
+        {
+            anim.Play("Tree_Bad", -1,0f);
+        }
+        if(condition==2)
+        {
+            anim.Play("Tree_Die", -1,0f);
+        }
+
         //  Debug.Log("sent to GAMA: ");
         // tick++;
         if ( GameUI.Instance != null && gameObject != null)
@@ -37,35 +106,20 @@ public class Tree : MonoBehaviour, IDamageable
             GameUI.Instance.UpdateConstructionPosition(gameObject);
             // created = true;
         }
+        
+       
     }
 
-    public void TakeDamage(int damage)
-    {
-        currentHealh -= damage;
-        // if (currentHealh <= 7)
-        // {
-        //     anim.Play("Tree_Bad", -1,0f);
-        // }
-        if (currentHealh <= 0)
-        {            
-            // Debug.Log("DeletePlayer: ");
-            //anim.Play("Tree_Die", -1,0f);
-
-            if (GameUI.Instance != null  && gameObject != null)
-            {
-                GameUI.Instance.DeletePlayer(gameObject);
-            }
-            Die();
-        }
-    }
-
+   
     public void Die()
     {
+        Debug.Log("Xoa Cay: ");
         Destroy(gameObject);
     }
 
     public bool IsDead()
     {
+        Debug.Log("Tree mau ve khong: ");
         return currentHealh <= 0;
     }
 }
