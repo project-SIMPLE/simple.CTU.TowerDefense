@@ -31950,6 +31950,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LakeBuild
       objectReference: {fileID: 0}
+    - target: {fileID: 5879607818833158384, guid: 0d520bcf5de342a4f8614324bad3d6fb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37467,6 +37472,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterPumpBuild
       objectReference: {fileID: 0}
+    - target: {fileID: 1551184798410912710, guid: 423f0fa805c5c5c44ac012e024861581,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6639765913028073993, guid: 423f0fa805c5c5c44ac012e024861581,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -42696,6 +42706,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SluiceGateBuild
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342403424689640617, guid: 835ec794b66442546b1eedbcda5e999b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -51456,7 +51471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1310933958
 Transform:
   m_ObjectHideFlags: 0
@@ -69969,7 +69984,7 @@ PrefabInstance:
     - target: {fileID: 1659667280369296095, guid: 6f418f7829994254989de0d401c224e0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -75.2
+      value: -86.399994
       objectReference: {fileID: 0}
     - target: {fileID: 1659667280369296095, guid: 6f418f7829994254989de0d401c224e0,
         type: 3}
@@ -69984,7 +69999,7 @@ PrefabInstance:
     - target: {fileID: 1673274075244021874, guid: 6f418f7829994254989de0d401c224e0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2244037941015207876, guid: 6f418f7829994254989de0d401c224e0,
         type: 3}
@@ -70006,6 +70021,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2482815198654533367, guid: 6f418f7829994254989de0d401c224e0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989332323969255441, guid: 6f418f7829994254989de0d401c224e0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.08
+      objectReference: {fileID: 0}
     - target: {fileID: 3204534860570782414, guid: 6f418f7829994254989de0d401c224e0,
         type: 3}
       propertyPath: m_Type
@@ -70017,10 +70042,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e8fc8ba44cfaea846a7ec81106c19a13,
         type: 3}
+    - target: {fileID: 3954609708416612959, guid: 6f418f7829994254989de0d401c224e0,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954609708416612959, guid: 6f418f7829994254989de0d401c224e0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e6368112886edda4ba00ab03abc0409e,
+        type: 3}
+    - target: {fileID: 3954609708416612959, guid: 6f418f7829994254989de0d401c224e0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954609708416612959, guid: 6f418f7829994254989de0d401c224e0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954609708416612959, guid: 6f418f7829994254989de0d401c224e0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4785586659752514012, guid: 6f418f7829994254989de0d401c224e0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 88.3
+      value: 86.5
       objectReference: {fileID: 0}
     - target: {fileID: 4785586659752514012, guid: 6f418f7829994254989de0d401c224e0,
         type: 3}
@@ -70070,7 +70121,7 @@ PrefabInstance:
     - target: {fileID: 5770166012784804637, guid: 6f418f7829994254989de0d401c224e0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 11.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5770166012784804637, guid: 6f418f7829994254989de0d401c224e0,
         type: 3}
@@ -70237,6 +70288,11 @@ PrefabInstance:
     - target: {fileID: 7497421655852685897, guid: 6f418f7829994254989de0d401c224e0,
         type: 3}
       propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025377310991570923, guid: 6f418f7829994254989de0d401c224e0,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -76965,6 +77021,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LakeBuild (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5879607818833158384, guid: 0d520bcf5de342a4f8614324bad3d6fb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -77840,6 +77901,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2989332323969255441, guid: a9645693ee30ae348a3b5fa4b62ad952,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.08
+      objectReference: {fileID: 0}
     - target: {fileID: 3204534860570782414, guid: a9645693ee30ae348a3b5fa4b62ad952,
         type: 3}
       propertyPath: m_Type
@@ -77851,10 +77917,46 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e8fc8ba44cfaea846a7ec81106c19a13,
         type: 3}
+    - target: {fileID: 3954609708416612959, guid: a9645693ee30ae348a3b5fa4b62ad952,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954609708416612959, guid: a9645693ee30ae348a3b5fa4b62ad952,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e6368112886edda4ba00ab03abc0409e,
+        type: 3}
+    - target: {fileID: 3954609708416612959, guid: a9645693ee30ae348a3b5fa4b62ad952,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954609708416612959, guid: a9645693ee30ae348a3b5fa4b62ad952,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954609708416612959, guid: a9645693ee30ae348a3b5fa4b62ad952,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4495124352071792894, guid: a9645693ee30ae348a3b5fa4b62ad952,
         type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785586659752514012, guid: a9645693ee30ae348a3b5fa4b62ad952,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 86.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785586659752514012, guid: a9645693ee30ae348a3b5fa4b62ad952,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -38.8
       objectReference: {fileID: 0}
     - target: {fileID: 4785586659752514015, guid: a9645693ee30ae348a3b5fa4b62ad952,
         type: 3}
@@ -78003,6 +78105,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7497421655852685897, guid: a9645693ee30ae348a3b5fa4b62ad952,
         type: 3}
+      propertyPath: m_text
+      value: HUONG DAN CACH CHOI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497421655852685897, guid: a9645693ee30ae348a3b5fa4b62ad952,
+        type: 3}
       propertyPath: m_fontSize
       value: 15
       objectReference: {fileID: 0}
@@ -78012,6 +78119,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c36499b4a86096d4ca2679af251a3588,
         type: 2}
+    - target: {fileID: 7497421655852685897, guid: a9645693ee30ae348a3b5fa4b62ad952,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7497421655852685897, guid: a9645693ee30ae348a3b5fa4b62ad952,
         type: 3}
       propertyPath: m_fontColor.b
@@ -78046,6 +78158,11 @@ PrefabInstance:
     - target: {fileID: 7497421655852685897, guid: a9645693ee30ae348a3b5fa4b62ad952,
         type: 3}
       propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025377310991570923, guid: a9645693ee30ae348a3b5fa4b62ad952,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8300141425950186729, guid: a9645693ee30ae348a3b5fa4b62ad952,
