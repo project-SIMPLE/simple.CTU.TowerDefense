@@ -366,49 +366,49 @@ public class SimulationManager : MonoBehaviour
     private void manageWalls()
     {
        
-       if (polyGen == null)
-        {
-            polyGen = PolygonGenerator.GetInstance();
-            polyGen.Init(converter);
-        }
+    //    if (polyGen == null)
+    //     {
+    //         polyGen = PolygonGenerator.GetInstance();
+    //         polyGen.Init(converter);
+    //     }
 
-        GameObject wallObj = new GameObject("Walls");
+    //     GameObject wallObj = new GameObject("Walls");
 
-        GameObject[] objs =   GameObject.FindGameObjectsWithTag("InvisibleWall");
-        foreach (GameObject o in objs)
-        {
-            if (o.name.Equals(dataWall.wallId))
-            GameObject.DestroyImmediate(o);
+    //     GameObject[] objs =   GameObject.FindGameObjectsWithTag("InvisibleWall");
+    //     foreach (GameObject o in objs)
+    //     {
+    //         if (o.name.Equals(dataWall.wallId))
+    //         GameObject.DestroyImmediate(o);
 
-        }
+    //     }
 
-        for (int i = 0; i < dataWall.pointsGeom.Count;i++ )
-        {
-            List<int> pt = dataWall.pointsGeom[i].c;
-            float YoffSet = (0.0f + dataWall.offsetYGeom[i]) / (0.0f + parameters.precision);
+    //     for (int i = 0; i < dataWall.pointsGeom.Count;i++ )
+    //     {
+    //         List<int> pt = dataWall.pointsGeom[i].c;
+    //         float YoffSet = (0.0f + dataWall.offsetYGeom[i]) / (0.0f + parameters.precision);
 
-            PropertiesGAMA prop = new PropertiesGAMA();
-            prop.id = dataWall.wallId;
-            prop.hasCollider = true;
-            prop.tag = "InvisibleWall";
-            prop.isInteractable = false;
-            prop.isGrabable = false;
-            prop.hasPrefab = false;
-            prop.visible = false;
-            prop.height = dataWall.height;
-            prop.is3D = true;
-            prop.toFollow = false;
+    //         PropertiesGAMA prop = new PropertiesGAMA();
+    //         prop.id = dataWall.wallId;
+    //         prop.hasCollider = true;
+    //         prop.tag = "InvisibleWall";
+    //         prop.isInteractable = false;
+    //         prop.isGrabable = false;
+    //         prop.hasPrefab = false;
+    //         prop.visible = false;
+    //         prop.height = dataWall.height;
+    //         prop.is3D = true;
+    //         prop.toFollow = false;
 
-           GameObject obj = polyGen.GeneratePolygons(false, dataWall.wallId, pt, prop, parameters.precision);
+    //        GameObject obj = polyGen.GeneratePolygons(false, dataWall.wallId, pt, prop, parameters.precision);
         
-            obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + YoffSet, obj.transform.position.z);
-            obj.transform.parent = wallObj.transform;
-            MeshCollider mc = obj.AddComponent<MeshCollider>();
-            mc.sharedMesh = polyGen.surroundMesh;
+    //         obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + YoffSet, obj.transform.position.z);
+    //         obj.transform.parent = wallObj.transform;
+    //         MeshCollider mc = obj.AddComponent<MeshCollider>();
+    //         mc.sharedMesh = polyGen.surroundMesh;
             
-        }
+    //     }
 
-        dataWall = null;
+    //     dataWall = null;
     }
 
 

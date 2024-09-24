@@ -812,9 +812,9 @@ GameObject:
   - component: {fileID: 6487592043741156807}
   - component: {fileID: 2070450876921889639}
   - component: {fileID: 6244467737335934972}
-  - component: {fileID: 4061739769855132853}
   - component: {fileID: 1857440048874810405}
   - component: {fileID: 281609834816110097}
+  - component: {fileID: 7025215040735897216}
   m_Layer: 12
   m_Name: WaterPump
   m_TagString: Untagged
@@ -892,19 +892,6 @@ MonoBehaviour:
   subsidencePrefab: {fileID: 6212659186786696198, guid: 44365f84bf284914fa74b0f786b9325b,
     type: 3}
   subsidenceSpawnPoint: {fileID: 1421501102688482827}
---- !u!114 &4061739769855132853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7768694941360884037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe1f3469245ce34697ad3e2a854ac7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: {fileID: 1958711536132553818}
 --- !u!114 &1857440048874810405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,6 +1023,19 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7025215040735897216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768694941360884037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23489783e1454561a280c959e404e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: {fileID: 1958711536132553818}
 --- !u!1 &7858987094406230733
 GameObject:
   m_ObjectHideFlags: 0
