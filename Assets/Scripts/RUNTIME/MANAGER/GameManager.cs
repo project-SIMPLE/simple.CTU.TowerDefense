@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameStatus = GameStatus.Wait;
+
     }
 
     void Update()
@@ -76,6 +77,12 @@ public class GameManager : MonoBehaviour
         buildUI.gameObject.SetActive(true);
         hud.gameObject.SetActive(true);
         gameStatus = GameStatus.InProgress;
+        SimulationManager sm = FindObjectOfType<SimulationManager>();
+        if (sm != null)
+        {
+            sm.UpdateGameState(GameState.GAME);
+
+        }
     }
 
     public void StartTutorial()

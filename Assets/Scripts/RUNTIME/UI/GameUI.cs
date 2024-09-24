@@ -223,8 +223,9 @@ public class GameUI : MonoBehaviour
     {
         // if (GetSocket() == null || !connected || finalContent.activeSelf) return;
 
-
-        if (SimulationManager.Instance.IsGameState(GameState.GAME) && UnityEngine.Random.Range(0.0f, 1.0f) < 0.002f)
+ 
+            // Debug.Log("sent to GAMA: " + SimulationManager.Instance.currentState);
+        if (SimulationManager.Instance.IsGameState(GameState.GAME))// && UnityEngine.Random.Range(0.0f, 1.0f) < 0.002f)
         {
 
 
@@ -237,7 +238,7 @@ public class GameUI : MonoBehaviour
             int angle = (int)(((s > 0) ? -1.0 : 1.0) * (180 / Math.PI) * Math.Acos(c) * precision);
 
             List<float> p = toGAMACRS3D(obj.transform.position);
-            int instanceId = obj.GetInstanceID();
+            float instanceId = obj.GetInstanceID();
 
             // Vector3 v = new Vector3(Camera.main.transform.position.x, player.transform.position.y, Camera.main.transform.position.z);
             // List<float> p = toGAMACRS3D(v);
@@ -254,7 +255,7 @@ public class GameUI : MonoBehaviour
             // Debug.Log("move_player_external: " + player + " " + p[0] + "," + p[1] + "," + p[2]);
 
 
-            // Debug.Log("sent to GAMA: " + instanceId);
+            // Debug.Log("sent to GAMA: " + obj);
             ConnectionManager.Instance.SendExecutableAsk("construction_message", args);
             // SendExecutableAsk("simulation[0]", "move_player_external", args);
         }

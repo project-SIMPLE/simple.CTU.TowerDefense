@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     int tick=0;
     void Update()
     {
-        if (IsDead()) return;
+        if (IsDead()) return; 
         // tick++;
         // if(tick>=300){
         //     tick=0;
