@@ -256,7 +256,7 @@ public class GameUI : MonoBehaviour
 
 
             // Debug.Log("sent to GAMA: " + obj);
-            ConnectionManager.Instance.SendExecutableAsk("construction_message", args);
+            // ConnectionManager.Instance.SendExecutableAsk("construction_message", args);
             // SendExecutableAsk("simulation[0]", "move_player_external", args);
         }
     }

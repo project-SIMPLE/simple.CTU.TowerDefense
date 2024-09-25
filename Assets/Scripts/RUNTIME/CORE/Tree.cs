@@ -58,7 +58,11 @@ public class Tree : MonoBehaviour, IDamageable
     {           
         count = currentHealh;
         //Debug.Log("VoidUpdate_currentHealh: " + count);
-        hp.text = count.ToString();
+        if (count > 0)
+        {
+            hp.text = count.ToString();
+        }
+        else hp.text = "Tree Die";
 
         // Test Animation
         if(Input.GetKeyDown("1"))
@@ -76,38 +80,43 @@ public class Tree : MonoBehaviour, IDamageable
 
 
         // Check Condition Tree
-        if (count <= 60)
+        if (count < 70 && count > 65)
         {
-            condition = 1; 
+            //condition = 1; 
+            Debug.Log("khoi dong animation Tree Bad: ");
+            anim.Play("Tree_Bad");
         }
-        else if (count <= 0)
+        if (count < 1 && count > -5)
         {
-            condition = 2;
+            //condition = 2;
+            Debug.Log("khoi dong animation Tree die: ");
+            anim.Play("Tree_Die",-1,0f);
+
         }
-        else condition = 0;
         
         // Control animation 
-        if(condition==1)
-        {
-            anim.Play("Tree_Bad", -1,0f);
-        }
-        if(condition==2)
-        {
-            anim.Play("Tree_Die", -1,0f);
-        }
+        // if(condition==1)
+        // {
+        //     Debug.Log("khoi dong animation Tree Bad: ");
+        //     anim.Play("Tree_Bad", -1,0f);
+        // }
+        // if(condition==2)
+        // {
+        //     Debug.Log("khoi dong animation Tree die: ");
+        //     anim.Play("Tree_Die", -1,0f);
+        // }
 
         //  Debug.Log("sent to GAMA: ");
         // tick++;
-        if ( GameUI.Instance != null && gameObject != null)
-        {    
-            // tick=0;        
-            // Debug.Log("sent to GAMA: " + gameObject);
+        // if ( GameUI.Instance != null && gameObject != null)
+        // {    
+        //     // tick=0;        
+        //     // Debug.Log("sent to GAMA: " + gameObject);
 
-            GameUI.Instance.UpdateConstructionPosition(gameObject);
-            // created = true;
-        }
+        //     GameUI.Instance.UpdateConstructionPosition(gameObject);
+        //     // created = true;
+        // }
         
-       
     }
 
    
