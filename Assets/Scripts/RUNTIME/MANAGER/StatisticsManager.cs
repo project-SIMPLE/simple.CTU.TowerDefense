@@ -21,6 +21,15 @@ public class ActionHistory
 
 public class StatisticsManager : MonoBehaviour
 {
+    /* 
+    Statistics Manager: (v) -> Quản lý thống kê
+    Manage and compile final data information of objects in the game screen.
+
+    ----------------------------------
+    Message By Hồng Sơn: 
+    We are processing information adjustments to accommodate educational programs.
+
+     */
     public static StatisticsManager Instance = null;
 
     private int currentLakeCount = 0;

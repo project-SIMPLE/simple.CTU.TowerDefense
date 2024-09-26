@@ -6,6 +6,14 @@ using UnityEngine.UI;
 
 public class Tree : MonoBehaviour, IDamageable
 {
+    /* 
+    Tree: vn() --> Cây 
+    Manage the response of plants when affected by the external environment. 
+    ----------------------------------
+    Message By Hồng Sơn: 
+    In the future, we want to expand further on the salinity tolerance of different crop species.
+    */
+
     [Header("Stats")]
     [SerializeField] private int health = 2;
 
@@ -24,7 +32,8 @@ public class Tree : MonoBehaviour, IDamageable
 
     void Start()
     {
-        currentHealh = health;
+        //currentHealh = health;
+        currentHealh = 100;
         anim = GetComponent<Animator>();
         Debug.Log("Tree Start");
         // Debug.Log("Tree_currentHealh"+ currentHealh);

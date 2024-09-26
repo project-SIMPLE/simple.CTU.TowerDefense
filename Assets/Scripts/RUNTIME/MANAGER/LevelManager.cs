@@ -11,6 +11,12 @@ public enum WaveStep
 
 public class LevelManager : MonoBehaviour
 {
+    /*
+    Managing game levels
+    Currently has 2 stages on the same level
+    - Preparation: 30s  
+    - Defense: 270s
+     */
     [SerializeField] private bool loop = false;
     [SerializeField] private List<WaveSO> waves;
     [SerializeField] private List<EnemySpawner> spawns;

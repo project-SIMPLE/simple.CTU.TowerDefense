@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Ally : MonoBehaviour, IDamageable, IDamage
 {
+    /*
+    Ally : (vn) --> đồng minh
+    Create fresh water to neutralize salt water
+     */
     [Header("Basic Info")]
     [SerializeField] private string uniqueName;
     [SerializeField] private int lvl;

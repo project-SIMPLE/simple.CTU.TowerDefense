@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Barrack : MonoBehaviour, ISpawner, IDamageable
 {
+    /*
+    Barrack: (vn) --> Trại lính
+    regulates the quantity of fresh water produced and the manner in which it is produced
+    
+     */
     [Header("Basic Info")]
     [SerializeField] private string uniqueName;
     [SerializeField] private int lvl;

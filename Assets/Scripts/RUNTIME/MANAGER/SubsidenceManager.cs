@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class SubsidenceManager : MonoBehaviour
 {
+    /* 
+    Subsidence Manager: (vn) -> Quản lý sụt lún 
+    - Subsidence Levels 
+    - Tree Objects
+    - Surface Water 
+
+    ----------------------------------
+    Message By Hồng Sơn: 
+    We are processing subsidence data from Gamma
+    
+    */
     GAMAMessage message = null;
     private bool isSubsidence = false;
     private float currentWaterLevel = 1f;
@@ -94,9 +105,10 @@ public class SubsidenceManager : MonoBehaviour
         if (gg != null && gg.CurrentGameStatus() == GameStatus.InProgress)
         {
             tick++;
+            //Debug.Log("tick: " + tick);
             if (tick >= 1000)
             {
-                // Debug.Log("Ask GAMA");
+                //Debug.Log("Ask GAMA");
                 tick = 0;
             }
         }
