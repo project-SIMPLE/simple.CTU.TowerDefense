@@ -72,5 +72,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-vrfarm_BackUpThisFolder_ButDontShipItWithYourGame/
-vrfarm_BurstDebugInformation_DoNotShip/
+**/lib_burst_generated.txt
