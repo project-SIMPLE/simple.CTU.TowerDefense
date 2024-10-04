@@ -95,6 +95,10 @@ public class StatisticsManager : MonoBehaviour
     {
         get { return currentSluiceGateCount; }
     }
+
+    /*
+    Trung hòa được bao nhiêu con nước
+     */
     public int EnemyKillCount
     { 
         get { return currentEnemyCount; } 
