@@ -27610,6 +27610,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AM_Coconut (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6770999230807317561, guid: 0d617ac5f2a624cd2947d9bcf855bcf3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8614458544117232963, guid: 0d617ac5f2a624cd2947d9bcf855bcf3,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -64773,7 +64778,7 @@ PrefabInstance:
     - target: {fileID: 6244467737335934972, guid: ecba122ed6d647144a7ac2c6ff632238,
         type: 3}
       propertyPath: health
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6487592043741156807, guid: ecba122ed6d647144a7ac2c6ff632238,
         type: 3}
