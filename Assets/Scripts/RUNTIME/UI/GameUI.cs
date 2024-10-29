@@ -61,9 +61,9 @@ public class GameUI : MonoBehaviour
 
     void Start()
     {
-        string ip = PlayerPrefs.GetString("IP");
-        if (NotValid(ip))
-            ip = "127.0.0.1";
+        //string ip = PlayerPrefs.GetString("IP");
+        //if (NotValid(ip))
+         //   ip = "127.0.0.1";
         // Son: turn_off IP
         // playerTextOutput = GameObject.FindGameObjectWithTag("textIP").GetComponentInChildren<TextMeshProUGUI>();
         //playerTextOutput.text = ip;
@@ -154,7 +154,7 @@ public class GameUI : MonoBehaviour
 
     public void StartUI()
     {
-        // PlayerPrefs.SetString("IP", "localhost");
+       /* // PlayerPrefs.SetString("IP", "localhost");
         PlayerPrefs.SetString("PORT", "1000");
         PlayerPrefs.SetString("IP", "127.0.0.1");
         // Son: turn_off IP
@@ -165,7 +165,7 @@ public class GameUI : MonoBehaviour
         host = PlayerPrefs.GetString("IP");
         // socket = new WebSocket("ws://" + host + ":" + port + "/");
         // socket.OnOpen += HandleConnectionOpen;
-        // socket.Connect();
+        // socket.Connect();*/
 
         gameManager.StartLevel();
         startContent.SetActive(false);
