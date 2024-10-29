@@ -17,6 +17,8 @@ public class GameUI : MonoBehaviour
 
     [SerializeField] private GameObject startContent;
     [SerializeField] private GameObject finalContent;
+    [SerializeField] private GameObject finalContent_Win;
+    [SerializeField] private GameObject finalContent_Lose;
 
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI finalText;
@@ -43,6 +45,20 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI reportEnemiesNumber;
     [SerializeField] private TextMeshProUGUI reportRemainingGroundwaterLevelLocal;
     [SerializeField] private TextMeshProUGUI reportRemainingGroundwaterLevelGlobal;
+
+    // Son: Update Win and Lose report 
+    [SerializeField] private TextMeshProUGUI win_reportLivingTreesNumber;
+    [SerializeField] private TextMeshProUGUI win_reportDeadTreesNumber;
+    [SerializeField] private TextMeshProUGUI win_reportPumpNumber;
+    [SerializeField] private TextMeshProUGUI win_reportEnemiesNumber;
+    [SerializeField] private TextMeshProUGUI win_reportSubsidenceScore;
+
+    [SerializeField] private TextMeshProUGUI lose_reportLivingTreesNumber;
+    [SerializeField] private TextMeshProUGUI lose_reportDeadTreesNumber;
+    [SerializeField] private TextMeshProUGUI lose_reportPumpNumber;
+    [SerializeField] private TextMeshProUGUI lose_reportEnemiesNumber;
+    [SerializeField] private TextMeshProUGUI lose_reportSubsidenceScore;
+
     void Start()
     {
         string ip = PlayerPrefs.GetString("IP");
@@ -70,7 +86,15 @@ public class GameUI : MonoBehaviour
         {
             transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
             startContent.SetActive(false);
-            finalContent.SetActive(true);
+            //finalContent.SetActive(true);
+            // Son : update menu win and lose 
+            if ((playerResourcesManager.CurrentRefillSources ) > (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources))
+            {
+                finalContent_Win.SetActive(true);
+            }
+            else finalContent_Lose.SetActive(true);
+
+            
 
             if (gameManager.CurrentGameStatus() == GameStatus.Win)
             {
@@ -101,6 +125,21 @@ public class GameUI : MonoBehaviour
             reportEnemiesNumber.text = "" + StatisticsManager.Instance.EnemyKillCount;
             reportRemainingGroundwaterLevelLocal.text = "Remaining Groundwater Level (Local): " + subsidenceManager.RemainingWaterLevelLocal;
             reportRemainingGroundwaterLevelGlobal.text = "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal;
+        
+            // Son: Update Win and Lose
+
+            win_reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
+            win_reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
+            win_reportPumpNumber.text = "" + StatisticsManager.Instance.WaterPumpCount;
+            win_reportEnemiesNumber.text = "" + StatisticsManager.Instance.EnemyKillCount;
+            win_reportSubsidenceScore.text = "" + (playerResourcesManager.CurrentRefillSources * subsidenceManager.SubsidenceScore);
+
+            lose_reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
+            lose_reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
+            lose_reportPumpNumber.text = "" + StatisticsManager.Instance.WaterPumpCount;
+            lose_reportEnemiesNumber.text = "" + StatisticsManager.Instance.EnemyKillCount;
+            lose_reportSubsidenceScore.text = "" + (playerResourcesManager.CurrentRefillSources * subsidenceManager.SubsidenceScore);
+
         }
 
         transform.LookAt(new Vector3(head.position.x, transform.position.y, head.position.z));
