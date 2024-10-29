@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
 
+using UnityEngine.UI;
 
 public class SimulationManager : MonoBehaviour
 {
@@ -94,6 +95,8 @@ public class SimulationManager : MonoBehaviour
     protected WallInfo dataWall;
     protected EnableMoveInfo enableMove;
 
+
+    public Button StartButton;
 
     // ############################################ UNITY FUNCTIONS ############################################
     void Awake()
@@ -991,43 +994,7 @@ public class SimulationManager : MonoBehaviour
     {
 
         if (content == null || content.Equals("{}")) return;
-        if (firstKey == null)
-        {
-            if (content.Contains("pong"))
-            {
-                currentTimePing = 0;
-                return;
-            }
-            else if (content.Contains("pointsLoc"))
-                firstKey = "pointsLoc";
-            else if (content.Contains("precision"))
-                firstKey = "precision";
-            else if (content.Contains("properties"))
-                firstKey = "properties";
-            else if (content.Contains("endOfGame"))
-                firstKey = "endOfGame";
-            else if (content.Contains("rows"))
-                firstKey = "rows";
-            else if (content.Contains("wallId"))
-                firstKey = "wallId";
-            else if (content.Contains("teleportId"))
-                firstKey = "teleportId";
-            else if (content.Contains("indexX"))
-                firstKey = "indexX";
-            else if (content.Contains("enableMove"))
-                firstKey = "enableMove";
-            else if (content.Contains("triggers"))
-                firstKey = "triggers";
-
-            else
-            {
-                ManageOtherMessages(content);
-                return;
-            }
-
-        }
-
-
+       
         switch (firstKey)
         {
             // handle general informations about the simulation
@@ -1084,6 +1051,9 @@ public class SimulationManager : MonoBehaviour
                 break;
             case "triggers":
                 infoAnimation = AnimationInfo.CreateFromJSON(content);
+                break;
+            case "readyToStart":
+                StartButton.interactable = true;
                 break;
             default:
                 ManageOtherMessages(content);
