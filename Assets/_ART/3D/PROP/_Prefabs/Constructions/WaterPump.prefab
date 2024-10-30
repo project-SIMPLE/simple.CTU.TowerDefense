@@ -815,9 +815,10 @@ GameObject:
   - component: {fileID: 1857440048874810405}
   - component: {fileID: 281609834816110097}
   - component: {fileID: 7025215040735897216}
+  - component: {fileID: 8358528244152184367}
   m_Layer: 12
   m_Name: WaterPump
-  m_TagString: Untagged
+  m_TagString: WaterPump
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1036,6 +1037,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: {fileID: 1958711536132553818}
+--- !u!135 &8358528244152184367
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768694941360884037}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7858987094406230733
 GameObject:
   m_ObjectHideFlags: 0
