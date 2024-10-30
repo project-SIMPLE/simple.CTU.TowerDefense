@@ -50,7 +50,14 @@ public class Tree : MonoBehaviour, IDamageable
 
         
         if (currentHealh <= -20)
-        {            
+        {
+
+            Dictionary<string, string> args = new Dictionary<string, string> {
+            {"idP", ConnectionManager.Instance.GetConnectionId()},
+             {"idTsStr", gameObject.GetInstanceID()+"" }};
+
+            ConnectionManager.Instance.SendExecutableAsk("delete_tree", args);
+
             Debug.Log("currentHealh < 0: ");
             // anim.Play("Tree_Die", -1,0f);
 

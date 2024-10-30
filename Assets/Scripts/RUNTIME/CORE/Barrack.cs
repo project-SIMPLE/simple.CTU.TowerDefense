@@ -65,6 +65,8 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
             }
         }
         currentRate = spawnRate;
+        SimulationManager sm = FindObjectOfType<SimulationManager>();
+        sm.createMovePumper(gameObject); 
     }
 
     void Update()
@@ -97,7 +99,7 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
             Die();
         }
     }
-
+     
     public void Die()
     {
         if (subsidencePrefab)

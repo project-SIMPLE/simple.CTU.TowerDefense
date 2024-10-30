@@ -261,7 +261,7 @@ public class ConnectionManager : WebSocketConnector
         };
 
         string jsonStringExpression = JsonConvert.SerializeObject(jsonExpression);
-
+      
         SendMessageToServer(jsonStringExpression, new Action<bool>((success) => {
             if (!success)
             {

@@ -13,7 +13,7 @@ public class SimulationManager : MonoBehaviour
     [SerializeField] protected InputActionReference TryReconnectButton = null;
 
     [Header("Base GameObjects")]
-    [SerializeField] protected GameObject player;
+    [SerializeField] protected GameObject player; 
     [SerializeField] protected GameObject Ground;
 
 
@@ -67,8 +67,7 @@ public class SimulationManager : MonoBehaviour
     //allows to define the minimal time between two interactions
     protected float timeWithoutInteraction = 1.0f; //in second
 
-    protected float remainingTime = 0.0f;
-
+   
 
     protected bool sendMessageToReactivatePositionSent = false;
 
@@ -81,9 +80,9 @@ public class SimulationManager : MonoBehaviour
 
     protected bool readyToSendPositionInit = true;
 
-    protected float TimeSendPosition = 0.05f;
-    protected float TimeSendPositionAfterMoving = 1.0f;
-    protected float TimerSendPosition = 0.0f;
+    protected float TimeSendPosition = 0.5f;
+    protected float TimerSendPositionEnemy = 0.0f; 
+    protected float TimerSendPositionFW = 0.0f;
 
     protected List<GameObject> locomotion;
     protected MoveHorizontal mh = null;
@@ -152,6 +151,7 @@ public class SimulationManager : MonoBehaviour
         handleGroundParametersRequested = false;
         interactionManager = player.GetComponentInChildren<XRInteractionManager>();
         OnEnable();
+        TimerSendPositionEnemy = TimeSendPosition / 2.0f;
     }
 
 
@@ -178,7 +178,6 @@ public class SimulationManager : MonoBehaviour
         {
 
             sendMessageToReactivatePositionSent = true;
-            GenerateGeometries(true, new List<string>());
             handleGeometriesRequested = false;
             UpdateGameState(GameState.GAME);
 
@@ -211,25 +210,16 @@ public class SimulationManager : MonoBehaviour
             infoAnimation = null;
         }
 
-        if (IsGameState(GameState.GAME))
-        {
-            if (readyToSendPosition && TimerSendPosition <= 0.0f && readyToSendPositionInit)
-                UpdatePlayerPosition();
-            UpdateGameToFollowPosition();
-            if (infoWorld != null && !infoWorld.isInit)
-                UpdateAgentsList();
-        }
+       
+        
 
     }
 
     private void Update()
     {
-        if (remainingTime > 0)
-            remainingTime -= Time.deltaTime;
-        if (TimerSendPosition > 0)
-        {
-            TimerSendPosition -= Time.deltaTime;
-        }
+       
+
+       
         if (currentTimePing > 0)
         { 
             currentTimePing -= Time.deltaTime;
@@ -250,12 +240,141 @@ public class SimulationManager : MonoBehaviour
             Debug.Log("TryReconnectButton activated");
             TryReconnect();
         }
+        if (IsGameState(GameState.GAME))
+        {
+
+            if (TimerSendPositionEnemy > 0)
+            {
+                TimerSendPositionEnemy -= Time.deltaTime;
+            }
+            if (TimerSendPositionFW > 0)
+            {
+                TimerSendPositionFW -= Time.deltaTime;
+            }
+            if (TimerSendPositionEnemy <= 0)
+            {
+                sendEnemies();
+                TimerSendPositionEnemy = TimeSendPosition;
+            }
+            if (TimerSendPositionFW <= 0)
+            {
+                sendFreshWater();
+                TimerSendPositionFW  = TimeSendPosition;
+            }
+            
+        }
 
         OtherUpdate();
     }
 
+    public void sendFreshWater()
+    {
 
-    
+        GameObject[] freshWater = GameObject.FindGameObjectsWithTag("Ally");
+        // action update_salty_water(string idP, string swsStr, string xsStr, string ysStr)
+
+        if (freshWater.Length > 0)
+        {
+            Debug.Log("SEND FRESH WATER: ");
+        }
+        string sws = ",";
+        string xs = "";
+        string ys = "";
+        foreach (GameObject t in freshWater)
+        {
+            if (!t.active) continue;
+            sws += (t.GetInstanceID()) + ",";
+            xs += (int)(t.transform.position.x * parameters.precision) + ",";
+            ys += (int)(t.transform.position.z * parameters.precision) + ",";
+        }
+
+        Dictionary<string, string> args = new Dictionary<string, string> {
+            {"idP", ConnectionManager.Instance.GetConnectionId()},
+             {"fwsStr", sws },
+              {"xsStr", xs },
+              {"ysStr",ys}
+
+        };
+
+        ConnectionManager.Instance.SendExecutableAsk("update_fresh_water", args);
+
+    }
+
+    public void createMovePumper(GameObject pumper)
+    {
+        Dictionary<string, string> args = new Dictionary<string, string> {
+            {"idP", ConnectionManager.Instance.GetConnectionId()},
+             {"idwp", pumper.GetInstanceID()+"" },
+              {"x", ""+pumper.transform.position.x * parameters.precision },
+              {"y",""+pumper.transform.position.z * parameters.precision}
+
+        };
+      
+            ConnectionManager.Instance.SendExecutableAsk("move_create_pumper", args);
+     }
+    public void sendEnemies()
+    {
+       
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+       // action update_salty_water(string idP, string swsStr, string xsStr, string ysStr)
+       
+
+            string sws = ",";
+        string xs = "";
+        string ys = "";
+        foreach (GameObject t in enemies) 
+        {
+            if (!t.active) continue;
+            sws += (t.GetInstanceID()) + ",";
+            xs += (int)(t.transform.position.x * parameters.precision) + ",";
+            ys += (int)(t.transform.position.z * parameters.precision) + ",";
+        }
+
+        Dictionary<string, string> args = new Dictionary<string, string> {
+            {"idP", ConnectionManager.Instance.GetConnectionId()},
+             {"swsStr", sws },
+              {"xsStr", xs },
+              {"ysStr",ys}
+
+        };
+
+        ConnectionManager.Instance.SendExecutableAsk("update_salty_water", args);
+
+    }
+
+    public void sendTrees()
+    {
+        Debug.Log("SEND TREES TO GAMA");
+
+        Tree[] trees = FindObjectsOfType<Tree>();
+        List<GameObject> treeObjects = new List<GameObject>();
+        foreach (Tree tree in trees)
+        {
+            if (tree.gameObject.active)
+                treeObjects.Add(tree.gameObject);
+        }
+        string idTs = ",";
+        string xs = "";
+       string ys = "";
+        foreach (GameObject t in treeObjects)
+        {
+            idTs+= (t.GetInstanceID()) +",";
+            xs+= (int)(t.transform.position.x * parameters.precision) + ",";
+            ys+= (int)(t.transform.position.z * parameters.precision) + ",";
+        }
+
+                Dictionary<string, string> args = new Dictionary<string, string> {
+            {"idP", ConnectionManager.Instance.GetConnectionId()},
+             {"idTsStr", idTs },
+              {"xsStr", xs },
+              {"ysStr",ys}
+
+        };
+
+          ConnectionManager.Instance.SendExecutableAsk("create_trees", args);
+        
+    }
+
 
     private void updateAnimation()
     {
@@ -515,137 +634,7 @@ public class SimulationManager : MonoBehaviour
     }
 
 
-    void GenerateGeometries(bool initGame, List<string> toRemove)
-    {
-
-        if (infoWorld.position != null && infoWorld.position.Count > 1 && (initGame || !sendMessageToReactivatePositionSent))
-        {
-            // Vector3 pos = converter.fromGAMACRS(infoWorld.position[0], infoWorld.position[1], infoWorld.position[2]);
-            // XROrigin.localPosition = pos;
-            sendMessageToReactivatePositionSent = true;
-            readyToSendPosition = true;
-            TimerSendPosition = TimeSendPositionAfterMoving;
-
-            playerMovement(true);
-        }
-        int cptPrefab = 0;
-        int cptGeom = 0;
-        foreach (string n in infoWorld.keepNames) 
-            toRemove.Remove(n);
-        for (int i = 0; i < infoWorld.names.Count; i++)
-        {
-            string name = infoWorld.names[i];
-            string propId = infoWorld.propertyID[i];
-
-            PropertiesGAMA prop = propertyMap[propId];
-            GameObject obj = null;
-
-            if (prop.hasPrefab)
-            {
-                if (initGame || !geometryMap.ContainsKey(name))
-                {
-                    obj = instantiatePrefab(name, prop, initGame);
-                }
-                else
-                {
-                    List<object> o = geometryMap[name];
-                    GameObject obj2 = (GameObject)o[0];
-                    PropertiesGAMA p = (PropertiesGAMA)o[1];
-                    if (p == prop)
-                    {
-                        obj = obj2;
-                    }
-                    else
-                    {
-
-                        obj2.transform.position = new Vector3(0, -100, 0);
-                        geometryMap.Remove(name);
-                        if (toFollow != null && toFollow.Contains(obj2))
-                            toFollow.Remove(obj2);
-
-                        GameObject.Destroy(obj2);
-                        obj = instantiatePrefab(name, prop, initGame);
-
-                    }
-
-                }
-                List<int> pt = infoWorld.pointsLoc[cptPrefab].c;
-                Vector3 pos = converter.fromGAMACRS(pt[0], pt[1], pt[2]);
-                pos.y += pos.y + prop.yOffsetF;
-                float rot = prop.rotationCoeffF * ((0.0f + pt[3]) / parameters.precision) + prop.rotationOffsetF;
-                obj.transform.SetPositionAndRotation(pos, Quaternion.AngleAxis(rot, Vector3.up));
-                //obj.SetActive(true);
-                toRemove.Remove(name);
-                cptPrefab++;
-
-            }
-            else
-            {
-                if (polyGen == null)
-                {
-                    polyGen = PolygonGenerator.GetInstance();
-                    polyGen.Init(converter);
-                }
-                List<int> pt = infoWorld.pointsGeom[cptGeom].c;
-
-                
-                float YoffSet = (0.0f + infoWorld.offsetYGeom[cptGeom]) / (0.0f + parameters.precision);
-                
-                obj = polyGen.GeneratePolygons(false, name, pt, prop, parameters.precision);
-                obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + YoffSet, obj.transform.position.z);
-
-
-
-                if (prop.hasCollider)
-                {
-
-                    MeshCollider mc = obj.AddComponent<MeshCollider>();
-                    if (prop.isGrabable)
-                    {
-                        mc.convex = true;
-                    }
-                    mc.sharedMesh = polyGen.surroundMesh;
-                    // mc.isTrigger = prop.isTrigger;
-                }
-
-                instantiateGO(obj, name, prop);
-                // polyGen.surroundMesh = null;
-
-                if (geometryMap.ContainsKey(name))
-                {
-
-                    GameObject objOld = (GameObject)geometryMap[name][0];
-                    // objOld.transform.position = new Vector3(0, -100, 0);
-                    geometryMap.Remove(name);
-                    if (toFollow.Contains(objOld))
-                        toFollow.Remove(objOld);
-                    GameObject.Destroy(objOld);
-                }
-                List<object> pL = new List<object>();
-                pL.Add(obj); pL.Add(prop);
-                toRemove.Remove(name);
-
-                if (!initGame)
-                {
-
-                    geometryMap.Add(name, pL);
-                }
-
-                //obj.SetActive(true);
-                cptGeom++;
-
-            }
-
-
-
-        }
-        if (initGame)
-            AdditionalInitAfterGeomLoading();
-        infoWorld = null;
-    }
-
-   
-
+  
 
     // ############################################ GAMESTATE UPDATER ############################################
     public void UpdateGameState(GameState newState)
@@ -783,7 +772,6 @@ public class SimulationManager : MonoBehaviour
             
         ConnectionManager.Instance.SendExecutableAsk("move_player_external", args);
 
-        TimerSendPosition = TimeSendPosition;
     }
     private int cpt = 0;
 
@@ -900,41 +888,8 @@ public class SimulationManager : MonoBehaviour
 
 
 
-    private void UpdateAgentsList()
-    {
+   
 
-
-        ManageOtherInformation();
-        List<string> toRemove = new List<string>(geometryMap.Keys);
-
-        // foreach (List<object> obj in geometryMap.Values) {
-        //((GameObject) obj[0]).SetActive(false);
-        //}
-        // toRemove.addAll(toRemoveAfter.k);
-        GenerateGeometries(false, toRemove);
-
-
-        // List<string> ids = new List<string>(geometryMap.Keys);
-        foreach (string id in toRemove)
-        {
-            List<object> o = geometryMap[id];
-            GameObject obj = (GameObject)o[0];
-            obj.transform.position = new Vector3(0, -100, 0);
-            geometryMap.Remove(id);
-            if (toFollow.Contains(obj))
-                toFollow.Remove(obj);
-            GameObject.Destroy(obj);
-        }
-
-
-        infoWorld = null;
-    }
-
-    
-    protected virtual void ManageOtherInformation()
-    {
-
-    }
 
     // ############################################# HANDLERS ########################################
     private void HandleConnectionStateChanged(ConnectionState state)
@@ -994,8 +949,8 @@ public class SimulationManager : MonoBehaviour
     {
 
         if (content == null || content.Equals("{}")) return;
-       
-        switch (firstKey)
+        Debug.Log(firstKey);
+         switch (firstKey)
         {
             // handle general informations about the simulation
             case "precision":
@@ -1054,6 +1009,8 @@ public class SimulationManager : MonoBehaviour
                 break;
             case "readyToStart":
                 StartButton.interactable = true;
+
+                Debug.Log("StartButton.interactable: " + StartButton.interactable);
                 break;
             default:
                 ManageOtherMessages(content);

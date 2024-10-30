@@ -11,6 +11,9 @@ TagManager:
   - Water
   - Construction
   - textIP
+  - Teleportation
+  - locomotion
+  - Ally
   layers:
   - Default
   - TransparentFX
