@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
                 EndLevel();
             }
         }
+
+
     }
 
     void UpdateScore()

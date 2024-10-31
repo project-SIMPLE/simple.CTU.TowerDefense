@@ -169,8 +169,9 @@ public class GameUI : MonoBehaviour
         // socket.Connect();*/
 
         gameManager.StartLevel();
-
+        
         simulationManager.sendTrees();
+        simulationManager.createEnemySpawner();
         startContent.SetActive(false);
     }
 

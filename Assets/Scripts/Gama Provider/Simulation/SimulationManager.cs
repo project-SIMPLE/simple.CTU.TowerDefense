@@ -81,7 +81,10 @@ public class SimulationManager : MonoBehaviour
     protected bool readyToSendPositionInit = true;
 
     protected float TimeSendPosition = 0.5f;
-    protected float TimerSendPositionEnemy = 0.0f; 
+    protected float TimerSendPositionEnemy = 0.0f;
+
+   
+
     protected float TimerSendPositionFW = 0.0f;
     protected float TimerSendPosition = 0.0f;
 
@@ -95,10 +98,12 @@ public class SimulationManager : MonoBehaviour
     protected WallInfo dataWall;
     protected EnableMoveInfo enableMove;
     protected FreshWaterSpawn infoPump;
+    protected EnemySpawnerInfo infoEnemySp;
 
     public Button StartButton;
 
     private Dictionary<string, Barrack> waterPumps;
+    private Dictionary<string, EnemySpawner> enemySpawners;
     // ############################################ UNITY FUNCTIONS ############################################
     void Awake()
     {
@@ -114,6 +119,7 @@ public class SimulationManager : MonoBehaviour
         playerMovement(false);
         toFollow = new List<GameObject>();
         waterPumps = new Dictionary<string, Barrack>();
+        enemySpawners = new Dictionary<string, EnemySpawner>();
 
     }
 
@@ -218,8 +224,15 @@ public class SimulationManager : MonoBehaviour
             updateInfoSpawnRatePumper();
             infoPump = null;
         }
-       
+        if(infoEnemySp != null)
+        {
+            updateInfoSpawnRateEnemy();
+            infoEnemySp = null;
+        }
         
+
+
+
 
     }
 
@@ -294,12 +307,24 @@ public class SimulationManager : MonoBehaviour
         string sws = ",";
         string xs = "";
         string ys = "";
+        bool isFirst = true;
         foreach (GameObject t in freshWater)
         {
             if (!t.active) continue;
-            sws += (t.GetInstanceID()) + ",";
-            xs += (int)(t.transform.position.x * parameters.precision) + ",";
-            ys += (int)(t.transform.position.z * parameters.precision) + ",";
+
+            if (isFirst)
+            {
+                sws += (t.GetInstanceID()) ;
+                xs += (int)(t.transform.position.x * parameters.precision);
+                ys += (int)(t.transform.position.z * parameters.precision);
+                isFirst = false;
+            }
+            else
+            {
+                sws += "," +(t.GetInstanceID());
+                xs += "," + (int)(t.transform.position.x * parameters.precision);
+                ys += "," + (int)(t.transform.position.z * parameters.precision);
+            }
         }
 
         Dictionary<string, string> args = new Dictionary<string, string> {
@@ -337,20 +362,47 @@ public class SimulationManager : MonoBehaviour
         ConnectionManager.Instance.SendExecutableAsk("update_player_pos", args);
     }
 
-
-    public void createMoveWarning(GameObject warning)
+    public void createEnemySpawner()
     {
+        List<EnemySpawner> spawns = GameObject.FindGameObjectWithTag("levelManager").GetComponent<LevelManager>().Spawns;
+        string idTs = ",";
+        string xs = "";
+        string ys = "";
+        bool isFirst = true;
+        foreach (EnemySpawner s in spawns)
+        {
+
+            GameObject t = s.gameObject;
+            enemySpawners.Add(t.GetInstanceID() + "", t.GetComponent<EnemySpawner>());
+
+            if (isFirst)
+            {
+                idTs += (t.GetInstanceID());
+                xs += (int)(t.transform.position.x * parameters.precision) ;
+                ys += (int)(t.transform.position.z * parameters.precision) ;
+                isFirst = false;
+            }
+            else
+            {
+                idTs += "," + (t.GetInstanceID());
+                xs += "," + (int)(t.transform.position.x * parameters.precision);
+                ys += ","+(int)(t.transform.position.z * parameters.precision) ;
+            }
+            
+        }
+
         Dictionary<string, string> args = new Dictionary<string, string> {
             {"idP", ConnectionManager.Instance.GetConnectionId()},
-             {"idw", warning.GetInstanceID()+"" },
-              {"x", ""+warning.transform.position.x * parameters.precision },
-              {"y",""+warning.transform.position.z * parameters.precision}
+             {"idESStr", idTs },
+              {"xsStr", xs },
+              {"ysStr",ys}
 
         };
 
-        ConnectionManager.Instance.SendExecutableAsk("move_create_warning", args);
+        ConnectionManager.Instance.SendExecutableAsk("create_enemy_spawners", args);
     }
 
+   
     public void createMovePumper(GameObject pumper)
     {
 
@@ -375,12 +427,26 @@ public class SimulationManager : MonoBehaviour
             string sws = ",";
         string xs = "";
         string ys = "";
+
+        bool isFirst = true;
+
         foreach (GameObject t in enemies) 
         {
             if (!t.active) continue;
-            sws += (t.GetInstanceID()) + ",";
-            xs += (int)(t.transform.position.x * parameters.precision) + ",";
-            ys += (int)(t.transform.position.z * parameters.precision) + ",";
+            if (isFirst)
+            {
+                sws += (t.GetInstanceID()) ;
+                xs += (int)(t.transform.position.x * parameters.precision);
+                ys += (int)(t.transform.position.z * parameters.precision);
+                isFirst = false;
+            }
+            else
+            {
+                sws += ","+(t.GetInstanceID()) ;
+                xs += "," + (int)(t.transform.position.x * parameters.precision);
+                ys += "," + (int)(t.transform.position.z * parameters.precision);
+            }
+            
         }
 
         Dictionary<string, string> args = new Dictionary<string, string> {
@@ -401,6 +467,7 @@ public class SimulationManager : MonoBehaviour
 
         Tree[] trees = FindObjectsOfType<Tree>();
         List<GameObject> treeObjects = new List<GameObject>();
+        bool isFirst = true;
         foreach (Tree tree in trees)
         {
             if (tree.gameObject.active)
@@ -411,9 +478,20 @@ public class SimulationManager : MonoBehaviour
        string ys = "";
         foreach (GameObject t in treeObjects)
         {
-            idTs+= (t.GetInstanceID()) +",";
-            xs+= (int)(t.transform.position.x * parameters.precision) + ",";
-            ys+= (int)(t.transform.position.z * parameters.precision) + ",";
+            if (isFirst)
+            {
+                idTs += (t.GetInstanceID());
+                xs += (int)(t.transform.position.x * parameters.precision);
+                ys += (int)(t.transform.position.z * parameters.precision);
+                isFirst = false;
+            }
+            else
+            {
+                idTs += "," + (t.GetInstanceID());
+                xs += "," + (int)(t.transform.position.x * parameters.precision);
+                ys += "," + (int)(t.transform.position.z * parameters.precision);
+            }
+
         }
 
                 Dictionary<string, string> args = new Dictionary<string, string> {
@@ -426,6 +504,16 @@ public class SimulationManager : MonoBehaviour
 
           ConnectionManager.Instance.SendExecutableAsk("create_trees", args);
         
+    }
+    
+
+    private void updateInfoSpawnRateEnemy()
+    {
+        for (int i = 0; i < infoEnemySp.enemyspawners.Count; i++)
+        {
+            EnemySpawner es = enemySpawners[infoEnemySp.enemyspawners[i]];
+            es.SpawnRate = (0.0f + infoEnemySp.spawnrates[i]) / parameters.precision;
+        }
     }
 
     private void updateInfoSpawnRatePumper()
@@ -1014,7 +1102,10 @@ public class SimulationManager : MonoBehaviour
                 infoPump = FreshWaterSpawn.CreateFromJSON(content);
                 break;
 
-
+            case "enemyspawners":
+                infoEnemySp = EnemySpawnerInfo.CreateFromJSON(content);
+                break; 
+                
             // handle general informations about the simulation
             case "precision":
 

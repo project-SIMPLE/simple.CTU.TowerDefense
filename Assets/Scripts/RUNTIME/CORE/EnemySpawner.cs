@@ -20,6 +20,7 @@ public class EnemySpawner : MonoBehaviour, ISpawner
     public float SpawnRate
     {
         get { return spawnRate; }
+        set { spawnRate = value; }
     }
 
     public void Spawn()
