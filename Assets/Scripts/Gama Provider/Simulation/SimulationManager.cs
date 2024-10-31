@@ -83,6 +83,7 @@ public class SimulationManager : MonoBehaviour
     protected float TimeSendPosition = 0.5f;
     protected float TimerSendPositionEnemy = 0.0f; 
     protected float TimerSendPositionFW = 0.0f;
+    protected float TimerSendPosition = 0.0f;
 
     protected List<GameObject> locomotion;
     protected MoveHorizontal mh = null;
@@ -152,6 +153,7 @@ public class SimulationManager : MonoBehaviour
         interactionManager = player.GetComponentInChildren<XRInteractionManager>();
         OnEnable();
         TimerSendPositionEnemy = TimeSendPosition / 2.0f;
+        TimerSendPosition = TimeSendPosition / 3.0f;
     }
 
 
@@ -251,6 +253,10 @@ public class SimulationManager : MonoBehaviour
             {
                 TimerSendPositionFW -= Time.deltaTime;
             }
+            if (TimerSendPosition > 0)
+            {
+                TimerSendPosition -= Time.deltaTime;
+            }
             if (TimerSendPositionEnemy <= 0)
             {
                 sendEnemies();
@@ -261,7 +267,12 @@ public class SimulationManager : MonoBehaviour
                 sendFreshWater();
                 TimerSendPositionFW  = TimeSendPosition;
             }
-            
+            if (TimerSendPosition <= 0)
+            {
+                updatePlayerPos();
+                TimerSendPosition = TimeSendPosition;
+            }
+
         }
 
         OtherUpdate();
@@ -273,10 +284,7 @@ public class SimulationManager : MonoBehaviour
         GameObject[] freshWater = GameObject.FindGameObjectsWithTag("Ally");
         // action update_salty_water(string idP, string swsStr, string xsStr, string ysStr)
 
-        if (freshWater.Length > 0)
-        {
-            Debug.Log("SEND FRESH WATER: ");
-        }
+    
         string sws = ",";
         string xs = "";
         string ys = "";
@@ -298,6 +306,43 @@ public class SimulationManager : MonoBehaviour
 
         ConnectionManager.Instance.SendExecutableAsk("update_fresh_water", args);
 
+    }
+
+    public void updatePlayerPos()
+    {
+        //action update_player_pos(string idP, int x, int y, int o)
+        Vector2 vF = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z);
+        Vector2 vR = new Vector2(transform.forward.x, transform.forward.z);
+        vF.Normalize();
+        vR.Normalize();
+        float c = vF.x * vR.x + vF.y * vR.y;
+        float s = vF.x * vR.y - vF.y * vR.x;
+        int angle = (int)(((s > 0) ? -1.0 : 1.0) * (180 / Math.PI) * Math.Acos(c) * parameters.precision);
+
+        Dictionary<string, string> args = new Dictionary<string, string> {
+            {"idP", ConnectionManager.Instance.GetConnectionId()},
+             {"x", ""+XROrigin.localPosition.x * parameters.precision },
+              {"y",""+XROrigin.localPosition.z * parameters.precision},
+               {"o",angle+"" },
+
+
+        };
+
+        ConnectionManager.Instance.SendExecutableAsk("update_player_pos", args);
+    }
+
+
+    public void createMoveWarning(GameObject warning)
+    {
+        Dictionary<string, string> args = new Dictionary<string, string> {
+            {"idP", ConnectionManager.Instance.GetConnectionId()},
+             {"idw", warning.GetInstanceID()+"" },
+              {"x", ""+warning.transform.position.x * parameters.precision },
+              {"y",""+warning.transform.position.z * parameters.precision}
+
+        };
+
+        ConnectionManager.Instance.SendExecutableAsk("move_create_warning", args);
     }
 
     public void createMovePumper(GameObject pumper)
@@ -378,8 +423,7 @@ public class SimulationManager : MonoBehaviour
 
     private void updateAnimation()
     {
-        Debug.Log("updateAnimation");
-
+       
         foreach (String n in infoAnimation.names) {
             if (!geometryMap.ContainsKey(n)) continue;            
             List<object> o = geometryMap[n];
@@ -406,7 +450,6 @@ public class SimulationManager : MonoBehaviour
                 }
                 foreach (String t in infoAnimation.triggers)
                 {
-                    Debug.Log("t: " + t);
                     m_animator.SetTrigger(t);
 
                 }
@@ -949,8 +992,7 @@ public class SimulationManager : MonoBehaviour
     {
 
         if (content == null || content.Equals("{}")) return;
-        Debug.Log(firstKey);
-         switch (firstKey)
+        switch (firstKey)
         {
             // handle general informations about the simulation
             case "precision":

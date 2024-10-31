@@ -35,7 +35,6 @@ public class Tree : MonoBehaviour, IDamageable
         //currentHealh = health;
         currentHealh = 800;
         anim = GetComponent<Animator>();
-        Debug.Log("Tree Start");
         // Debug.Log("Tree_currentHealh"+ currentHealh);
     }
     // private bool created = false;
