@@ -1161,11 +1161,14 @@ public class SimulationManager : MonoBehaviour
             case "triggers":
                 infoAnimation = AnimationInfo.CreateFromJSON(content);
                 break;
-            case "readyToStart":
+            case "readyToStart": 
                 StartButton.interactable = true;
+                Dictionary<string, string> args = new Dictionary<string, string> {
+                    {"idP", ConnectionManager.Instance.GetConnectionId()} };
 
-                Debug.Log("StartButton.interactable: " + StartButton.interactable);
-                break;
+                ConnectionManager.Instance.SendExecutableAsk("player_ready", args);
+                 
+                break;  
             default:
                 ManageOtherMessages(content);
                 break;
