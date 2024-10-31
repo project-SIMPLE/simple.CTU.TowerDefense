@@ -94,10 +94,11 @@ public class SimulationManager : MonoBehaviour
     protected TeleoportAreaInfo dataTeleport;
     protected WallInfo dataWall;
     protected EnableMoveInfo enableMove;
-
+    protected FreshWaterSpawn infoPump;
 
     public Button StartButton;
 
+    private Dictionary<string, Barrack> waterPumps;
     // ############################################ UNITY FUNCTIONS ############################################
     void Awake()
     {
@@ -112,6 +113,7 @@ public class SimulationManager : MonoBehaviour
         XROrigin = player.transform;//.Find("XR Origin (XR Rig)");
         playerMovement(false);
         toFollow = new List<GameObject>();
+        waterPumps = new Dictionary<string, Barrack>();
 
     }
 
@@ -211,7 +213,11 @@ public class SimulationManager : MonoBehaviour
             updateAnimation();
             infoAnimation = null;
         }
-
+        if (infoPump != null)
+        {
+            updateInfoSpawnRatePumper();
+            infoPump = null;
+        }
        
         
 
@@ -302,7 +308,7 @@ public class SimulationManager : MonoBehaviour
               {"xsStr", xs },
               {"ysStr",ys}
 
-        };
+        }; 
 
         ConnectionManager.Instance.SendExecutableAsk("update_fresh_water", args);
 
@@ -347,6 +353,8 @@ public class SimulationManager : MonoBehaviour
 
     public void createMovePumper(GameObject pumper)
     {
+
+        waterPumps.Add(pumper.GetInstanceID() + "", pumper.GetComponent<Barrack>());
         Dictionary<string, string> args = new Dictionary<string, string> {
             {"idP", ConnectionManager.Instance.GetConnectionId()},
              {"idwp", pumper.GetInstanceID()+"" },
@@ -420,6 +428,14 @@ public class SimulationManager : MonoBehaviour
         
     }
 
+    private void updateInfoSpawnRatePumper()
+    {
+        for(int i = 0; i < infoPump.pumpers.Count; i++)
+        {
+            Barrack b = waterPumps[infoPump.pumpers[i]];
+            b.SpawnRate = (0.0f + infoPump.spawnrates[i]) / parameters.precision;
+        }
+    }
 
     private void updateAnimation()
     {
@@ -994,6 +1010,11 @@ public class SimulationManager : MonoBehaviour
         if (content == null || content.Equals("{}")) return;
         switch (firstKey)
         {
+            case "pumpers":
+                infoPump = FreshWaterSpawn.CreateFromJSON(content);
+                break;
+
+
             // handle general informations about the simulation
             case "precision":
 

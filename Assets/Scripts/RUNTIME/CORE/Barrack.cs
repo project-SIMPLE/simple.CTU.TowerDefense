@@ -35,6 +35,7 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     private int currentHealh;
     private float currentRate;
 
+
     // Getters
     public int Health
     {
@@ -47,7 +48,9 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     public float SpawnRate
     {
         get { return spawnRate; }
+        set { spawnRate = value; }  
     }
+
 
     void Start()
     {
