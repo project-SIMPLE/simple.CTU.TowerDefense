@@ -89,9 +89,7 @@ public class BuildSystemManager : MonoBehaviour
             {
                 connector.UpdateConnector(false);
             }
-            subsidenceManager.IncreaseSubsidenceLevel();
-            subsidenceManager.DecreaseWaterLevel();
-
+          
             if (currentBuildingIndex == 0)
             {
                 StatisticsManager.Instance.IncreateSluiceGateCount();

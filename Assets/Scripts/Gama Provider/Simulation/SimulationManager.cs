@@ -99,11 +99,14 @@ public class SimulationManager : MonoBehaviour
     protected EnableMoveInfo enableMove;
     protected FreshWaterSpawn infoPump;
     protected EnemySpawnerInfo infoEnemySp;
+    protected SubsidenceInfo subsidenceInfo;
 
     public Button StartButton;
 
     private Dictionary<string, Barrack> waterPumps;
     private Dictionary<string, EnemySpawner> enemySpawners;
+
+    private bool sendReady = true;
     // ############################################ UNITY FUNCTIONS ############################################
     void Awake()
     {
@@ -229,6 +232,12 @@ public class SimulationManager : MonoBehaviour
             updateInfoSpawnRateEnemy();
             infoEnemySp = null;
         }
+
+        if (subsidenceInfo != null)
+        {
+            updateSubsidence();
+            subsidenceInfo = null;
+        }
         
 
 
@@ -293,8 +302,38 @@ public class SimulationManager : MonoBehaviour
             }
 
         }
+        if (!sendReady)
+        {
+            sendReadyToGAMA();
+        }
 
         OtherUpdate();
+    }
+
+    public void sendReadyToGAMA()
+    {
+        if (StartButton.interactable == false)
+        {
+            StartButton.interactable = true;
+            Dictionary<string, string> args = new Dictionary<string, string> {
+                    {"idP", ConnectionManager.Instance.GetConnectionId()} };
+
+            ConnectionManager.Instance.SendExecutableAsk("player_ready", args);
+
+        }
+        sendReady = true;
+
+    }
+
+    public void ChangeState(string NewState)
+    {
+        Dictionary<string, string> args = new Dictionary<string, string> {
+            {"idP", ConnectionManager.Instance.GetConnectionId()},
+             {"new_state", NewState }
+
+        };
+
+        ConnectionManager.Instance.SendExecutableAsk("change_state", args);
     }
 
     public void sendFreshWater()
@@ -502,8 +541,14 @@ public class SimulationManager : MonoBehaviour
           ConnectionManager.Instance.SendExecutableAsk("create_trees", args);
         
     }
-    
+     
+    private void updateSubsidence()
+    {
+       /* SubsidenceManager subMan = GameObject.FindGameObjectWithTag("subsidenceManager").GetComponent<SubsidenceManager>();
 
+        subMan.RemainingWaterLevelLocal = (0.0f + subsidenceInfo.waterLocal) / parameters.precision;
+        subMan.RemainingWaterLevelGlobal = (0.0f + subsidenceInfo.waterGlobal) / parameters.precision;*/
+    }
     private void updateInfoSpawnRateEnemy()
     {
         for (int i = 0; i < infoEnemySp.enemyspawners.Count; i++)
@@ -1095,6 +1140,10 @@ public class SimulationManager : MonoBehaviour
         if (content == null || content.Equals("{}")) return;
         switch (firstKey)
         {
+            case "subsidences":
+                subsidenceInfo = SubsidenceInfo.CreateFromJSON(content);
+                break;
+              
             case "pumpers":
                 infoPump = FreshWaterSpawn.CreateFromJSON(content);
                 break;
@@ -1158,13 +1207,8 @@ public class SimulationManager : MonoBehaviour
             case "triggers":
                 infoAnimation = AnimationInfo.CreateFromJSON(content);
                 break;
-            case "readyToStart": 
-                StartButton.interactable = true;
-                Dictionary<string, string> args = new Dictionary<string, string> {
-                    {"idP", ConnectionManager.Instance.GetConnectionId()} };
-
-                ConnectionManager.Instance.SendExecutableAsk("player_ready", args);
-                 
+            case "readyToStart":
+                sendReady = false;
                 break;  
             default:
                 ManageOtherMessages(content);
@@ -1208,8 +1252,11 @@ public class SimulationManager : MonoBehaviour
 
     public void RestartGame()
     {
-        OnGameRestarted?.Invoke();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("RESTART GAMA SIM ");
+        Dictionary<string, string> args = new Dictionary<string, string> {
+            {"id", ConnectionManager.Instance.GetConnectionId()   }};
+
+        ConnectionManager.Instance.SendExecutableAsk("restart", args);
     }
 
     public bool IsGameState(GameState state)

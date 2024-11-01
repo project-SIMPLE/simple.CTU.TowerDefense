@@ -99,6 +99,11 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
         currentHealh -= damage;
         if (currentHealh <= 0)
         {
+            Dictionary<string, string> args = new Dictionary<string, string> {
+                {"idP", ConnectionManager.Instance.GetConnectionId()},
+                {"idwp", gameObject.GetInstanceID()+"" }};
+
+            ConnectionManager.Instance.SendExecutableAsk("delete_water_pump", args);
             Die();
         }
     }

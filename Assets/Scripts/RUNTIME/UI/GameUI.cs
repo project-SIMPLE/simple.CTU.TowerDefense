@@ -60,6 +60,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lose_reportEnemiesNumber;
     [SerializeField] private TextMeshProUGUI lose_reportSubsidenceScore;
 
+    private bool endDone = false;
     void Start()
     {
         //string ip = PlayerPrefs.GetString("IP");
@@ -83,8 +84,10 @@ public class GameUI : MonoBehaviour
     void Update()
     {
         ready = true;
-        if (gameManager.CurrentGameStatus() == GameStatus.Win || gameManager.CurrentGameStatus() == GameStatus.Lose)
+        
+        if (!endDone && (gameManager.CurrentGameStatus() == GameStatus.Win || gameManager.CurrentGameStatus() == GameStatus.Lose) )
         {
+            endDone = true;
             transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
             startContent.SetActive(false);
             //finalContent.SetActive(true);
@@ -128,7 +131,7 @@ public class GameUI : MonoBehaviour
             reportRemainingGroundwaterLevelGlobal.text = "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal;
         
             // Son: Update Win and Lose
-
+             
             win_reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
             win_reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
             win_reportPumpNumber.text = "" + StatisticsManager.Instance.WaterPumpCount;
@@ -207,13 +210,7 @@ public class GameUI : MonoBehaviour
 
     public void Restart()
     {
-        Dictionary<string, string> args = new Dictionary<string, string> {
-            {"id",  ("\"1\"") }
-        };
-
-        Debug.Log("Restart: ");
-
-        SendExecutableAsk("simulation[0]", "Restart", args);
+        SimulationManager.Instance.RestartGame();
     }
 
     public void DeletePlayer(GameObject obj)
@@ -326,40 +323,4 @@ public class GameUI : MonoBehaviour
 
     }
 
-    public void SendExecutableAsk(string AgentToSendInfo, string action, Dictionary<string, string> arguments)
-    {
-        if (!connected) return;
-        string argsJSON = JsonConvert.SerializeObject(arguments);
-        Dictionary<string, string> jsonExpression = null;
-        jsonExpression = new Dictionary<string, string> {
-            {"type", "ask"},
-            {"action", action},
-            {"args", argsJSON},
-            {"agent", AgentToSendInfo }
-        };
-
-        string jsonStringExpression = JsonConvert.SerializeObject(jsonExpression);
-
-        SendMessageToServer(jsonStringExpression, new Action<bool>((success) =>
-        {
-
-        }));
-    }
-    public WebSocket GetSocket()
-    {
-        return socket;
-    }
-
-    protected void SendMessageToServer(string message, Action<bool> successCallback)
-    {
-        socket.SendAsync(message, successCallback);
-    }
-
-    void OnDestroy()
-    {
-        if (socket != null)
-        {
-            socket.Close();
-        }
-    }
 }

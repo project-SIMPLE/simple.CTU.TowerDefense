@@ -16,6 +16,7 @@ TagManager:
   - Ally
   - levelManager
   - Tree
+  - subsidenceManager
   layers:
   - Default
   - TransparentFX

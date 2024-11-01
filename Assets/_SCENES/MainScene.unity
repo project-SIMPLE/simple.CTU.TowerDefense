@@ -7278,6 +7278,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AM_Coconut (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5522154933229722952, guid: 0d617ac5f2a624cd2947d9bcf855bcf3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8614458544117232963, guid: 0d617ac5f2a624cd2947d9bcf855bcf3,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -13414,6 +13419,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XR Device Simulator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29162,10 +29172,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: AM_Coconut (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 6770999230807317561, guid: 0d617ac5f2a624cd2947d9bcf855bcf3,
+    - target: {fileID: 5522154933229722952, guid: 0d617ac5f2a624cd2947d9bcf855bcf3,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770999230807317561, guid: 0d617ac5f2a624cd2947d9bcf855bcf3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8614458544117232963, guid: 0d617ac5f2a624cd2947d9bcf855bcf3,
         type: 3}
@@ -45904,6 +45919,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AM_Coconut
       objectReference: {fileID: 0}
+    - target: {fileID: 463619027317591202, guid: 046044e06b5f5de4aaefcf083be6fad0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 804574531366198220, guid: 046044e06b5f5de4aaefcf083be6fad0,
         type: 3}
       propertyPath: m_Layer
@@ -54485,7 +54505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1482602327
 Transform:
   m_ObjectHideFlags: 0
@@ -66554,6 +66574,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AM_Coconut (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5522154933229722952, guid: 0d617ac5f2a624cd2947d9bcf855bcf3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8614458544117232963, guid: 0d617ac5f2a624cd2947d9bcf855bcf3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -74252,6 +74277,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_ENV_Gr6
+      objectReference: {fileID: 0}
+    - target: {fileID: 240318225628208843, guid: b4888d00650debf4fadea663d34de3d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6093812581568511831, guid: b4888d00650debf4fadea663d34de3d4,
         type: 3}
@@ -85825,7 +85855,7 @@ PrefabInstance:
     - target: {fileID: 8516060219118734762, guid: f6a1a10673f574ba4baf7b60ac085d3d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8516060219118734762, guid: f6a1a10673f574ba4baf7b60ac085d3d,
         type: 3}
@@ -88360,7 +88390,7 @@ PrefabInstance:
     - target: {fileID: 1215917873147971265, guid: 559c696eca6a74937b3fd1653b79e5c1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1215917873147971265, guid: 559c696eca6a74937b3fd1653b79e5c1,
         type: 3}

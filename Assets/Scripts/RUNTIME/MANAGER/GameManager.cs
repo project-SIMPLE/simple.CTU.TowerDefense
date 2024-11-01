@@ -107,10 +107,10 @@ public class GameManager : MonoBehaviour
     {
         // PDFMaker.Instance.MakePDF();
         UpdateScore();
-        Destroy(buildSystemManager.gameObject);
+       /* Destroy(buildSystemManager.gameObject);
         Destroy(playerResourcesManager.gameObject);
         Destroy(levelManager.gameObject);
-        Destroy(buildUI.gameObject);
+        Destroy(buildUI.gameObject);*/
     }
 
 }
