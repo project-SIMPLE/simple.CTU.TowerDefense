@@ -26,6 +26,7 @@ public class Ally : MonoBehaviour, IDamageable, IDamage
     private int currentHealh;
     private Transform target;
     private UnityEngine.AI.NavMeshAgent navAgent;
+    private float timeLife = 5.0f;
 
     // Getters 
     public int Health { 
@@ -51,12 +52,18 @@ public class Ally : MonoBehaviour, IDamageable, IDamage
     {
         if(target)
         {
+            timeLife = 5.0f;
             navAgent.enabled = true;
             navAgent.SetDestination(target.position);
         }
         else
         {
             navAgent.enabled = false;
+            timeLife -= Time.deltaTime;
+            if (timeLife <=0)
+            {
+                 Die();
+            }
         }  
     }
     

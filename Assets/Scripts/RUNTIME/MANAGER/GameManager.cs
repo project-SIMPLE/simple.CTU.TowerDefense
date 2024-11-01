@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     private GameStatus gameStatus;
     private int score;
 
+    //Water
+    // public static GameManager Instance { get; private set; }
+    private int totalWater = 0;
+
     // Getters
     public int Score {
         get { return score; }
@@ -111,5 +115,15 @@ public class GameManager : MonoBehaviour
         Destroy(buildUI.gameObject);
     }
 
+    public void IncrementWaterCount()
+    {
+        totalWater++;
+        Debug.Log("Total Water count: " + totalWater);
+    }
+
+    // public int GetTotalBulletsFired()
+    // {
+    //     return totalBulletsFired;
+    // }
 }
 

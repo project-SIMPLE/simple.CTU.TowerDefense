@@ -11,6 +11,9 @@ TagManager:
   - Water
   - Construction
   - textIP
+  - Teleportation
+  - locomotion
+  - GameManager
   layers:
   - Default
   - TransparentFX

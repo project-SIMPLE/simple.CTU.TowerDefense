@@ -34,6 +34,8 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     // runtime privates
     private int currentHealh;
     private float currentRate;
+    
+    GameManager GameManagerScript;
 
     // Getters
     public int Health
@@ -49,9 +51,11 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
         get { return spawnRate; }
     }
 
+    
     void Start()
     {
         currentHealh = health;
+        GameManagerScript =  GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
         Collider[] nearbyTargets = Physics.OverlapSphere(transform.position, 5f, targetLayerMask);
         foreach (var target in nearbyTargets)
@@ -79,11 +83,13 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
             currentRate -= Time.deltaTime;
             if (currentRate <= 0)
             {
-                if (CanSpawn())
-                {
+                // if (CanSpawn())
+                // {
                     Spawn();
                     currentRate = spawnRate;
-                }
+                     // Gọi đến GameManager để tăng số đạn
+                    GameManagerScript.IncrementWaterCount();
+                // }
             }
         }
     }
@@ -94,7 +100,8 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
         currentHealh -= damage;
         if (currentHealh <= 0)
         {
-            Die();
+            // Die();
+            animator.Play("ANIM_WaterPump_Broken");
         }
     }
 
