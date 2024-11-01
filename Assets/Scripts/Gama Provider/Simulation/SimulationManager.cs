@@ -465,19 +465,16 @@ public class SimulationManager : MonoBehaviour
     {
         Debug.Log("SEND TREES TO GAMA");
 
-        Tree[] trees = FindObjectsOfType<Tree>();
-        List<GameObject> treeObjects = new List<GameObject>();
+
         bool isFirst = true;
-        foreach (Tree tree in trees)
-        {
-            if (tree.gameObject.active)
-                treeObjects.Add(tree.gameObject);
-        }
+       
         string idTs = ",";
         string xs = "";
        string ys = "";
-        foreach (GameObject t in treeObjects)
+        foreach (GameObject t in GameObject.FindGameObjectsWithTag("Tree"))
         {
+            if(!t.gameObject.active)
+                continue;
             if (isFirst)
             {
                 idTs += (t.GetInstanceID());

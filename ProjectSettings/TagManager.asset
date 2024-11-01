@@ -15,6 +15,7 @@ TagManager:
   - locomotion
   - Ally
   - levelManager
+  - Tree
   layers:
   - Default
   - TransparentFX
