@@ -35,7 +35,6 @@ public class Tree : MonoBehaviour, IDamageable
         //currentHealh = health;
         currentHealh = 800;
         anim = GetComponent<Animator>();
-        Debug.Log("Tree Start");
         // Debug.Log("Tree_currentHealh"+ currentHealh);
     }
     // private bool created = false;
@@ -50,8 +49,17 @@ public class Tree : MonoBehaviour, IDamageable
 
         
         if (currentHealh <= -20)
-        {            
-            Debug.Log("currentHealh < 0: ");
+        {
+            
+             Dictionary<string, string> args = new Dictionary<string, string> {
+                {"idP", ConnectionManager.Instance.GetConnectionId()},
+                {"idT", gameObject.GetInstanceID()+"" }};
+
+                ConnectionManager.Instance.SendExecutableAsk("delete_tree", args);
+            
+
+
+                Debug.Log("currentHealh < 0: ");
             // anim.Play("Tree_Die", -1,0f);
 
             if (GameUI.Instance != null  && gameObject != null)

@@ -14,6 +14,10 @@ TagManager:
   - Teleportation
   - locomotion
   - GameManager
+  - Ally
+  - levelManager
+  - Tree
+  - subsidenceManager
   layers:
   - Default
   - TransparentFX

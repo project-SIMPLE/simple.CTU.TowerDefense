@@ -49,6 +49,7 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
     public float SpawnRate
     {
         get { return spawnRate; }
+        set { spawnRate = value; }  
     }
 
     
@@ -69,6 +70,8 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
             }
         }
         currentRate = spawnRate;
+        SimulationManager sm = FindObjectOfType<SimulationManager>();
+        sm.createMovePumper(gameObject); 
     }
 
     void Update()
@@ -83,13 +86,14 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
             currentRate -= Time.deltaTime;
             if (currentRate <= 0)
             {
-                // if (CanSpawn())
-                // {
+                if (CanSpawn())
+                {
                     Spawn();
                     currentRate = spawnRate;
                      // Gọi đến GameManager để tăng số đạn
                     GameManagerScript.IncrementWaterCount();
-                // }
+
+                }
             }
         }
     }
@@ -100,6 +104,11 @@ public class Barrack : MonoBehaviour, ISpawner, IDamageable
         currentHealh -= damage;
         if (currentHealh <= 0)
         {
+            Dictionary<string, string> args = new Dictionary<string, string> {
+                {"idP", ConnectionManager.Instance.GetConnectionId()},
+                {"idwp", gameObject.GetInstanceID()+"" }};
+
+            ConnectionManager.Instance.SendExecutableAsk("delete_water_pump", args);
             // Die();
             animator.Play("ANIM_WaterPump_Broken");
         }

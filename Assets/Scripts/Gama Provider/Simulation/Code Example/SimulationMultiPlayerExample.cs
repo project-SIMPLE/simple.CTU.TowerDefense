@@ -70,28 +70,7 @@ public class SimulationMultiPlayerExample : SimulationManager
         }
     }
 
-    protected override void SelectInteraction(SelectEnterEventArgs ev)
-    {
-
-        if (remainingTime <= 0.0)
-        {
-            GameObject obj = ev.interactableObject.transform.gameObject;
-
-            if (("selectable").Equals(obj.tag))
-            {
-                Dictionary<string, string> args = new Dictionary<string, string> {
-                         {"id", obj.name },
-                         {"player",ConnectionManager.Instance.getUseMiddleware() ? ConnectionManager.Instance.GetConnectionId()  : ("\"" + ConnectionManager.Instance.GetConnectionId() +  "\"") },
-
-                    };
-                ConnectionManager.Instance.SendExecutableAsk("change_color", args);
-               
-                remainingTime = timeWithoutInteraction;
-            }
-
-        }
-
-    }
+    
 
 }
 

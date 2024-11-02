@@ -42,11 +42,7 @@ public class SimulationManagerSolo : SimulationManager
 
 
 
-    protected override void ManageOtherInformation()
-    {
-
-    }
-
+  
     protected override void OtherUpdate()
     { 
         // if (message != null)
@@ -94,41 +90,6 @@ public class SimulationManagerSolo : SimulationManager
 
     }
 
-    protected override void SelectInteraction(SelectEnterEventArgs ev)
-    {
+   
 
-        if (remainingTime <= 0.0)
-        {
-            GameObject grabbedObject = ev.interactableObject.transform.gameObject;
-
-            if (("selectable").Equals(grabbedObject.tag))
-            {
-                Dictionary<string, string> args = new Dictionary<string, string> {
-                         {"id", grabbedObject.name }
-                    };
-                ConnectionManager.Instance.SendExecutableAsk("update_hotspot", args);
-                bool newSelection = !SelectedObjects.Contains(grabbedObject);
-                if (newSelection)
-                    SelectedObjects.Add(grabbedObject);
-                else
-                    SelectedObjects.Remove(grabbedObject);
-                SimulationManagerSolo.ChangeColor(grabbedObject, newSelection ? Color.red : Color.gray);
-
-                remainingTime = timeWithoutInteraction;
-            }
-            else if (grabbedObject.tag.Equals("car") || grabbedObject.tag.Equals("moto"))
-            {
-                Dictionary<string, string> args = new Dictionary<string, string> {
-                         {"id", grabbedObject.name }
-                    };
-                ConnectionManager.Instance.SendExecutableAsk("remove_vehicle", args);
-                grabbedObject.SetActive(false);
-                //toDelete.Add(grabbedObject);
-
-            }
-
-
-        }
-
-    }
 }

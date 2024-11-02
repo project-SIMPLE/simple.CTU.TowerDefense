@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private SimulationManager simulationManager;
     [SerializeField] private TutorialManager tutorialManager;
     [SerializeField] private Transform head;
     [SerializeField] private float spawnDistance;
@@ -59,6 +60,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lose_reportEnemiesNumber;
     [SerializeField] private TextMeshProUGUI lose_reportSubsidenceScore;
 
+    private bool endDone = false;
     void Start()
     {
         //string ip = PlayerPrefs.GetString("IP");
@@ -82,8 +84,10 @@ public class GameUI : MonoBehaviour
     void Update()
     {
         ready = true;
-        if (gameManager.CurrentGameStatus() == GameStatus.Win || gameManager.CurrentGameStatus() == GameStatus.Lose)
+        
+        if (!endDone && (gameManager.CurrentGameStatus() == GameStatus.Win || gameManager.CurrentGameStatus() == GameStatus.Lose) )
         {
+            endDone = true;
             transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
             startContent.SetActive(false);
             //finalContent.SetActive(true);
@@ -127,7 +131,7 @@ public class GameUI : MonoBehaviour
             reportRemainingGroundwaterLevelGlobal.text = "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal;
         
             // Son: Update Win and Lose
-
+             
             win_reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
             win_reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
             win_reportPumpNumber.text = "" + StatisticsManager.Instance.WaterPumpCount;
@@ -168,6 +172,9 @@ public class GameUI : MonoBehaviour
         // socket.Connect();*/
 
         gameManager.StartLevel();
+        
+        simulationManager.sendTrees();
+        simulationManager.createEnemySpawner();
         startContent.SetActive(false);
     }
 
@@ -201,42 +208,9 @@ public class GameUI : MonoBehaviour
     public int precision = 1;
 
 
-    public void UpdatePlayer()
-    {
-        Vector2 vF = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z);
-        Vector2 vR = new Vector2(transform.forward.x, transform.forward.z);
-        vF.Normalize();
-        vR.Normalize();
-        float c = vF.x * vR.x + vF.y * vR.y;
-        float s = vF.x * vR.y - vF.y * vR.x;
-
-        int angle = (int)(((s > 0) ? -1.0 : 1.0) * (180 / Math.PI) * Math.Acos(c) * 1);
-        List<float> p = toGAMACRS3D(Camera.main.transform.position);
-
-        Dictionary<string, string> args = new Dictionary<string, string> {
-            {"id",  ("\"mainPlayer\"") },
-            {"x", "" +p[0]},
-            {"y", "" +p[1]},
-            {"z", "" +p[2]},
-            {"angle", "" +angle}
-        };
-        SendExecutableAsk("simulation[0]", "move_player_main", args);
-        // ConnectionManager.Instance.SendExecutableExpression("do move_player_external($id," + p[0] + "," + p[1] + "," + angle + ");");
-
-    }
-    void FixedUpdate()
-    {
-        UpdatePlayer();
-    }
     public void Restart()
     {
-        Dictionary<string, string> args = new Dictionary<string, string> {
-            {"id",  ("\"1\"") }
-        };
-
-        Debug.Log("Restart: ");
-
-        SendExecutableAsk("simulation[0]", "Restart", args);
+        SimulationManager.Instance.RestartGame();
     }
 
     public void DeletePlayer(GameObject obj)
@@ -349,40 +323,4 @@ public class GameUI : MonoBehaviour
 
     }
 
-    public void SendExecutableAsk(string AgentToSendInfo, string action, Dictionary<string, string> arguments)
-    {
-        if (!connected) return;
-        string argsJSON = JsonConvert.SerializeObject(arguments);
-        Dictionary<string, string> jsonExpression = null;
-        jsonExpression = new Dictionary<string, string> {
-            {"type", "ask"},
-            {"action", action},
-            {"args", argsJSON},
-            {"agent", AgentToSendInfo }
-        };
-
-        string jsonStringExpression = JsonConvert.SerializeObject(jsonExpression);
-
-        SendMessageToServer(jsonStringExpression, new Action<bool>((success) =>
-        {
-
-        }));
-    }
-    public WebSocket GetSocket()
-    {
-        return socket;
-    }
-
-    protected void SendMessageToServer(string message, Action<bool> successCallback)
-    {
-        socket.SendAsync(message, successCallback);
-    }
-
-    void OnDestroy()
-    {
-        if (socket != null)
-        {
-            socket.Close();
-        }
-    }
 }

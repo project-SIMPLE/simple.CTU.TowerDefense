@@ -29,6 +29,11 @@ public class LevelManager : MonoBehaviour
     private int currentWaveSpawnIndex;
 
     // Getters
+    public List<EnemySpawner> Spawns
+    {
+        get { return spawns; }
+    }
+    // Getters
     public bool Finished
     {
         get { return finished; }

@@ -18,6 +18,7 @@ public class SubsidenceManager : MonoBehaviour
     GAMAMessage message = null;
     private bool isSubsidence = false;
     private float currentWaterLevel = 1f;
+    private float currentWaterLevelGlobal = 1f;
     private float currentSubsidenceLevel = 0f;
 
     [SerializeField] private float subsidenceLevel1 = 1f;
@@ -39,14 +40,16 @@ public class SubsidenceManager : MonoBehaviour
     public float RemainingWaterLevelLocal
     {
         get { return currentWaterLevel; }
+        set { currentWaterLevel = value; }
     }
     public float RemainingWaterLevelGlobal
     {
-        get { return currentWaterLevel; }
+        get { return currentWaterLevelGlobal; }
+        set { currentWaterLevelGlobal = value; }
     }
     public float SubsidenceScore
     {
-        get { return currentSubsidenceLevel; }
+        get { return currentSubsidenceLevel; } 
     }
 
     public void IncreaseSubsidenceLevel()
