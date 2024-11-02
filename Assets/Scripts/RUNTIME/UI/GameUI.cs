@@ -215,22 +215,22 @@ public class GameUI : MonoBehaviour
 
     public void DeletePlayer(GameObject obj)
     {
-        if (SimulationManager.Instance.IsGameState(GameState.GAME))
-        {
-            int instanceId = obj.GetInstanceID();
+        // if (SimulationManager.Instance.IsGameState(GameState.GAME))
+        // {
+        //     int instanceId = obj.GetInstanceID();
 
-            Dictionary<string, string> args = new Dictionary<string, string> {
-            {"idP",ConnectionManager.Instance.GetConnectionId() },
-            {"id", ""+  obj },
-            {"iid",  ""+instanceId },
-            };
+        //     Dictionary<string, string> args = new Dictionary<string, string> {
+        //     {"idP",ConnectionManager.Instance.GetConnectionId() },
+        //     {"id", ""+  obj },
+        //     {"iid",  ""+instanceId },
+        //     };
 
-            // Debug.Log("DeletePlayer: " + obj);
+        //     // Debug.Log("DeletePlayer: " + obj);
 
-            // SendExecutableAsk("simulation[0]", "DeletePlayer", args);
+        //     // SendExecutableAsk("simulation[0]", "DeletePlayer", args);
 
-            ConnectionManager.Instance.SendExecutableAsk("DeletePlayer", args);
-        }
+        //     ConnectionManager.Instance.SendExecutableAsk("DeletePlayer", args);
+        // }
     }
     public void UpdateConstructionPosition(GameObject obj)
     {

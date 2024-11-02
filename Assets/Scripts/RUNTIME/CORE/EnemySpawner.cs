@@ -10,8 +10,8 @@ public class EnemySpawner : MonoBehaviour, ISpawner
 
     // runtime privates
     private int spawnCount = 10;
-    private int minSpawnCount = 5;
-    private int maxSpawnCount = 20;
+    private int minSpawnCount = 1;
+    private int maxSpawnCount = 3;
     private int count = 0;
 
     // Getters
