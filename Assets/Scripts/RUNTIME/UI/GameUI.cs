@@ -136,13 +136,13 @@ public class GameUI : MonoBehaviour
             win_reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
             win_reportPumpNumber.text = "" + StatisticsManager.Instance.WaterPumpCount;
             win_reportEnemiesNumber.text = "" + StatisticsManager.Instance.EnemyKillCount;
-            win_reportSubsidenceScore.text = "" + (playerResourcesManager.CurrentRefillSources * subsidenceManager.SubsidenceScore);
+            win_reportSubsidenceScore.text = "" + (playerResourcesManager.CurrentRefillSources * (1 - (subsidenceManager.SubsidenceScore/10)) );
 
             lose_reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
             lose_reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
             lose_reportPumpNumber.text = "" + StatisticsManager.Instance.WaterPumpCount;
             lose_reportEnemiesNumber.text = "" + StatisticsManager.Instance.EnemyKillCount;
-            lose_reportSubsidenceScore.text = "" + (playerResourcesManager.CurrentRefillSources * subsidenceManager.SubsidenceScore);
+            lose_reportSubsidenceScore.text = "" + (playerResourcesManager.CurrentRefillSources * (1 - (subsidenceManager.SubsidenceScore/10)) );
 
         }
 
