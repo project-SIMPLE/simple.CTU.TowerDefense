@@ -61,6 +61,14 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lose_reportSubsidenceScore;
 
     private bool endDone = false;
+
+    public float SubsidenceScore = 0;
+    public float LiveTreeRate = 0;
+    public float NumberPumper = 0;
+    public float TotalNeutralWater = 0;
+    public float TotalMiningWater = 0;
+    public float ScoreGame = 0;
+
     void Start()
     {
         //string ip = PlayerPrefs.GetString("IP");
@@ -119,6 +127,12 @@ public class GameUI : MonoBehaviour
                          "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal + "\n" +
                          "Subsidence Score: " + subsidenceManager.SubsidenceScore;
 
+            SubsidenceScore = subsidenceManager.SubsidenceScore;
+            LiveTreeRate = playerResourcesManager.CurrentRefillSources;
+            NumberPumper = StatisticsManager.Instance.WaterPumpCount;
+            TotalNeutralWater = subsidenceManager.RemainingWaterLevelLocal;
+            TotalMiningWater = 0;
+            ScoreGame = 0;
             // Son: Setup Final Report
             reportTextMeshPro.text = reportText;
             reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
@@ -130,6 +144,9 @@ public class GameUI : MonoBehaviour
             reportRemainingGroundwaterLevelLocal.text = "Remaining Groundwater Level (Local): " + subsidenceManager.RemainingWaterLevelLocal;
             reportRemainingGroundwaterLevelGlobal.text = "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal;
         
+
+
+
             // Son: Update Win and Lose
              
             win_reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
