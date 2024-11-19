@@ -38,7 +38,7 @@ public class SimulationManager : MonoBehaviour
     // called when the current game state changes
     public static event Action<GameState> OnGameStateChanged;
     // called when the game is restarted
-    public static event Action OnGameRestarted;
+//    public static event Action OnGameRestarted;
 
     // called when the world data is received
     //    public static event Action<WorldJSONInfo> OnWorldDataReceived;
@@ -349,7 +349,7 @@ public class SimulationManager : MonoBehaviour
         bool isFirst = true;
         foreach (GameObject t in freshWater)
         {
-            if (!t.active) continue;
+            if (!t.activeSelf) continue;
 
             if (isFirst)
             {
@@ -471,7 +471,7 @@ public class SimulationManager : MonoBehaviour
 
         foreach (GameObject t in enemies) 
         {
-            if (!t.active) continue;
+            if (!t.activeSelf) continue;
             if (isFirst)
             {
                 sws += (t.GetInstanceID()) ;
@@ -512,7 +512,7 @@ public class SimulationManager : MonoBehaviour
        string ys = "";
         foreach (GameObject t in GameObject.FindGameObjectsWithTag("Tree"))
         {
-            if(!t.gameObject.active)
+            if(!t.gameObject.activeSelf)
                 continue;
             if (isFirst)
             {
@@ -809,7 +809,7 @@ public class SimulationManager : MonoBehaviour
     {
         foreach (GameObject loc in locomotion)
         {
-            loc.active = active;
+            loc.SetActive(active);
         }
          if (mh != null)
          {
@@ -962,7 +962,6 @@ public class SimulationManager : MonoBehaviour
         ConnectionManager.Instance.SendExecutableAsk("move_player_external", args);
 
     }
-    private int cpt = 0;
 
 
     private void instantiateGO(GameObject obj, String name, PropertiesGAMA prop)
@@ -1134,7 +1133,7 @@ public class SimulationManager : MonoBehaviour
 
     }
 
-    private async void HandleServerMessageReceived(String firstKey, String content)
+    private  void HandleServerMessageReceived(String firstKey, String content)
     {
 
         if (content == null || content.Equals("{}")) return;

@@ -15,14 +15,14 @@ public class Tree : MonoBehaviour, IDamageable
     */
 
     [Header("Stats")]
-    [SerializeField] private int health = 2;
+//    [SerializeField] private int health = 2;
 
     // runtime privates
     public static int currentHealh;
     public Animator anim;
     public TextMeshProUGUI hp;
     private int count;
-    private int condition = 0;
+  //  private int condition = 0;
 
     // Getters
     public int Health

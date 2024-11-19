@@ -15,7 +15,6 @@ public class SubsidenceManager : MonoBehaviour
     We are processing subsidence data from Gamma
     
     */
-    GAMAMessage message = null;
     private bool isSubsidence = false;
     private float currentWaterLevel = 1f;
     private float currentWaterLevelGlobal = 1f;

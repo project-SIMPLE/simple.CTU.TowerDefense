@@ -17,7 +17,7 @@ public static class StaticInformation
 
                 string lastIP = myIP.Contains(".") ? myIP.Split(".")[3] : "0";
                 connectionId = "Player_" + lastIP;// + lastIP;
-            } catch(Exception e)
+            } catch
             {
                 connectionId = hostName;
             }

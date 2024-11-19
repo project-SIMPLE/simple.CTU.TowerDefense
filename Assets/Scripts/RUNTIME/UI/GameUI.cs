@@ -31,7 +31,7 @@ public class GameUI : MonoBehaviour
 
 
     private WebSocket socket;
-    private bool connected = false;
+//    private bool connected = false;
     public static GameUI Instance = null;
 
     private string reportText = "";
@@ -335,7 +335,7 @@ public class GameUI : MonoBehaviour
     }
     protected void HandleConnectionOpen(object sender, System.EventArgs e)
     {
-        connected = true;
+      //  connected = true;
         Debug.Log("ConnectionManager: Connection opened");
 
     }

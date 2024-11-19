@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
         var navAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (navAgent) navAgent.speed = moveSpeed;
     }
-    int tick=0;
+//    int tick=0;
     void Update()
     {
         if (IsDead()) return; 
