@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.19784193, g: 0.34197962, b: 0.45886195, a: 1}
+  m_IndirectSpecularColor: {r: 0.1979925, g: 0.34465563, b: 0.45837933, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -83735,6 +83735,11 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7793116706529880775, guid: b88ddee5105847f4c9c2269523d46f1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444821173046075575, guid: b88ddee5105847f4c9c2269523d46f1c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -143095,7 +143100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &510554796
 RectTransform:
   m_ObjectHideFlags: 0
@@ -207196,7 +207201,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 57560362}
   m_OnClick:
     m_PersistentCalls:
@@ -272603,7 +272608,7 @@ PrefabInstance:
     - target: {fileID: 6696467980461973084, guid: 894cbc7e0986f4aa2bc1fee171cdb09b,
         type: 3}
       propertyPath: DefaultIP
-      value: 192.168.0.50
+      value: 10.236.10.11
       objectReference: {fileID: 0}
     - target: {fileID: 6696467980461973084, guid: 894cbc7e0986f4aa2bc1fee171cdb09b,
         type: 3}
@@ -350701,7 +350706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1482602327
 Transform:
   m_ObjectHideFlags: 0
@@ -438367,7 +438372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1762080472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -470212,7 +470217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1965489377
 RectTransform:
   m_ObjectHideFlags: 0
@@ -471324,6 +471329,12 @@ MonoBehaviour:
   lose_reportPumpNumber: {fileID: 1388064116}
   lose_reportEnemiesNumber: {fileID: 870718724}
   lose_reportSubsidenceScore: {fileID: 187122337}
+  SubsidenceScore: 0
+  LiveTreeRate: 0
+  NumberPumper: 0
+  TotalNeutralWater: 0
+  TotalMiningWater: 0
+  ScoreGame: 0
   GamaCRSCoefX: 1
   GamaCRSCoefY: 1
   GamaCRSCoefZ: 1

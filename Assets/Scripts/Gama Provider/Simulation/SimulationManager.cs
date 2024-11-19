@@ -55,7 +55,7 @@ public class SimulationManager : MonoBehaviour
 
     protected CoordinateConverter converter;
     protected PolygonGenerator polyGen;
-    protected ConnectionParameter parameters= ConnectionParameter.CreateFromJSON("{\"precision\": 10000,\"world\": [2147483647,2147483647],\"minPlayerUpdateDuration\": 1000}");
+    protected ConnectionParameter parameters = null;// ConnectionParameter.CreateFromJSON("{\"precision\": 10000,\"world\": [2147483647,2147483647],\"minPlayerUpdateDuration\": 1000}");
     protected AllProperties propertiesGAMA;
     protected WorldJSONInfo infoWorld;
     protected AnimationInfo infoAnimation = null;
