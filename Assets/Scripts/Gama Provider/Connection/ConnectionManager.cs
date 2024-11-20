@@ -62,6 +62,10 @@ public class ConnectionManager : WebSocketConnector
                 break;
             case ConnectionState.AUTHENTICATED:
                 Debug.Log("ConnectionManager: UpdateConnectionState -> AUTHENTICATED");
+                 Dictionary<string, string> args = new Dictionary<string, string> {
+                    {"id", ConnectionManager.Instance.GetConnectionId()} };
+
+                ConnectionManager.Instance.SendExecutableAsk("new_connection", args);
                 break;
             case ConnectionState.DISCONNECTED:
                 Debug.Log("ConnectionManager: UpdateConnectionState -> DISCONNECTED");
