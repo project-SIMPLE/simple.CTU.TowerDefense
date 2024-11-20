@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         return gameStatus;
     }
 
-    public void StartLevel()
+    public void StartLevel() 
     {
         buildSystemManager.gameObject.SetActive(true);
         playerResourcesManager.gameObject.SetActive(true);

@@ -25,6 +25,8 @@ public class SimulationManager : MonoBehaviour
     [SerializeField] protected float GamaCRSOffsetY = 0.0f;
     [SerializeField] protected LevelManager levelManager;
 
+    [SerializeField] protected GameUI gameUI;
+
     protected Transform XROrigin;
    
     // Z offset and scale
@@ -114,6 +116,10 @@ public class SimulationManager : MonoBehaviour
 
     protected int RemainingTime = 0;
 
+    protected StartGameParameters startGameParameters = null;
+
+    private bool gameStarted = false;
+
     // ############################################ UNITY FUNCTIONS ############################################
     void Awake()
     {
@@ -173,7 +179,6 @@ public class SimulationManager : MonoBehaviour
         TimerSendPositionEnemy = TimeSendPosition / 2.0f;
         TimerSendPosition = TimeSendPosition / 3.0f;
 
-        levelManager = GameObject.FindGameObjectWithTag("levelManager").GetComponent<LevelManager>();
     }
 
 
@@ -331,8 +336,22 @@ public class SimulationManager : MonoBehaviour
         {
             sendReadyToGAMA();
         }
+        if (startGameParameters !=null && !gameStarted )
+        {
+            startGameWithTime();
+            startGameParameters = null;
+        } 
 
         OtherUpdate();
+    }
+
+    public void startGameWithTime()
+    {
+        gameStarted = true;
+        Debug.Log("START GAME");
+        levelManager.setWaveTime(startGameParameters.time_prep, startGameParameters.time_def);
+        gameUI.StartUI();
+
     }
 
     public void sendReadyToGAMA()
@@ -433,6 +452,7 @@ public class SimulationManager : MonoBehaviour
         string xs = "";
         string ys = "";
         bool isFirst = true;
+        enemySpawners = new Dictionary<string, EnemySpawner>();
         foreach (EnemySpawner s in spawns)
         {
 
@@ -1242,7 +1262,10 @@ public class SimulationManager : MonoBehaviour
                 break;
             case "readyToStart":
                 sendReady = false;
-                break;  
+                break;
+            case "startGame":
+                startGameParameters = StartGameParameters.CreateFromJSON(content);
+                break;
             default:
                 ManageOtherMessages(content);
                 break;

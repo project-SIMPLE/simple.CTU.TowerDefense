@@ -28,6 +28,16 @@ public class LevelManager : MonoBehaviour
     private float currentTime;
     private int currentWaveSpawnIndex;
 
+
+    public void setWaveTime(int prepTime, int defTime)
+    {
+        foreach(WaveSO w in waves)
+        {
+            w.preparationTime = 0.0f + prepTime;
+            w.waveTime = 0.0f + defTime;
+
+        }
+    }
     // Getters
     public List<EnemySpawner> Spawns
     {
