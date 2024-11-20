@@ -272595,6 +272595,11 @@ PrefabInstance:
       propertyPath: GamaCRSCoefY
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 341288274086655003, guid: 894cbc7e0986f4aa2bc1fee171cdb09b,
+        type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 966711244}
     - target: {fileID: 1077568249799591053, guid: 894cbc7e0986f4aa2bc1fee171cdb09b,
         type: 3}
       propertyPath: m_Name
