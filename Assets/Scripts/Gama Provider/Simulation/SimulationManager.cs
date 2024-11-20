@@ -107,6 +107,10 @@ public class SimulationManager : MonoBehaviour
     private Dictionary<string, EnemySpawner> enemySpawners;
 
     private bool sendReady = true;
+
+
+    protected float TimeSendInit = 0.5f;
+    protected float TimerSendInit;
     // ############################################ UNITY FUNCTIONS ############################################
     void Awake()
     {
@@ -216,6 +220,22 @@ public class SimulationManager : MonoBehaviour
             playerMovement(enableMove.enableMove);
             enableMove = null;
         }
+
+        if (IsGameState(GameState.LOADING_DATA) && ConnectionManager.Instance.getUseMiddleware())
+        {
+            if (TimerSendInit > 0)
+                TimerSendInit -= Time.deltaTime;
+            if (TimerSendInit <= 0)
+            {
+                TimerSendInit = TimeSendInit;
+                Dictionary<string, string> args = new Dictionary<string, string> {
+                             {"id", ConnectionManager.Instance.GetConnectionId() }
+                        };
+                ConnectionManager.Instance.SendExecutableAsk("send_init_data", args);
+            }
+        }
+
+ 
 
         if (infoAnimation != null)
         {
@@ -839,6 +859,7 @@ public class SimulationManager : MonoBehaviour
                 Debug.Log("SimulationManager: UpdateGameState -> WAITING");
                 break;
 
+
             case GameState.LOADING_DATA:
                 Debug.Log("SimulationManager: UpdateGameState -> LOADING_DATA");
                 if (ConnectionManager.Instance.getUseMiddleware())
@@ -848,10 +869,18 @@ public class SimulationManager : MonoBehaviour
                     };
                     ConnectionManager.Instance.SendExecutableAsk("send_init_data", args);
                 }
+                TimerSendInit = TimeSendInit;
                 break;
 
             case GameState.GAME:
                 Debug.Log("SimulationManager: UpdateGameState -> GAME");
+                if (ConnectionManager.Instance.getUseMiddleware())
+                {
+                    Dictionary<string, string> args = new Dictionary<string, string> {
+                         {"id", ConnectionManager.Instance.GetConnectionId() }
+                    };
+                    ConnectionManager.Instance.SendExecutableAsk("player_ready_to_receive_geometries", args);
+                }
                 break;
 
             case GameState.END:
