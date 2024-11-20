@@ -23,7 +23,7 @@ public class SimulationManager : MonoBehaviour
     [SerializeField] protected float GamaCRSCoefY = 1.0f;
     [SerializeField] protected float GamaCRSOffsetX = 0.0f;
     [SerializeField] protected float GamaCRSOffsetY = 0.0f;
-
+    [SerializeField] protected LevelManager levelManager;
 
     protected Transform XROrigin;
    
@@ -111,6 +111,9 @@ public class SimulationManager : MonoBehaviour
 
     protected float TimeSendInit = 0.5f;
     protected float TimerSendInit;
+
+    protected int RemainingTime = 0;
+
     // ############################################ UNITY FUNCTIONS ############################################
     void Awake()
     {
@@ -169,6 +172,8 @@ public class SimulationManager : MonoBehaviour
         OnEnable();
         TimerSendPositionEnemy = TimeSendPosition / 2.0f;
         TimerSendPosition = TimeSendPosition / 3.0f;
+
+        levelManager = GameObject.FindGameObjectWithTag("levelManager").GetComponent<LevelManager>();
     }
 
 
@@ -408,12 +413,12 @@ public class SimulationManager : MonoBehaviour
         float c = vF.x * vR.x + vF.y * vR.y;
         float s = vF.x * vR.y - vF.y * vR.x;
         int angle = (int)(((s > 0) ? -1.0 : 1.0) * (180 / Math.PI) * Math.Acos(c) * parameters.precision);
-
         Dictionary<string, string> args = new Dictionary<string, string> {
             {"idP", ConnectionManager.Instance.GetConnectionId()},
              {"x", ""+XROrigin.localPosition.x * parameters.precision },
               {"y",""+XROrigin.localPosition.z * parameters.precision},
                {"o",angle+"" },
+            {"remaining_time",((int) levelManager.CurrentTime)+"" },
 
 
         };
@@ -423,7 +428,7 @@ public class SimulationManager : MonoBehaviour
 
     public void createEnemySpawner()
     {
-        List<EnemySpawner> spawns = GameObject.FindGameObjectWithTag("levelManager").GetComponent<LevelManager>().Spawns;
+        List<EnemySpawner> spawns = levelManager.Spawns; 
         string idTs = ",";
         string xs = "";
         string ys = "";
