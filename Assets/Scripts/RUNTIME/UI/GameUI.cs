@@ -63,7 +63,9 @@ public class GameUI : MonoBehaviour
     private bool endDone = false;
 
     public float SubsidenceScore = 0;
-    public float LiveTreeRate = 0;
+    public float LiveTreeNumber = 0;
+    public float DeadTreeNumber = 0;
+    public float TotalTree = 0;
     public float NumberPumper = 0;
     public float TotalNeutralWater = 0;
     public float TotalMiningWater = 0;
@@ -117,49 +119,53 @@ public class GameUI : MonoBehaviour
                 finalText.text = loseText;
             }
             // Add Report Text Here
-            reportText = "Living Trees: " + playerResourcesManager.CurrentRefillSources + "\n" +
-                         "Dead Trees: " + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources) + "\n" +
-                         "Lake Structures Built: " + StatisticsManager.Instance.LakeCount + "\n" +
-                         "WaterPump Structures Built: " + StatisticsManager.Instance.WaterPumpCount + "\n" +
-                         "SluiceGate Structures Built: " + StatisticsManager.Instance.SluiceGateCount + "\n" +
-                         "Enemies Neutralized: " + StatisticsManager.Instance.EnemyKillCount + "\n" +
-                         "Remaining Groundwater Level (Local): " + subsidenceManager.RemainingWaterLevelLocal + "\n" +
-                         "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal + "\n" +
-                         "Subsidence Score: " + subsidenceManager.SubsidenceScore;
+            // reportText = "Living Trees: " + playerResourcesManager.CurrentRefillSources + "\n" +
+            //              "Dead Trees: " + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources) + "\n" +
+            //              "Lake Structures Built: " + StatisticsManager.Instance.LakeCount + "\n" +
+            //              "WaterPump Structures Built: " + StatisticsManager.Instance.WaterPumpCount + "\n" +
+            //              "SluiceGate Structures Built: " + StatisticsManager.Instance.SluiceGateCount + "\n" +
+            //              "Enemies Neutralized: " + StatisticsManager.Instance.EnemyKillCount + "\n" +
+            //              "Remaining Groundwater Level (Local): " + subsidenceManager.RemainingWaterLevelLocal + "\n" +
+            //              "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal + "\n" +
+            //              "Subsidence Score: " + subsidenceManager.SubsidenceScore;
+
 
             SubsidenceScore = subsidenceManager.SubsidenceScore;
-            LiveTreeRate = playerResourcesManager.CurrentRefillSources;
+            TotalTree = playerResourcesManager.TotalTree;
+            LiveTreeNumber = playerResourcesManager.CurrentRefillSources;
+            DeadTreeNumber = playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources;
             NumberPumper = StatisticsManager.Instance.WaterPumpCount;
             TotalNeutralWater = subsidenceManager.RemainingWaterLevelLocal;
-            TotalMiningWater = 0;
-            ScoreGame = 0;
+            TotalMiningWater = StatisticsManager.Instance.EnemyKillCount;
+            ScoreGame = (1 - SubsidenceScore/10) + ((LiveTreeNumber/TotalTree)* 100) + (1- (NumberPumper/10)) + (TotalNeutralWater/TotalMiningWater);
+
             // Son: Setup Final Report
-            reportTextMeshPro.text = reportText;
-            reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
-            reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
-            reportLakeNumber.text = "" + StatisticsManager.Instance.LakeCount;
-            reportPumpNumber.text = "" + StatisticsManager.Instance.WaterPumpCount;
-            reportWaterGateNumber.text = "" + StatisticsManager.Instance.SluiceGateCount;
-            reportEnemiesNumber.text = "" + StatisticsManager.Instance.EnemyKillCount;
-            reportRemainingGroundwaterLevelLocal.text = "Remaining Groundwater Level (Local): " + subsidenceManager.RemainingWaterLevelLocal;
-            reportRemainingGroundwaterLevelGlobal.text = "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal;
+            // reportTextMeshPro.text = reportText;
+            // reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
+            // reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
+            // reportLakeNumber.text = "" + StatisticsManager.Instance.LakeCount;
+            // reportPumpNumber.text = "" + StatisticsManager.Instance.WaterPumpCount;
+            // reportWaterGateNumber.text = "" + StatisticsManager.Instance.SluiceGateCount;
+            // reportEnemiesNumber.text = "" + StatisticsManager.Instance.EnemyKillCount;
+            // reportRemainingGroundwaterLevelLocal.text = "Remaining Groundwater Level (Local): " + subsidenceManager.RemainingWaterLevelLocal;
+            // reportRemainingGroundwaterLevelGlobal.text = "Remaining Groundwater Level (Global): " + subsidenceManager.RemainingWaterLevelGlobal;
         
 
 
 
             // Son: Update Win and Lose
              
-            win_reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
-            win_reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
-            win_reportPumpNumber.text = "" + StatisticsManager.Instance.WaterPumpCount;
-            win_reportEnemiesNumber.text = "" + StatisticsManager.Instance.EnemyKillCount;
-            win_reportSubsidenceScore.text = "" + (playerResourcesManager.CurrentRefillSources * (1 - (subsidenceManager.SubsidenceScore/10)) );
+            win_reportLivingTreesNumber.text = "" + LiveTreeNumber;
+            win_reportDeadTreesNumber.text = "" + DeadTreeNumber;
+            win_reportPumpNumber.text = "" + NumberPumper;
+            win_reportEnemiesNumber.text = "" + TotalMiningWater;
+            win_reportSubsidenceScore.text = "" + ScoreGame;
 
-            lose_reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
-            lose_reportDeadTreesNumber.text = "" + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources);
-            lose_reportPumpNumber.text = "" + StatisticsManager.Instance.WaterPumpCount;
-            lose_reportEnemiesNumber.text = "" + StatisticsManager.Instance.EnemyKillCount;
-            lose_reportSubsidenceScore.text = "" + (playerResourcesManager.CurrentRefillSources * (1 - (subsidenceManager.SubsidenceScore/10)) );
+            lose_reportLivingTreesNumber.text = "" + LiveTreeNumber;
+            lose_reportDeadTreesNumber.text = "" + DeadTreeNumber;
+            lose_reportPumpNumber.text = "" + NumberPumper;
+            lose_reportEnemiesNumber.text = "" + TotalMiningWater;
+            lose_reportSubsidenceScore.text = "" + ScoreGame;
 
         }
 

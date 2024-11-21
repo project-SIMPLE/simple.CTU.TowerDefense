@@ -225,7 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f21297c8e5c7845b27ad065ad98c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   anim: {fileID: 0}
   hp: {fileID: 4751808876425358285}
 --- !u!1 &6770999230807317561
@@ -438,6 +437,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3146208141487256426, guid: 63516a56d912f4e378d5d8e77b7cafe8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     - target: {fileID: 7640525890620895297, guid: 63516a56d912f4e378d5d8e77b7cafe8,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -560,7 +564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f21297c8e5c7845b27ad065ad98c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
   anim: {fileID: 0}
   hp: {fileID: 0}
 --- !u!4 &6151742869675281973 stripped

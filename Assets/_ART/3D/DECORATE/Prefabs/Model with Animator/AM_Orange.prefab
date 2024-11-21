@@ -279,7 +279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f21297c8e5c7845b27ad065ad98c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   anim: {fileID: 0}
   hp: {fileID: 5437480579261925127}
 --- !u!95 &561706719466505207
@@ -318,7 +317,7 @@ GameObject:
   - component: {fileID: 4351399812914954922}
   m_Layer: 8
   m_Name: SM_Orange
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,7 +420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f21297c8e5c7845b27ad065ad98c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
   anim: {fileID: 0}
   hp: {fileID: 0}
 --- !u!1 &7018936976873788085

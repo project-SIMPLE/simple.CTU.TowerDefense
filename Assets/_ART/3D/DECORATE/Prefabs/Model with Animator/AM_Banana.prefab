@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f21297c8e5c7845b27ad065ad98c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   anim: {fileID: 0}
   hp: {fileID: 1648055271993562560}
 --- !u!95 &8507875227729437086
@@ -442,6 +441,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124333802496006013, guid: 91e4bb3406176413da5bc94127164efb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 7448566676927950526, guid: 91e4bb3406176413da5bc94127164efb,
         type: 3}

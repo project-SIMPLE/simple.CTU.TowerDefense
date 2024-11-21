@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 1051256988715644293}
   m_Layer: 8
   m_Name: SM_Bananier_004 (51)
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -214,7 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f21297c8e5c7845b27ad065ad98c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   anim: {fileID: 0}
   hp: {fileID: 8631491088802884575}
 --- !u!65 &1051256988715644293
@@ -463,7 +462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f21297c8e5c7845b27ad065ad98c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   anim: {fileID: 0}
   hp: {fileID: 8631491088802884575}
 --- !u!1 &8519621321864836971
