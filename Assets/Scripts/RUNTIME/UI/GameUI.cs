@@ -132,13 +132,23 @@ public class GameUI : MonoBehaviour
 
             SubsidenceScore = subsidenceManager.SubsidenceScore;
             TotalTree = playerResourcesManager.TotalTree;
-            LiveTreeNumber = playerResourcesManager.CurrentRefillSources;
-            DeadTreeNumber = playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources;
+            // DeadTreeNumber = 199;
+            LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
+            // DeadTreeNumber = playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources;
             NumberPumper = StatisticsManager.Instance.WaterPumpCount;
             TotalNeutralWater = subsidenceManager.RemainingWaterLevelLocal;
             TotalMiningWater = StatisticsManager.Instance.EnemyKillCount;
-            ScoreGame = (1 - SubsidenceScore/10) + ((LiveTreeNumber/TotalTree)* 100) + (1- (NumberPumper/10)) + (TotalNeutralWater/TotalMiningWater);
 
+
+            SubsidenceScore = 1;
+            TotalTree = 199;
+            DeadTreeNumber = 199;
+            LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
+            NumberPumper = 10;
+            TotalNeutralWater = 100;
+            TotalMiningWater = 100;
+            ScoreGame = (1 - SubsidenceScore/10) + ((LiveTreeNumber/TotalTree)*1) + (1- (NumberPumper/10)) + ((TotalNeutralWater+1)/(TotalMiningWater+1));
+            ScoreGame = Mathf. Round(ScoreGame * 100.0f) * 0.01f;
             // Son: Setup Final Report
             // reportTextMeshPro.text = reportText;
             // reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
@@ -234,6 +244,11 @@ public class GameUI : MonoBehaviour
     public void Restart()
     {
         SimulationManager.Instance.RestartGame();
+    }
+
+    public void CountDeadTree()
+    {
+        DeadTreeNumber++;
     }
 
     public void DeletePlayer(GameObject obj)

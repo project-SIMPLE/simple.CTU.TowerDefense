@@ -49,6 +49,7 @@ public class SubsidenceManager : MonoBehaviour
     public float SubsidenceScore
     {
         get { return currentSubsidenceLevel; } 
+        set { currentSubsidenceLevel = value; }
     }
 
     public void IncreaseSubsidenceLevel()

@@ -9,6 +9,8 @@ public class SubsidenceInfo
     public int waterLocal;
     public int waterGlobal;
 
+    public float subsi_score;
+
     public static SubsidenceInfo CreateFromJSON(string jsonString)
     {
         return JsonUtility.FromJson<SubsidenceInfo>(jsonString);

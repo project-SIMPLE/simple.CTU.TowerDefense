@@ -601,10 +601,11 @@ public class SimulationManager : MonoBehaviour
      
     private void updateSubsidence()
     {
-       /* SubsidenceManager subMan = GameObject.FindGameObjectWithTag("subsidenceManager").GetComponent<SubsidenceManager>();
-
+        SubsidenceManager subMan = GameObject.FindGameObjectWithTag("subsidenceManager").GetComponent<SubsidenceManager>();
+        subMan.SubsidenceScore=subsidenceInfo.subsi_score;
         subMan.RemainingWaterLevelLocal = (0.0f + subsidenceInfo.waterLocal) / parameters.precision;
-        subMan.RemainingWaterLevelGlobal = (0.0f + subsidenceInfo.waterGlobal) / parameters.precision;*/
+        subMan.RemainingWaterLevelGlobal = (0.0f + subsidenceInfo.waterGlobal) / parameters.precision;
+        // Debug.Log("" + subMan.RemainingWaterLevelGlobal);
     }
     private void updateInfoSpawnRateEnemy()
     {

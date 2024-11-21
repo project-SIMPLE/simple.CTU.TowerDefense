@@ -140,6 +140,10 @@ public class Tree : MonoBehaviour, IDamageable
     public void Die()
     {
         Debug.Log("Xoa Cay: ");
+        if ( GameUI.Instance != null )
+        {     
+            GameUI.Instance.CountDeadTree(); 
+        }
         Destroy(gameObject);
     }
 

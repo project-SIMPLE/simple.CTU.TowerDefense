@@ -47,10 +47,10 @@ public class HUD : MonoBehaviour
         switch (levelManager.CurrentWaveStep)
         {
             case WaveStep.Preparation:
-                step.text = waveStepTexts[0];
+                step.text = ConnectionManager.Instance.GetConnectionId()+" "+waveStepTexts[0];
                 break;
             case WaveStep.Defense:
-                step.text = waveStepTexts[1];
+                step.text = ConnectionManager.Instance.GetConnectionId()+" "+waveStepTexts[1];
                 break;
         }
     }

@@ -84202,7 +84202,12 @@ PrefabInstance:
     - target: {fileID: 499951337372565472, guid: b88ddee5105847f4c9c2269523d46f1c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -200
+      value: -180.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 499951337372565472, guid: b88ddee5105847f4c9c2269523d46f1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 25.5
       objectReference: {fileID: 0}
     - target: {fileID: 589399341657334029, guid: b88ddee5105847f4c9c2269523d46f1c,
         type: 3}
@@ -84429,6 +84434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141995450274274937, guid: b88ddee5105847f4c9c2269523d46f1c,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8444821173046075575, guid: b88ddee5105847f4c9c2269523d46f1c,
         type: 3}
@@ -169029,7 +169039,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -384849,7 +384859,7 @@ GameObject:
   - component: {fileID: 1545671294}
   m_Layer: 0
   m_Name: Subsidence Manager
-  m_TagString: Untagged
+  m_TagString: subsidenceManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -451689,7 +451699,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1801111304
 Transform:
   m_ObjectHideFlags: 0
