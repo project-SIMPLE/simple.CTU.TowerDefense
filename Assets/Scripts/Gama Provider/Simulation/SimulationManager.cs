@@ -181,6 +181,7 @@ public class SimulationManager : MonoBehaviour
 
     }
 
+    
 
     void FixedUpdate()
     {
@@ -351,6 +352,17 @@ public class SimulationManager : MonoBehaviour
         Debug.Log("START GAME");
         levelManager.setWaveTime(startGameParameters.time_prep, startGameParameters.time_def);
         gameUI.StartUI();
+
+    }
+
+    public void SendEndMessageToGAMA()
+    {
+        Debug.Log("END OF GAME");
+        StartButton.interactable = true;
+        Dictionary<string, string> args = new Dictionary<string, string> {
+                    {"idP", ConnectionManager.Instance.GetConnectionId()} };
+
+        ConnectionManager.Instance.SendExecutableAsk("player_finish_game", args);
 
     }
 

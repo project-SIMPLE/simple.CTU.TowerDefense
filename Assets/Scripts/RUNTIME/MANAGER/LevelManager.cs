@@ -147,7 +147,12 @@ public class LevelManager : MonoBehaviour
             if (currentWave > waves.Count - 1)
             {
                 if (loop) InitLevel();
-                else finished = true;
+                else
+                {
+                    finished = true;
+                    SimulationManager.Instance.SendEndMessageToGAMA();
+                }
+
             }
             else
             {
