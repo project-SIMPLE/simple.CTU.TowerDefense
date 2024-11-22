@@ -59,7 +59,7 @@ public class Tree : MonoBehaviour, IDamageable
             
 
 
-                Debug.Log("currentHealh < 0: ");
+                // Debug.Log("currentHealh < 0: ");
             // anim.Play("Tree_Die", -1,0f);
 
             if (GameUI.Instance != null  && gameObject != null)
@@ -100,13 +100,13 @@ public class Tree : MonoBehaviour, IDamageable
         if (count < 500 && count > 480)
         {
             //condition = 1; 
-            Debug.Log("khoi dong animation Tree Bad: ");
+            // Debug.Log("khoi dong animation Tree Bad: ");
             anim.Play("Tree_Bad");
         }
         if (count < 1 && count > -20)
         {
             //condition = 2;
-            Debug.Log("khoi dong animation Tree die: ");
+            // Debug.Log("khoi dong animation Tree die: ");
             anim.Play("Tree_Die",-1,0f);
 
         }
@@ -139,7 +139,7 @@ public class Tree : MonoBehaviour, IDamageable
    
     public void Die()
     {
-        Debug.Log("Xoa Cay: ");
+        // Debug.Log("Xoa Cay: ");
         if ( GameUI.Instance != null )
         {     
             GameUI.Instance.CountDeadTree(); 
@@ -149,7 +149,7 @@ public class Tree : MonoBehaviour, IDamageable
 
     public bool IsDead()
     {
-        Debug.Log("Tree mau ve khong: ");
+        // Debug.Log("Tree mau ve khong: ");
         return currentHealh <= 0;
     }
 }

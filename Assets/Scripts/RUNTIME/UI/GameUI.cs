@@ -136,18 +136,18 @@ public class GameUI : MonoBehaviour
             LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
             // DeadTreeNumber = playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources;
             NumberPumper = StatisticsManager.Instance.WaterPumpCount;
-            TotalNeutralWater = subsidenceManager.RemainingWaterLevelLocal;
-            TotalMiningWater = StatisticsManager.Instance.EnemyKillCount;
+            TotalNeutralWater = StatisticsManager.Instance.EnemyKillCount*2;
+            TotalMiningWater = 100-subsidenceManager.RemainingWaterLevelLocal;
 
 
-            SubsidenceScore = 1;
-            TotalTree = 199;
-            DeadTreeNumber = 199;
-            LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
-            NumberPumper = 10;
-            TotalNeutralWater = 100;
-            TotalMiningWater = 100;
-            ScoreGame = (1 - SubsidenceScore/10) + ((LiveTreeNumber/TotalTree)*1) + (1- (NumberPumper/10)) + ((TotalNeutralWater+1)/(TotalMiningWater+1));
+            // SubsidenceScore = 1;
+            // TotalTree = 199;
+            // DeadTreeNumber = 199;
+            // LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
+            // NumberPumper = 10;
+            // TotalNeutralWater = 100;
+            // TotalMiningWater = 100;
+            ScoreGame = (1 - (SubsidenceScore/10)) + (LiveTreeNumber/TotalTree) + (1- (NumberPumper/10)) + ((TotalNeutralWater+1)/(TotalMiningWater+1))*100;
             ScoreGame = Mathf. Round(ScoreGame * 100.0f) * 0.01f;
             // Son: Setup Final Report
             // reportTextMeshPro.text = reportText;
@@ -168,13 +168,13 @@ public class GameUI : MonoBehaviour
             win_reportLivingTreesNumber.text = "" + LiveTreeNumber;
             win_reportDeadTreesNumber.text = "" + DeadTreeNumber;
             win_reportPumpNumber.text = "" + NumberPumper;
-            win_reportEnemiesNumber.text = "" + TotalMiningWater;
+            win_reportEnemiesNumber.text = "" + TotalNeutralWater;
             win_reportSubsidenceScore.text = "" + ScoreGame;
 
             lose_reportLivingTreesNumber.text = "" + LiveTreeNumber;
             lose_reportDeadTreesNumber.text = "" + DeadTreeNumber;
             lose_reportPumpNumber.text = "" + NumberPumper;
-            lose_reportEnemiesNumber.text = "" + TotalMiningWater;
+            lose_reportEnemiesNumber.text = "" + TotalNeutralWater;
             lose_reportSubsidenceScore.text = "" + ScoreGame;
 
         }
@@ -276,40 +276,40 @@ public class GameUI : MonoBehaviour
 
  
             // Debug.Log("sent to GAMA: " + SimulationManager.Instance.currentState);
-        if (SimulationManager.Instance.IsGameState(GameState.GAME))// && UnityEngine.Random.Range(0.0f, 1.0f) < 0.002f)
-        {
+        // if (SimulationManager.Instance.IsGameState(GameState.GAME))// && UnityEngine.Random.Range(0.0f, 1.0f) < 0.002f)
+        // {
 
 
-            Vector2 vF = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z);
-            Vector2 vR = new Vector2(transform.forward.x, transform.forward.z);
-            vF.Normalize();
-            vR.Normalize();
-            float c = vF.x * vR.x + vF.y * vR.y;
-            float s = vF.x * vR.y - vF.y * vR.x;
-            int angle = (int)(((s > 0) ? -1.0 : 1.0) * (180 / Math.PI) * Math.Acos(c) * precision);
+        //     Vector2 vF = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z);
+        //     Vector2 vR = new Vector2(transform.forward.x, transform.forward.z);
+        //     vF.Normalize();
+        //     vR.Normalize();
+        //     float c = vF.x * vR.x + vF.y * vR.y;
+        //     float s = vF.x * vR.y - vF.y * vR.x;
+        //     int angle = (int)(((s > 0) ? -1.0 : 1.0) * (180 / Math.PI) * Math.Acos(c) * precision);
 
-            List<float> p = toGAMACRS3D(obj.transform.position);
-            float instanceId = obj.GetInstanceID();
+        //     List<float> p = toGAMACRS3D(obj.transform.position);
+        //     float instanceId = obj.GetInstanceID();
 
-            // Vector3 v = new Vector3(Camera.main.transform.position.x, player.transform.position.y, Camera.main.transform.position.z);
-            // List<float> p = toGAMACRS3D(v);
-            Dictionary<string, string> args = new Dictionary<string, string> {
-            {"idP",ConnectionManager.Instance.GetConnectionId() },
-            {"id", ""+  obj },
-            {"iid",  ""+instanceId },
-            {"x", "" +p[0]},
-            {"y", "" +p[1]},
-            {"z", "" +p[2]},
-            {"angle", "" +angle}
-            };
+        //     // Vector3 v = new Vector3(Camera.main.transform.position.x, player.transform.position.y, Camera.main.transform.position.z);
+        //     // List<float> p = toGAMACRS3D(v);
+        //     Dictionary<string, string> args = new Dictionary<string, string> {
+        //     {"idP",ConnectionManager.Instance.GetConnectionId() },
+        //     {"id", ""+  obj },
+        //     {"iid",  ""+instanceId },
+        //     {"x", "" +p[0]},
+        //     {"y", "" +p[1]},
+        //     {"z", "" +p[2]},
+        //     {"angle", "" +angle}
+        //     };
 
-            // Debug.Log("move_player_external: " + player + " " + p[0] + "," + p[1] + "," + p[2]);
+        //     // Debug.Log("move_player_external: " + player + " " + p[0] + "," + p[1] + "," + p[2]);
 
 
-            // Debug.Log("sent to GAMA: " + obj);
-            // ConnectionManager.Instance.SendExecutableAsk("construction_message", args);
-            // SendExecutableAsk("simulation[0]", "move_player_external", args);
-        }
+        //     // Debug.Log("sent to GAMA: " + obj);
+        //     // ConnectionManager.Instance.SendExecutableAsk("construction_message", args);
+        //     // SendExecutableAsk("simulation[0]", "move_player_external", args);
+        // }
     }
     protected string host;
     protected string port;

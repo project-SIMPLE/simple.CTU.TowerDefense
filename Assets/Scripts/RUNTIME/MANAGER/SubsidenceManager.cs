@@ -20,9 +20,9 @@ public class SubsidenceManager : MonoBehaviour
     private float currentWaterLevelGlobal = 1f;
     private float currentSubsidenceLevel = 0f;
 
-    [SerializeField] private float subsidenceLevel1 = 1f;
-    [SerializeField] private float subsidenceLevel2 = 2f;
-    [SerializeField] private float subsidenceLevel3 = 3f;
+    [SerializeField] private float subsidenceLevel1 = 3f;
+    [SerializeField] private float subsidenceLevel2 = 5;
+    [SerializeField] private float subsidenceLevel3 = 7f;
     [SerializeField] private float subsidenceLevelRatio = 0.2f;
 
     private List<GameObject> subsidenceLevels = new List<GameObject>();

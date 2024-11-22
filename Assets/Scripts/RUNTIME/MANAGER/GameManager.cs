@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
     public void IncrementWaterCount()
     {
         totalWater++;
-        Debug.Log("Total Water count: " + totalWater);
+        // Debug.Log("Total Water count: " + totalWater);
     }
 
 }

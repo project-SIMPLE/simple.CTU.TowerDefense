@@ -605,7 +605,7 @@ public class SimulationManager : MonoBehaviour
         subMan.SubsidenceScore=subsidenceInfo.subsi_score;
         subMan.RemainingWaterLevelLocal = (0.0f + subsidenceInfo.waterLocal) / parameters.precision;
         subMan.RemainingWaterLevelGlobal = (0.0f + subsidenceInfo.waterGlobal) / parameters.precision;
-        // Debug.Log("" + subMan.RemainingWaterLevelGlobal);
+        // Debug.Log("" + subMan.RemainingWaterLevelLocal);
     }
     private void updateInfoSpawnRateEnemy()
     {
@@ -613,6 +613,7 @@ public class SimulationManager : MonoBehaviour
         {
             EnemySpawner es = enemySpawners[infoEnemySp.enemyspawners[i]];
             es.SpawnRate = (0.0f + infoEnemySp.spawnrates[i]) / parameters.precision;
+            es.ReStartAutoSpawn(1);
         }
     }
 
@@ -621,7 +622,7 @@ public class SimulationManager : MonoBehaviour
         for(int i = 0; i < infoPump.pumpers.Count; i++)
         {
             Barrack b = waterPumps[infoPump.pumpers[i]];
-            b.SpawnRate = (0.0f + infoPump.spawnrates[i]) / parameters.precision;
+            b.SpawnRate = (0.0f + infoPump.spawnrates[i]/2) / parameters.precision;
         }
     }
 

@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour, ISpawner
     // runtime privates
     private int spawnCount = 10;
     private int minSpawnCount = 1;
-    private int maxSpawnCount = 3;
+    private int maxSpawnCount = 1;
     private int count = 0;
 
     // Getters
@@ -38,6 +38,15 @@ public class EnemySpawner : MonoBehaviour, ISpawner
         }
     }
 
+    public void ReStartAutoSpawn(int amount)
+    {
+        CancelInvoke("Spawn");
+        spawnCount = spawnRate == 0 ? minSpawnCount : Mathf.Max(minSpawnCount,(int)(spawnRate*0.5));
+        // spawnCount=(int)spawnRate;
+        count = 0;
+        InvokeRepeating("Spawn", .1f, 0.5f);
+        Debug.Log("rate " + spawnRate+ " cnt "+spawnCount);
+    }
     public void StartAutoSpawn(GameObject spawn, int amount)
     {
         spawnPrefab = spawn;

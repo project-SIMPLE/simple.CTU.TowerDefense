@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
     [SerializeField] private int health = 2;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float attackInterval = 5f;
-    [SerializeField] private float attackRange = 5f;
+    [SerializeField] private float attackRange = 2f;
     [SerializeField] private int attackDamage = 1;
 
     [Header("Miscellaneous")]
@@ -47,7 +47,6 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
         var navAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (navAgent) navAgent.speed = moveSpeed;
     }
-//    int tick=0;
     void Update()
     {
         if (IsDead()) return; 
@@ -117,10 +116,15 @@ public class Enemy : MonoBehaviour, IDamageable, IDamage
         Debug.Log(target.name);
         return true;
     }
+   int tick=0;
 
     public void DealDamage(IDamageable target)
     {
-        target.TakeDamage(attackDamage);
+        tick++;
+        if(tick>=2){
+            tick=0;
+            target.TakeDamage(attackDamage);
+        }
     }
 
     void OnDrawGizmosSelected()
