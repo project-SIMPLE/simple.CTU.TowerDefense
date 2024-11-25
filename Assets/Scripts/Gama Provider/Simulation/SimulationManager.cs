@@ -13,7 +13,7 @@ public class SimulationManager : MonoBehaviour
     [SerializeField] protected InputActionReference TryReconnectButton = null;
 
     [Header("Base GameObjects")]
-    [SerializeField] protected GameObject player; 
+    [SerializeField] protected GameObject player;
     [SerializeField] protected GameObject Ground;
 
 
@@ -28,7 +28,7 @@ public class SimulationManager : MonoBehaviour
     [SerializeField] protected GameUI gameUI;
 
     protected Transform XROrigin;
-   
+
     // Z offset and scale
     [SerializeField] protected float GamaCRSOffsetZ = 0.0f;
 
@@ -40,7 +40,7 @@ public class SimulationManager : MonoBehaviour
     // called when the current game state changes
     public static event Action<GameState> OnGameStateChanged;
     // called when the game is restarted
-//    public static event Action OnGameRestarted;
+    //    public static event Action OnGameRestarted;
 
     // called when the world data is received
     //    public static event Action<WorldJSONInfo> OnWorldDataReceived;
@@ -69,7 +69,7 @@ public class SimulationManager : MonoBehaviour
     //allows to define the minimal time between two interactions
     protected float timeWithoutInteraction = 1.0f; //in second
 
-   
+
 
     protected bool sendMessageToReactivatePositionSent = false;
 
@@ -85,7 +85,7 @@ public class SimulationManager : MonoBehaviour
     protected float TimeSendPosition = 0.5f;
     protected float TimerSendPositionEnemy = 0.0f;
 
-   
+
 
     protected float TimerSendPositionFW = 0.0f;
     protected float TimerSendPosition = 0.0f;
@@ -127,7 +127,7 @@ public class SimulationManager : MonoBehaviour
         SelectedObjects = new List<GameObject>();
         // toDelete = new List<GameObject>();
 
-       locomotion = new List<GameObject>(GameObject.FindGameObjectsWithTag("locomotion"));
+        locomotion = new List<GameObject>(GameObject.FindGameObjectsWithTag("locomotion"));
         mh = player.GetComponentInChildren<MoveHorizontal>();
         mv = player.GetComponentInChildren<MoveVertical>();
 
@@ -181,7 +181,7 @@ public class SimulationManager : MonoBehaviour
 
     }
 
-    
+
 
     void FixedUpdate()
     {
@@ -222,7 +222,7 @@ public class SimulationManager : MonoBehaviour
         {
             manageTeleportationArea();
         }
-        if (converter != null &&  dataWall != null)
+        if (converter != null && dataWall != null)
         {
             manageWalls();
         }
@@ -246,7 +246,7 @@ public class SimulationManager : MonoBehaviour
             }
         }
 
- 
+
 
         if (infoAnimation != null)
         {
@@ -258,7 +258,7 @@ public class SimulationManager : MonoBehaviour
             updateInfoSpawnRatePumper();
             infoPump = null;
         }
-        if(infoEnemySp != null)
+        if (infoEnemySp != null)
         {
             updateInfoSpawnRateEnemy();
             infoEnemySp = null;
@@ -269,7 +269,7 @@ public class SimulationManager : MonoBehaviour
             updateSubsidence();
             subsidenceInfo = null;
         }
-        
+
 
 
 
@@ -278,11 +278,11 @@ public class SimulationManager : MonoBehaviour
 
     private void Update()
     {
-       
 
-       
+
+
         if (currentTimePing > 0)
-        { 
+        {
             currentTimePing -= Time.deltaTime;
             if (currentTimePing <= 0)
             {
@@ -324,9 +324,9 @@ public class SimulationManager : MonoBehaviour
             if (TimerSendPositionFW <= 0)
             {
                 sendFreshWater();
-                TimerSendPositionFW  = TimeSendPosition;
+                TimerSendPositionFW = TimeSendPosition;
             }
-            if (TimerSendPosition <= 0)
+            if (TimerSendPosition <= 0 && !gameUI.endDone)
             {
                 updatePlayerPos();
                 TimerSendPosition = TimeSendPosition;
@@ -337,11 +337,11 @@ public class SimulationManager : MonoBehaviour
         {
             sendReadyToGAMA();
         }
-        if (startGameParameters !=null && !gameStarted )
+        if (startGameParameters != null && !gameStarted)
         {
             startGameWithTime();
             startGameParameters = null;
-        } 
+        }
 
         OtherUpdate();
     }
@@ -398,7 +398,7 @@ public class SimulationManager : MonoBehaviour
         GameObject[] freshWater = GameObject.FindGameObjectsWithTag("Ally");
         // action update_salty_water(string idP, string swsStr, string xsStr, string ysStr)
 
-    
+
         string sws = ",";
         string xs = "";
         string ys = "";
@@ -409,14 +409,14 @@ public class SimulationManager : MonoBehaviour
 
             if (isFirst)
             {
-                sws += (t.GetInstanceID()) ;
+                sws += (t.GetInstanceID());
                 xs += (int)(t.transform.position.x * parameters.precision);
                 ys += (int)(t.transform.position.z * parameters.precision);
                 isFirst = false;
             }
             else
             {
-                sws += "," +(t.GetInstanceID());
+                sws += "," + (t.GetInstanceID());
                 xs += "," + (int)(t.transform.position.x * parameters.precision);
                 ys += "," + (int)(t.transform.position.z * parameters.precision);
             }
@@ -428,7 +428,7 @@ public class SimulationManager : MonoBehaviour
               {"xsStr", xs },
               {"ysStr",ys}
 
-        }; 
+        };
 
         ConnectionManager.Instance.SendExecutableAsk("update_fresh_water", args);
 
@@ -436,6 +436,9 @@ public class SimulationManager : MonoBehaviour
 
     public void updatePlayerPos()
     {
+
+        gameUI.computeScore();
+
         //action update_player_pos(string idP, int x, int y, int o)
         Vector2 vF = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z);
         Vector2 vR = new Vector2(transform.forward.x, transform.forward.z);
@@ -450,16 +453,19 @@ public class SimulationManager : MonoBehaviour
               {"y",""+XROrigin.localPosition.z * parameters.precision},
                {"o",angle+"" },
             {"remaining_time",((int) levelManager.CurrentTime)+"" },
+            {"dtree",((int) gameUI.DeadTreeNumber)+"" },
+            {"score",((float) gameUI.ScoreGame)+"" },
 
 
         };
+        Debug.Log(""+gameUI.DeadTreeNumber);
 
         ConnectionManager.Instance.SendExecutableAsk("update_player_pos", args);
     }
 
     public void createEnemySpawner()
     {
-        List<EnemySpawner> spawns = levelManager.Spawns; 
+        List<EnemySpawner> spawns = levelManager.Spawns;
         string idTs = ",";
         string xs = "";
         string ys = "";
@@ -474,17 +480,17 @@ public class SimulationManager : MonoBehaviour
             if (isFirst)
             {
                 idTs += (t.GetInstanceID());
-                xs += (int)(t.transform.position.x * parameters.precision) ;
-                ys += (int)(t.transform.position.z * parameters.precision) ;
+                xs += (int)(t.transform.position.x * parameters.precision);
+                ys += (int)(t.transform.position.z * parameters.precision);
                 isFirst = false;
             }
             else
             {
                 idTs += "," + (t.GetInstanceID());
                 xs += "," + (int)(t.transform.position.x * parameters.precision);
-                ys += ","+(int)(t.transform.position.z * parameters.precision) ;
+                ys += "," + (int)(t.transform.position.z * parameters.precision);
             }
-            
+
         }
 
         Dictionary<string, string> args = new Dictionary<string, string> {
@@ -498,7 +504,7 @@ public class SimulationManager : MonoBehaviour
         ConnectionManager.Instance.SendExecutableAsk("create_enemy_spawners", args);
     }
 
-   
+
     public void createMovePumper(GameObject pumper)
     {
 
@@ -510,39 +516,39 @@ public class SimulationManager : MonoBehaviour
               {"y",""+pumper.transform.position.z * parameters.precision}
 
         };
-      
-            ConnectionManager.Instance.SendExecutableAsk("move_create_pumper", args);
-     }
+
+        ConnectionManager.Instance.SendExecutableAsk("move_create_pumper", args);
+    }
     public void sendEnemies()
     {
-       
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-       // action update_salty_water(string idP, string swsStr, string xsStr, string ysStr)
-       
 
-            string sws = ",";
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        // action update_salty_water(string idP, string swsStr, string xsStr, string ysStr)
+
+
+        string sws = ",";
         string xs = "";
         string ys = "";
 
         bool isFirst = true;
 
-        foreach (GameObject t in enemies) 
+        foreach (GameObject t in enemies)
         {
             if (!t.activeSelf) continue;
             if (isFirst)
             {
-                sws += (t.GetInstanceID()) ;
+                sws += (t.GetInstanceID());
                 xs += (int)(t.transform.position.x * parameters.precision);
                 ys += (int)(t.transform.position.z * parameters.precision);
                 isFirst = false;
             }
             else
             {
-                sws += ","+(t.GetInstanceID()) ;
+                sws += "," + (t.GetInstanceID());
                 xs += "," + (int)(t.transform.position.x * parameters.precision);
                 ys += "," + (int)(t.transform.position.z * parameters.precision);
             }
-            
+
         }
 
         Dictionary<string, string> args = new Dictionary<string, string> {
@@ -563,13 +569,13 @@ public class SimulationManager : MonoBehaviour
 
 
         bool isFirst = true;
-       
+
         string idTs = ",";
         string xs = "";
-       string ys = "";
+        string ys = "";
         foreach (GameObject t in GameObject.FindGameObjectsWithTag("Tree"))
         {
-            if(!t.gameObject.activeSelf)
+            if (!t.gameObject.activeSelf)
                 continue;
             if (isFirst)
             {
@@ -587,7 +593,7 @@ public class SimulationManager : MonoBehaviour
 
         }
 
-                Dictionary<string, string> args = new Dictionary<string, string> {
+        Dictionary<string, string> args = new Dictionary<string, string> {
             {"idP", ConnectionManager.Instance.GetConnectionId()},
              {"idTsStr", idTs },
               {"xsStr", xs },
@@ -595,14 +601,14 @@ public class SimulationManager : MonoBehaviour
 
         };
 
-          ConnectionManager.Instance.SendExecutableAsk("create_trees", args);
-        
+        ConnectionManager.Instance.SendExecutableAsk("create_trees", args);
+
     }
-     
+
     private void updateSubsidence()
     {
         SubsidenceManager subMan = GameObject.FindGameObjectWithTag("subsidenceManager").GetComponent<SubsidenceManager>();
-        subMan.SubsidenceScore=subsidenceInfo.subsi_score;
+        subMan.SubsidenceScore = subsidenceInfo.subsi_score;
         subMan.RemainingWaterLevelLocal = (0.0f + subsidenceInfo.waterLocal) / parameters.precision;
         subMan.RemainingWaterLevelGlobal = (0.0f + subsidenceInfo.waterGlobal) / parameters.precision;
         // Debug.Log("" + subMan.RemainingWaterLevelLocal);
@@ -619,20 +625,21 @@ public class SimulationManager : MonoBehaviour
 
     private void updateInfoSpawnRatePumper()
     {
-        for(int i = 0; i < infoPump.pumpers.Count; i++)
+        for (int i = 0; i < infoPump.pumpers.Count; i++)
         {
             Barrack b = waterPumps[infoPump.pumpers[i]];
-            b.SpawnRate = (0.0f + infoPump.spawnrates[i]/2) / parameters.precision;
+            b.SpawnRate = (0.0f + infoPump.spawnrates[i] / 2) / parameters.precision;
         }
     }
 
     private void updateAnimation()
     {
-       
-        foreach (String n in infoAnimation.names) {
-            if (!geometryMap.ContainsKey(n)) continue;            
+
+        foreach (String n in infoAnimation.names)
+        {
+            if (!geometryMap.ContainsKey(n)) continue;
             List<object> o = geometryMap[n];
-            
+
             if (o == null && o.Count == 0) continue;
             GameObject obj = (GameObject)o[0];
 
@@ -659,9 +666,9 @@ public class SimulationManager : MonoBehaviour
 
                 }
             }
-           
+
         }
-       
+
     }
     private void manageTeleportationArea()
     {
@@ -679,34 +686,34 @@ public class SimulationManager : MonoBehaviour
                 ta = o.GetComponent<TeleportationArea>();
                 if (ta != null)
                 {
-                    foreach(Collider col in ta.colliders)
+                    foreach (Collider col in ta.colliders)
                     {
                         GameObject.DestroyImmediate(col.gameObject);
                     }
-                    ta.colliders.Clear(); 
+                    ta.colliders.Clear();
                 }
                 break;
-                
+
             }
         }
         if (ta == null)
         {
             GameObject prefabObj = Resources.Load("Prefabs/Player/TeleportAreaRaw") as GameObject;
             GameObject obj = Instantiate(prefabObj);
-           
+
             ta = obj.GetComponent<TeleportationArea>();
             obj.name = dataTeleport.teleportId;
             obj.tag = "Teleportation";
         }
-        
-      
+
+
         for (int i = 0; i < dataTeleport.pointsGeom.Count; i++)
         {
             List<int> pt = dataTeleport.pointsGeom[i].c;
             float YoffSet = (0.0f + dataTeleport.offsetYGeom[i]) / (0.0f + parameters.precision);
 
             PropertiesGAMA prop = new PropertiesGAMA();
-            prop.id = dataTeleport.teleportId + "_"+ i;
+            prop.id = dataTeleport.teleportId + "_" + i;
             prop.hasCollider = true;
             prop.isInteractable = false;
             prop.isGrabable = false;
@@ -723,7 +730,7 @@ public class SimulationManager : MonoBehaviour
             mc.sharedMesh = polyGen.bottomMesh;
             obj.transform.parent = ta.gameObject.transform;
             ta.colliders.Add(mc);
-           
+
 
         }
         //to take into account the new colliders
@@ -735,50 +742,50 @@ public class SimulationManager : MonoBehaviour
 
     private void manageWalls()
     {
-       
-    //    if (polyGen == null)
-    //     {
-    //         polyGen = PolygonGenerator.GetInstance();
-    //         polyGen.Init(converter);
-    //     }
 
-    //     GameObject wallObj = new GameObject("Walls");
+        //    if (polyGen == null)
+        //     {
+        //         polyGen = PolygonGenerator.GetInstance();
+        //         polyGen.Init(converter);
+        //     }
 
-    //     GameObject[] objs =   GameObject.FindGameObjectsWithTag("InvisibleWall");
-    //     foreach (GameObject o in objs)
-    //     {
-    //         if (o.name.Equals(dataWall.wallId))
-    //         GameObject.DestroyImmediate(o);
+        //     GameObject wallObj = new GameObject("Walls");
 
-    //     }
+        //     GameObject[] objs =   GameObject.FindGameObjectsWithTag("InvisibleWall");
+        //     foreach (GameObject o in objs)
+        //     {
+        //         if (o.name.Equals(dataWall.wallId))
+        //         GameObject.DestroyImmediate(o);
 
-    //     for (int i = 0; i < dataWall.pointsGeom.Count;i++ )
-    //     {
-    //         List<int> pt = dataWall.pointsGeom[i].c;
-    //         float YoffSet = (0.0f + dataWall.offsetYGeom[i]) / (0.0f + parameters.precision);
+        //     }
 
-    //         PropertiesGAMA prop = new PropertiesGAMA();
-    //         prop.id = dataWall.wallId;
-    //         prop.hasCollider = true;
-    //         prop.tag = "InvisibleWall";
-    //         prop.isInteractable = false;
-    //         prop.isGrabable = false;
-    //         prop.hasPrefab = false;
-    //         prop.visible = false;
-    //         prop.height = dataWall.height;
-    //         prop.is3D = true;
-    //         prop.toFollow = false;
+        //     for (int i = 0; i < dataWall.pointsGeom.Count;i++ )
+        //     {
+        //         List<int> pt = dataWall.pointsGeom[i].c;
+        //         float YoffSet = (0.0f + dataWall.offsetYGeom[i]) / (0.0f + parameters.precision);
 
-    //        GameObject obj = polyGen.GeneratePolygons(false, dataWall.wallId, pt, prop, parameters.precision);
-        
-    //         obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + YoffSet, obj.transform.position.z);
-    //         obj.transform.parent = wallObj.transform;
-    //         MeshCollider mc = obj.AddComponent<MeshCollider>();
-    //         mc.sharedMesh = polyGen.surroundMesh;
-            
-    //     }
+        //         PropertiesGAMA prop = new PropertiesGAMA();
+        //         prop.id = dataWall.wallId;
+        //         prop.hasCollider = true;
+        //         prop.tag = "InvisibleWall";
+        //         prop.isInteractable = false;
+        //         prop.isGrabable = false;
+        //         prop.hasPrefab = false;
+        //         prop.visible = false;
+        //         prop.height = dataWall.height;
+        //         prop.is3D = true;
+        //         prop.toFollow = false;
 
-    //     dataWall = null;
+        //        GameObject obj = polyGen.GeneratePolygons(false, dataWall.wallId, pt, prop, parameters.precision);
+
+        //         obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + YoffSet, obj.transform.position.z);
+        //         obj.transform.parent = wallObj.transform;
+        //         MeshCollider mc = obj.AddComponent<MeshCollider>();
+        //         mc.sharedMesh = polyGen.surroundMesh;
+
+        //     }
+
+        //     dataWall = null;
     }
 
 
@@ -815,13 +822,13 @@ public class SimulationManager : MonoBehaviour
                 int x = 1;
                 foreach (Row r in dataLoc.rows)
                 {
-                   int y = 0;
-                   foreach (int v in r.h)
-                   {
+                    int y = 0;
+                    foreach (int v in r.h)
+                    {
                         heights[dataLoc.rows.Count - x, y] = ((v + 0.0f) / (valMax + 0.0f));
                         y++;
-                   }
-                   x++;
+                    }
+                    x++;
                 }
 
                 t.terrainData.SetHeights(dataLoc.indexX, resolution - 1 - dataLoc.indexY, heights);
@@ -840,7 +847,7 @@ public class SimulationManager : MonoBehaviour
 
             if (t.name == data.id)
             {
-                t.gameObject.transform.position = new Vector3(0, 0,-1 * data.sizeY);
+                t.gameObject.transform.position = new Vector3(0, 0, -1 * data.sizeY);
                 t.terrainData.size = new Vector3(data.sizeX, data.valMax, data.sizeY);
                 float[,] heights = new float[t.terrainData.heightmapResolution, t.terrainData.heightmapResolution];
                 int x = 1;
@@ -862,7 +869,7 @@ public class SimulationManager : MonoBehaviour
         }
         data = null;
     }
-    
+
 
     void playerMovement(Boolean active)
     {
@@ -870,19 +877,19 @@ public class SimulationManager : MonoBehaviour
         {
             loc.SetActive(active);
         }
-         if (mh != null)
-         {
-             mh.enabled = active;
-         }
-         if (mv != null)
-         {
-             mv.enabled = active;
-         }
+        if (mh != null)
+        {
+            mh.enabled = active;
+        }
+        if (mv != null)
+        {
+            mv.enabled = active;
+        }
         readyToSendPositionInit = active;
     }
 
 
-  
+
 
     // ############################################ GAMESTATE UPDATER ############################################
     public void UpdateGameState(GameState newState)
@@ -949,7 +956,7 @@ public class SimulationManager : MonoBehaviour
         Debug.Log("GroundParameters : Beginnig ground initialization");
         if (Ground == null)
         {
-           // Debug.LogError("SimulationManager: Ground not set");
+            // Debug.LogError("SimulationManager: Ground not set");
             return;
         }
         Vector3 ls = converter.fromGAMACRS(parameters.world[0], parameters.world[1], 0);
@@ -1014,7 +1021,7 @@ public class SimulationManager : MonoBehaviour
 
 
 
-      //  Vector3 v = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - yOffsetCamera, Camera.main.transform.position.z);
+        //  Vector3 v = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - yOffsetCamera, Camera.main.transform.position.z);
         Vector3 v = new Vector3(XROrigin.localPosition.x, XROrigin.localPosition.y, XROrigin.localPosition.z);
 
         List<int> p = converter.toGAMACRS3D(v);
@@ -1025,8 +1032,8 @@ public class SimulationManager : MonoBehaviour
             {"z", "" +p[2]},
             {"angle", "" +angle}
         };
-        
-            
+
+
         ConnectionManager.Instance.SendExecutableAsk("move_player_external", args);
 
     }
@@ -1144,7 +1151,7 @@ public class SimulationManager : MonoBehaviour
 
 
 
-   
+
 
 
     // ############################################# HANDLERS ########################################
@@ -1194,14 +1201,14 @@ public class SimulationManager : MonoBehaviour
     }
     protected virtual void AdditionalInitAfterGeomLoading()
     {
-         
+
     }
     protected virtual void ManageOtherMessages(string content)
     {
 
     }
 
-    private  void HandleServerMessageReceived(String firstKey, String content)
+    private void HandleServerMessageReceived(String firstKey, String content)
     {
 
         if (content == null || content.Equals("{}")) return;
@@ -1210,15 +1217,15 @@ public class SimulationManager : MonoBehaviour
             case "subsidences":
                 subsidenceInfo = SubsidenceInfo.CreateFromJSON(content);
                 break;
-              
+
             case "pumpers":
                 infoPump = FreshWaterSpawn.CreateFromJSON(content);
                 break;
 
             case "enemyspawners":
                 infoEnemySp = EnemySpawnerInfo.CreateFromJSON(content);
-                break; 
-                
+                break;
+
             // handle general informations about the simulation
             case "precision":
 

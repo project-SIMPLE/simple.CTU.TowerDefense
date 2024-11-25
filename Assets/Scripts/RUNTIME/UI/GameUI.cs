@@ -60,11 +60,12 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lose_reportEnemiesNumber;
     [SerializeField] private TextMeshProUGUI lose_reportSubsidenceScore;
 
-    private bool endDone = false;
+    public bool endDone = false;
 
     public float SubsidenceScore = 0;
     public float LiveTreeNumber = 0;
-    public float DeadTreeNumber = 0;
+    private int dtree = 0;
+    public int DeadTreeNumber = 0;
     public float TotalTree = 0;
     public float NumberPumper = 0;
     public float TotalNeutralWater = 0;
@@ -90,6 +91,28 @@ public class GameUI : MonoBehaviour
     {
         Instance = this;
         subsidenceManager = FindObjectOfType<SubsidenceManager>();
+    }
+    public void computeScore(){
+        
+            SubsidenceScore = subsidenceManager.SubsidenceScore;
+            TotalTree = playerResourcesManager.TotalTree;
+            DeadTreeNumber = dtree;
+            LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
+            // DeadTreeNumber = playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources;
+            NumberPumper = StatisticsManager.Instance.WaterPumpCount;
+            TotalNeutralWater = StatisticsManager.Instance.EnemyKillCount*2;
+            TotalMiningWater = 100-subsidenceManager.RemainingWaterLevelLocal;
+
+
+            // SubsidenceScore = 1;
+            // TotalTree = 199;
+            // DeadTreeNumber = 199;
+            // LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
+            // NumberPumper = 10;
+            // TotalNeutralWater = 100;
+            // TotalMiningWater = 100;
+            ScoreGame = (1 - (SubsidenceScore/10)) + (LiveTreeNumber/TotalTree) + (1- (NumberPumper/10)) + ((TotalNeutralWater+1)/(TotalMiningWater+1))*100;
+            ScoreGame = Mathf. Round(ScoreGame * 100.0f) * 0.01f;
     }
     void Update()
     {
@@ -118,6 +141,10 @@ public class GameUI : MonoBehaviour
             {
                 finalText.text = loseText;
             }
+            
+            
+            computeScore();
+            
             // Add Report Text Here
             // reportText = "Living Trees: " + playerResourcesManager.CurrentRefillSources + "\n" +
             //              "Dead Trees: " + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources) + "\n" +
@@ -130,25 +157,6 @@ public class GameUI : MonoBehaviour
             //              "Subsidence Score: " + subsidenceManager.SubsidenceScore;
 
 
-            SubsidenceScore = subsidenceManager.SubsidenceScore;
-            TotalTree = playerResourcesManager.TotalTree;
-            // DeadTreeNumber = 199;
-            LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
-            // DeadTreeNumber = playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources;
-            NumberPumper = StatisticsManager.Instance.WaterPumpCount;
-            TotalNeutralWater = StatisticsManager.Instance.EnemyKillCount*2;
-            TotalMiningWater = 100-subsidenceManager.RemainingWaterLevelLocal;
-
-
-            // SubsidenceScore = 1;
-            // TotalTree = 199;
-            // DeadTreeNumber = 199;
-            // LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
-            // NumberPumper = 10;
-            // TotalNeutralWater = 100;
-            // TotalMiningWater = 100;
-            ScoreGame = (1 - (SubsidenceScore/10)) + (LiveTreeNumber/TotalTree) + (1- (NumberPumper/10)) + ((TotalNeutralWater+1)/(TotalMiningWater+1))*100;
-            ScoreGame = Mathf. Round(ScoreGame * 100.0f) * 0.01f;
             // Son: Setup Final Report
             // reportTextMeshPro.text = reportText;
             // reportLivingTreesNumber.text = "" + playerResourcesManager.CurrentRefillSources;
@@ -248,7 +256,7 @@ public class GameUI : MonoBehaviour
 
     public void CountDeadTree()
     {
-        DeadTreeNumber++;
+        dtree++;
     }
 
     public void DeletePlayer(GameObject obj)
