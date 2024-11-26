@@ -92,40 +92,43 @@ public class GameUI : MonoBehaviour
         Instance = this;
         subsidenceManager = FindObjectOfType<SubsidenceManager>();
     }
-    public void computeScore(){
-        
-            SubsidenceScore = subsidenceManager.SubsidenceScore;
-            TotalTree = playerResourcesManager.TotalTree;
-            DeadTreeNumber = dtree;
-            LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
-            // DeadTreeNumber = playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources;
-            NumberPumper = StatisticsManager.Instance.WaterPumpCount;
-            TotalNeutralWater = StatisticsManager.Instance.EnemyKillCount*2;
-            TotalMiningWater = 100-subsidenceManager.RemainingWaterLevelLocal;
+    public void computeScore()
+    {
+
+        SubsidenceScore = subsidenceManager.SubsidenceScore;
+        TotalTree = playerResourcesManager.TotalTree;
+        DeadTreeNumber = dtree;
+        LiveTreeNumber = TotalTree - DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
+                                                    // DeadTreeNumber = playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources;
+        NumberPumper = StatisticsManager.Instance.WaterPumpCount;
+        TotalNeutralWater = StatisticsManager.Instance.EnemyKillCount * 2;
+        TotalMiningWater = 100 - subsidenceManager.RemainingWaterLevelLocal;
 
 
-            // SubsidenceScore = 1;
-            // TotalTree = 199;
-            // DeadTreeNumber = 199;
-            // LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
-            // NumberPumper = 10;
-            // TotalNeutralWater = 100;
-            // TotalMiningWater = 100;
-            ScoreGame = (1 - (SubsidenceScore/10)) + (LiveTreeNumber/TotalTree) + (1- (NumberPumper/10)) + ((TotalNeutralWater+1)/(TotalMiningWater+1))*100;
-            ScoreGame = Mathf. Round(ScoreGame * 100.0f) * 0.01f;
+        // SubsidenceScore = 1;
+        // TotalTree = 199;
+        // DeadTreeNumber = 199;
+        // LiveTreeNumber = TotalTree-DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
+        // NumberPumper = 10;
+        // TotalNeutralWater = 100;
+        // TotalMiningWater = 100;
+        ScoreGame = ((1 - (SubsidenceScore / 10)) + (LiveTreeNumber / TotalTree) + (1 - (NumberPumper / 10)) + ((TotalNeutralWater/100+1) / (TotalMiningWater+1))) * 100;
+        ScoreGame = Mathf.Round(ScoreGame * 100.0f) * 0.01f;
     }
     void Update()
     {
         ready = true;
-        
-        if (!endDone && (gameManager.CurrentGameStatus() == GameStatus.Win || gameManager.CurrentGameStatus() == GameStatus.Lose) )
+
+        if (!endDone && (gameManager.CurrentGameStatus() == GameStatus.Win || gameManager.CurrentGameStatus() == GameStatus.Lose))
         {
             endDone = true;
             transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
             startContent.SetActive(false);
             //finalContent.SetActive(true);
+
+            computeScore();
             // Son : update menu win and lose 
-            if ((playerResourcesManager.CurrentRefillSources ) > (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources))
+            if ((DeadTreeNumber/LiveTreeNumber) < (0.4))
             {
                 finalContent_Win.SetActive(true);
             }
@@ -141,10 +144,9 @@ public class GameUI : MonoBehaviour
             {
                 finalText.text = loseText;
             }
-            
-            
-            computeScore();
-            
+
+
+
             // Add Report Text Here
             // reportText = "Living Trees: " + playerResourcesManager.CurrentRefillSources + "\n" +
             //              "Dead Trees: " + (playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources) + "\n" +
