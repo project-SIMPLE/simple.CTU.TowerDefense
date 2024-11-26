@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.19784193, g: 0.34197962, b: 0.45886195, a: 1}
+  m_IndirectSpecularColor: {r: 0.1979925, g: 0.34465563, b: 0.45837933, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -473088,7 +473088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1965489377
 RectTransform:
   m_ObjectHideFlags: 0
@@ -474200,6 +474200,7 @@ MonoBehaviour:
   lose_reportPumpNumber: {fileID: 1388064116}
   lose_reportEnemiesNumber: {fileID: 870718724}
   lose_reportSubsidenceScore: {fileID: 187122337}
+  endDone: 0
   SubsidenceScore: 0
   LiveTreeNumber: 0
   DeadTreeNumber: 0
@@ -531018,7 +531019,7 @@ PrefabInstance:
     - target: {fileID: 1575987251974367368, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1994425368864951506, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
@@ -531029,6 +531030,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2517222151730689525, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2707729657017210754, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
