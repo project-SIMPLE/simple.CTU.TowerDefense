@@ -454,6 +454,7 @@ public class SimulationManager : MonoBehaviour
                {"o",angle+"" },
             {"remaining_time",((int) levelManager.CurrentTime)+"" },
             {"dtree",((int) gameUI.DeadTreeNumber)+"" },
+            {"fwater",((int) gameUI.TotalNeutralWater)+"" },
             {"score",((float) gameUI.ScoreGame)+"" },
 
 

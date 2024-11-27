@@ -101,7 +101,7 @@ public class GameUI : MonoBehaviour
         LiveTreeNumber = TotalTree - DeadTreeNumber;// playerResourcesManager.CurrentRefillSources;
                                                     // DeadTreeNumber = playerResourcesManager.TotalTree - playerResourcesManager.CurrentRefillSources;
         NumberPumper = StatisticsManager.Instance.WaterPumpCount;
-        TotalNeutralWater = StatisticsManager.Instance.EnemyKillCount * 2;
+        TotalNeutralWater = StatisticsManager.Instance.EnemyKillCount;
         TotalMiningWater = 100 - subsidenceManager.RemainingWaterLevelLocal;
 
 
@@ -112,7 +112,7 @@ public class GameUI : MonoBehaviour
         // NumberPumper = 10;
         // TotalNeutralWater = 100;
         // TotalMiningWater = 100;
-        ScoreGame = ((1 - (SubsidenceScore / 10)) + (LiveTreeNumber / TotalTree) + (1 - (NumberPumper / 10)) + ((TotalNeutralWater/100+1) / (TotalMiningWater+1))) * 100;
+        ScoreGame = ((1 - (SubsidenceScore / 10)) + (LiveTreeNumber / TotalTree) + (1 - (NumberPumper / 10)) + ((TotalNeutralWater/200+1) / (TotalMiningWater+1))) * 100;
         ScoreGame = Mathf.Round(ScoreGame * 100.0f) * 0.01f;
     }
     void Update()
