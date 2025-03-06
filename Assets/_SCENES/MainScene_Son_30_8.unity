@@ -272700,7 +272700,7 @@ PrefabInstance:
     - target: {fileID: 1077568249799591053, guid: 894cbc7e0986f4aa2bc1fee171cdb09b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6696467980461973084, guid: 894cbc7e0986f4aa2bc1fee171cdb09b,
         type: 3}
@@ -471526,8 +471526,11 @@ MonoBehaviour:
   lose_reportPumpNumber: {fileID: 1388064116}
   lose_reportEnemiesNumber: {fileID: 870718724}
   lose_reportSubsidenceScore: {fileID: 187122337}
+  endDone: 0
   SubsidenceScore: 0
-  LiveTreeRate: 0
+  LiveTreeNumber: 0
+  DeadTreeNumber: 0
+  TotalTree: 0
   NumberPumper: 0
   TotalNeutralWater: 0
   TotalMiningWater: 0
