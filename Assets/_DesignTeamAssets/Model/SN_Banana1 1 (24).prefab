@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7448566676927950526}
   - component: {fileID: 4562087750493330672}
   - component: {fileID: 7770115688686111535}
-  - component: {fileID: 911646938588377913}
+  - component: {fileID: 1061143029007761928}
   m_Layer: 8
   m_Name: SN_Banana1 1 (24)
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &911646938588377913
-BoxCollider:
+--- !u!64 &1061143029007761928
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,6 +102,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.4025811, y: 1.1837859, z: 1.2931117}
-  m_Center: {x: 0.062036492, y: -0.07585555, z: -0.29082993}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2842624408850581284, guid: ce1089dbfc9f8e644993fccf6741033c, type: 3}
