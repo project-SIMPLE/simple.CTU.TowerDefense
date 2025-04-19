@@ -73,6 +73,16 @@ public abstract class WebSocketConnector : MonoBehaviour
     // #######################################################################
 
     protected void SendMessageToServer(string message, Action<bool> successCallback) {
+       if(!socket.IsAlive) {
+            // Debug.LogError("WebSocket is not connected. Cannot send message: " + message);
+            // successCallback(false);
+            return;
+        }
+        if (message == null || message.Length == 0) {
+            // Debug.LogError("Message is null or empty. Cannot send message.");
+            // successCallback(false);
+            return;
+        }
        socket.SendAsync(message, successCallback);
     }
 

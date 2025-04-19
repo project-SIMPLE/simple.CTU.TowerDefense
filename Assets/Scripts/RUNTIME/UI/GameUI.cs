@@ -199,6 +199,11 @@ public class GameUI : MonoBehaviour
         startContent.gameObject.SetActive(false);
     }
 
+    public void ReConnect()
+    {
+        ConnectionManager.Instance.UpdateConnectionState(ConnectionState.DISCONNECTED);
+    }
+
     public void StartUI()
     {
        /* // PlayerPrefs.SetString("IP", "localhost");
