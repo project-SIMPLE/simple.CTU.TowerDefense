@@ -1,0 +1,34 @@
+fileFormatVersion: 2
+guid: 09ed6b48a73f04d68b03c5460d62ac0b
+timeCreated: 1502337456
+licenseType: Pro
+PluginImporter:
+  serializedVersion: 2
+  iconMap: {}
+  executionOrder: {}
+  isPreloaded: 0
+  isOverridable: 0
+  platformData:
+    data:
+      first:
+        Any: 
+      second:
+        enabled: 1
+        settings: {}
+    data:
+      first:
+        Editor: Editor
+      second:
+        enabled: 0
+        settings:
+          DefaultValueInitialized: true
+    data:
+      first:
+        Windows Store Apps: WindowsStoreApps
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

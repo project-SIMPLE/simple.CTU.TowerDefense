@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6648265225795594911}
   m_Layer: 0
-  m_Name: SM_Cong 1
+  m_Name: Culvert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +114,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ffed393d19adee64ba4acb4fc6876971,
         type: 3}
       propertyPath: m_Name
-      value: cong2
+      value: Culvert_Start
       objectReference: {fileID: 0}
     - target: {fileID: 6852191421528384001, guid: ffed393d19adee64ba4acb4fc6876971,
         type: 3}
@@ -218,7 +218,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ffed393d19adee64ba4acb4fc6876971,
         type: 3}
       propertyPath: m_Name
-      value: cong2 (1)
+      value: Culvert_End
       objectReference: {fileID: 0}
     - target: {fileID: 6852191421528384001, guid: ffed393d19adee64ba4acb4fc6876971,
         type: 3}
