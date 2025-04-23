@@ -287176,7 +287176,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.5
+  m_Intensity: 2.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -287219,7 +287219,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 5000
+  m_ColorTemperature: 5134
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -544898,27 +544898,27 @@ PrefabInstance:
     - target: {fileID: 5504212216989088452, guid: 75f04bd5ecb524dad85ebb3306e5f3c1,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.21023
+      value: 1.3072883
       objectReference: {fileID: 0}
     - target: {fileID: 5504212216989088452, guid: 75f04bd5ecb524dad85ebb3306e5f3c1,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.21023
+      value: 1.3072883
       objectReference: {fileID: 0}
     - target: {fileID: 5504212216989088452, guid: 75f04bd5ecb524dad85ebb3306e5f3c1,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.21023
+      value: 1.3072883
       objectReference: {fileID: 0}
     - target: {fileID: 5504212216989088452, guid: 75f04bd5ecb524dad85ebb3306e5f3c1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.25
+      value: 7.76
       objectReference: {fileID: 0}
     - target: {fileID: 5504212216989088452, guid: 75f04bd5ecb524dad85ebb3306e5f3c1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.06
+      value: -2.09
       objectReference: {fileID: 0}
     - target: {fileID: 5504212216989088452, guid: 75f04bd5ecb524dad85ebb3306e5f3c1,
         type: 3}
