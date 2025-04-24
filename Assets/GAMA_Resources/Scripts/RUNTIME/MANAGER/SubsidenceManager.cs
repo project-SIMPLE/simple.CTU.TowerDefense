@@ -20,8 +20,8 @@ public class SubsidenceManager : MonoBehaviour
     private float currentWaterLevelGlobal = 1f;
     private float currentSubsidenceLevel = 0f;
 
-    [SerializeField] private float subsidenceLevel1 = 3f;
-    [SerializeField] private float subsidenceLevel2 = 5;
+    [SerializeField] private float subsidenceLevel1 = 2f;
+    [SerializeField] private float subsidenceLevel2 = 5f;
     [SerializeField] private float subsidenceLevel3 = 7f;
     [SerializeField] private float subsidenceLevelRatio = 0.2f;
 
@@ -98,12 +98,16 @@ public class SubsidenceManager : MonoBehaviour
         //     waterSurface.SetActive(false);
         }
     }
+
+
     int tick = 0;
     void Update()
     {
         HandleSubsidence();
         ActivateSubsidenceLevels();
         ApplyWaterLevelEffect();
+        Flooded(SubsidenceScore); //Kiểm tra mức độ lũ lụt 
+        Debug.Log("SubsidenceScore: " + SubsidenceScore);
         GameManager gg = FindObjectOfType<GameManager>();
         if (gg != null && gg.CurrentGameStatus() == GameStatus.InProgress)
         {
@@ -142,6 +146,8 @@ public class SubsidenceManager : MonoBehaviour
             {
                 ActivateSubsidenceLevel(3);
                 RotateTrees();
+                //Flooded(-30);
+                Debug.Log("subsidenceLevel3");
             }
         }
         else if (currentSubsidenceLevel >= subsidenceLevel2)
@@ -150,6 +156,8 @@ public class SubsidenceManager : MonoBehaviour
             {
                 ActivateSubsidenceLevel(2);
                 RotateTrees();
+                //Flooded(-20);
+                Debug.Log("subsidenceLevel2");
             }
         }
         else if (currentSubsidenceLevel >= subsidenceLevel1)
@@ -158,6 +166,8 @@ public class SubsidenceManager : MonoBehaviour
             {
                 ActivateSubsidenceLevel(1);
                 RotateTrees();
+                //Flooded(-10);
+                Debug.Log("subsidenceLevel1");
             }
         }
     }
@@ -173,13 +183,32 @@ public class SubsidenceManager : MonoBehaviour
         }
     }
 
-    public void Flooded()
+    public void Flooded(float level)
     {
-
+        // Xử lý tạm chờ ghép với GAMA
         Vector3 waterSurfacePosition = waterSurface.transform.position;
-        waterSurfacePosition.y = 1.0f;//waterSurface.transform.position.y + 1;
-        waterSurface.transform.position = waterSurfacePosition;
+        // if (level == -10 && waterSurfacePosition.y < 0.1)
+        // {
+        //     waterSurfacePosition.y = waterSurface.transform.position.y + 0.01f;
+        //     waterSurface.transform.position = waterSurfacePosition;
+        // }
+        // if (level == -20 && waterSurfacePosition.y < 0.6)
+        // {
+        //     waterSurfacePosition.y = waterSurface.transform.position.y + 0.01f;
+        //     waterSurface.transform.position = waterSurfacePosition;
+        // }
+        //  if (level == -30 && waterSurfacePosition.y < 1.1)
+        // {
+        //     waterSurfacePosition.y = waterSurface.transform.position.y + 0.01f;
+        //     waterSurface.transform.position = waterSurfacePosition;
+        // }
+        if (level == SubsidenceScore && waterSurfacePosition.y < SubsidenceScore - 0.3f)
+        {
+            waterSurfacePosition.y = waterSurface.transform.position.y + 0.01f;
+            waterSurface.transform.position = waterSurfacePosition;
+        }
     }
+
     void ApplyWaterLevelEffect()
     {
         if (currentWaterLevel <= 0f)
