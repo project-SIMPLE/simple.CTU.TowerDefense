@@ -148,5 +148,20 @@ MonoBehaviour:
       type: 3}
     spawnAmount: 8
     spawnPoint: 3
-  waveTime: 120
+  - timeFrame: 230
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 8
+    spawnPoint: 3
+  - timeFrame: 230
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 8
+    spawnPoint: 3
+  - timeFrame: 230
+    spawnEnemy: {fileID: 526393905828640805, guid: f5e50396af5f8ad47bed78c3e27634fd,
+      type: 3}
+    spawnAmount: 8
+    spawnPoint: 3
+  waveTime: 240
   preparationTime: 30

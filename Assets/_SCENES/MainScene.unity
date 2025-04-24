@@ -228092,6 +228092,8 @@ MonoBehaviour:
   loop: 0
   waves:
   - {fileID: 11400000, guid: 0a991ae451073e34e9e6cc7f300a4092, type: 2}
+  - {fileID: 11400000, guid: 0a991ae451073e34e9e6cc7f300a4092, type: 2}
+  - {fileID: 11400000, guid: 0a991ae451073e34e9e6cc7f300a4092, type: 2}
   spawns:
   - {fileID: 674987518}
   - {fileID: 637597872}
@@ -282328,7 +282330,7 @@ PrefabInstance:
     - target: {fileID: 1077568249799591053, guid: 894cbc7e0986f4aa2bc1fee171cdb09b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6696467980461973084, guid: 894cbc7e0986f4aa2bc1fee171cdb09b,
         type: 3}

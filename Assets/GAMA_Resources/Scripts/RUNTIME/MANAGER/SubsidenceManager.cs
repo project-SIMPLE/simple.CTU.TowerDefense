@@ -204,7 +204,7 @@ public class SubsidenceManager : MonoBehaviour
         // }
         if (level == SubsidenceScore && waterSurfacePosition.y < SubsidenceScore - 0.3f)
         {
-            waterSurfacePosition.y = waterSurface.transform.position.y + 0.01f;
+            waterSurfacePosition.y = waterSurface.transform.position.y + 0.005f;
             waterSurface.transform.position = waterSurfacePosition;
         }
     }
