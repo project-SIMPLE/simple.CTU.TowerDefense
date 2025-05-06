@@ -115119,6 +115119,7 @@ Transform:
   m_Children:
   - {fileID: 60004649}
   - {fileID: 2109938612}
+  - {fileID: 1207068877}
   - {fileID: 41819476}
   - {fileID: 414121409}
   - {fileID: 1719398480}
@@ -172782,7 +172783,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -214588,7 +214589,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 57560362}
   m_OnClick:
     m_PersistentCalls:
@@ -282493,6 +282494,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206851088}
   m_CullTransparentMesh: 1
+--- !u!4 &1207068877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1499134896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1207128002
 GameObject:
   m_ObjectHideFlags: 0
@@ -344611,7 +344618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1416581560
 Transform:
   m_ObjectHideFlags: 0
@@ -364769,6 +364776,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498738640}
   m_Mesh: {fileID: 8201437419870775723, guid: 5113e62e11e5eab4583554b3f1b4f543, type: 3}
+--- !u!1001 &1499134896
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 427751323}
+    m_Modifications:
+    - target: {fileID: 1842859321134669186, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_Name
+      value: SurfaceConnector (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea2e971c5c908409bb9e0df300500cf5, type: 3}
 --- !u!1 &1502695455
 GameObject:
   m_ObjectHideFlags: 0
@@ -512088,128 +512163,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108985888}
   m_CullTransparentMesh: 1
---- !u!1 &2109938611
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2109938612}
-  - component: {fileID: 2109938616}
-  - component: {fileID: 2109938615}
-  - component: {fileID: 2109938614}
-  - component: {fileID: 2109938613}
-  m_Layer: 10
-  m_Name: SurfaceConnector
-  m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2109938612
+--- !u!4 &2109938612 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+    type: 3}
+  m_PrefabInstance: {fileID: 972424708209751299}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109938611}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -45.04, y: 1.05, z: 3.9199996}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 427751323}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!135 &2109938613
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109938611}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2109938614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109938611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 449090831175e6b4883281a2ff4f1065, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  connectorPosition: 0
-  connectorParentType: 0
-  canConnectTo: 1
---- !u!23 &2109938615
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109938611}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &2109938616
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109938611}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2116105692
 GameObject:
   m_ObjectHideFlags: 0
@@ -532959,7 +532918,7 @@ GameObject:
   - component: {fileID: 1245125257}
   m_Layer: 11
   m_Name: SM_Playground_No51
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533153,7 +533112,7 @@ GameObject:
   - component: {fileID: 1479295335}
   m_Layer: 11
   m_Name: SM_Playground_No83
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533181,7 +533140,7 @@ GameObject:
   - component: {fileID: 129343070}
   m_Layer: 11
   m_Name: SM_Playground_No15
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533308,7 +533267,7 @@ GameObject:
   - component: {fileID: 658673323}
   m_Layer: 11
   m_Name: SM_Playground_No58
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533358,7 +533317,7 @@ GameObject:
   - component: {fileID: 747161014}
   m_Layer: 11
   m_Name: SM_Playground_No2
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533420,7 +533379,7 @@ GameObject:
   - component: {fileID: 1753668388}
   m_Layer: 11
   m_Name: SM_Playground_No82
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533513,7 +533472,7 @@ GameObject:
   - component: {fileID: 1636290164}
   m_Layer: 11
   m_Name: SM_Playground_No25
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533564,7 +533523,7 @@ GameObject:
   - component: {fileID: 1949066400}
   m_Layer: 11
   m_Name: SM_Playground_No30
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533764,7 +533723,7 @@ GameObject:
   - component: {fileID: 1736528675}
   m_Layer: 11
   m_Name: SM_Playground_No85
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534077,7 +534036,7 @@ GameObject:
   - component: {fileID: 518688802}
   m_Layer: 11
   m_Name: SM_Playground_No9
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534097,7 +534056,7 @@ GameObject:
   - component: {fileID: 922809185}
   m_Layer: 11
   m_Name: SM_Playground_No86
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534363,7 +534322,7 @@ GameObject:
   - component: {fileID: 960796166}
   m_Layer: 11
   m_Name: SM_Playground_No13
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534398,7 +534357,7 @@ GameObject:
   - component: {fileID: 614343585}
   m_Layer: 11
   m_Name: SM_Playground_No56
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534428,6 +534387,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196259545191604529}
   m_Mesh: {fileID: -650603354879095498, guid: 41f4ed8df8caf3c4cb5fc1ba04e4de40, type: 3}
+--- !u!1001 &972424708209751299
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 427751323}
+    m_Modifications:
+    - target: {fileID: 1842859321134669186, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_Name
+      value: SurfaceConnector
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -45.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.9199996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292839265516129055, guid: ea2e971c5c908409bb9e0df300500cf5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea2e971c5c908409bb9e0df300500cf5, type: 3}
 --- !u!23 &981029900608707930
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -534573,7 +534600,7 @@ GameObject:
   - component: {fileID: 972215750}
   m_Layer: 11
   m_Name: SM_Playground_No55
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534608,7 +534635,7 @@ GameObject:
   - component: {fileID: 175526897}
   m_Layer: 11
   m_Name: SM_Playground_No54
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534731,7 +534758,7 @@ GameObject:
   - component: {fileID: 1050238998}
   m_Layer: 11
   m_Name: SM_Playground_No17
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -535978,7 +536005,7 @@ GameObject:
   - component: {fileID: 179003225}
   m_Layer: 11
   m_Name: SM_Playground_No89
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536152,7 +536179,7 @@ GameObject:
   - component: {fileID: 91387016}
   m_Layer: 11
   m_Name: SM_Playground_No81
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536387,7 +536414,7 @@ GameObject:
   - component: {fileID: 762555981}
   m_Layer: 11
   m_Name: SM_Playground_No72
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536407,7 +536434,7 @@ GameObject:
   - component: {fileID: 1016981584}
   m_Layer: 11
   m_Name: SM_Playground_No19
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536515,7 +536542,7 @@ GameObject:
   - component: {fileID: 395185763}
   m_Layer: 11
   m_Name: SM_Playground_No91
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536577,7 +536604,7 @@ GameObject:
   - component: {fileID: 634196501}
   m_Layer: 11
   m_Name: SM_Playground_No79
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536597,7 +536624,7 @@ GameObject:
   - component: {fileID: 1670593259}
   m_Layer: 11
   m_Name: SM_Playground_No31
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536709,7 +536736,7 @@ GameObject:
   - component: {fileID: 1222206531}
   m_Layer: 11
   m_Name: SM_Playground_No43
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536771,7 +536798,7 @@ GameObject:
   - component: {fileID: 1517379762}
   m_Layer: 11
   m_Name: SM_Playground_No37
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536864,7 +536891,7 @@ GameObject:
   - component: {fileID: 50590462}
   m_Layer: 11
   m_Name: SM_Playground_No10
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536884,7 +536911,7 @@ GameObject:
   - component: {fileID: 44134492}
   m_Layer: 11
   m_Name: SM_Playground_No35
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537077,7 +537104,7 @@ GameObject:
   - component: {fileID: 1966800615}
   m_Layer: 11
   m_Name: SM_Playground_No4
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537181,7 +537208,7 @@ GameObject:
   - component: {fileID: 1549299611}
   m_Layer: 11
   m_Name: SM_Playground_No49
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537457,7 +537484,7 @@ GameObject:
   - component: {fileID: 607378836}
   m_Layer: 11
   m_Name: SM_Playground_No57
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537477,7 +537504,7 @@ GameObject:
   - component: {fileID: 1617391757}
   m_Layer: 11
   m_Name: SM_Playground_No63
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537497,7 +537524,7 @@ GameObject:
   - component: {fileID: 966211424}
   m_Layer: 11
   m_Name: SM_Playground_No60
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537561,7 +537588,7 @@ GameObject:
   - component: {fileID: 1289348462}
   m_Layer: 11
   m_Name: SM_Playground_No61
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537581,7 +537608,7 @@ GameObject:
   - component: {fileID: 1694965168}
   m_Layer: 11
   m_Name: SM_Playground_No71
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537809,7 +537836,7 @@ GameObject:
   - component: {fileID: 59668060}
   m_Layer: 11
   m_Name: SM_Playground_No5
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537871,7 +537898,7 @@ GameObject:
   - component: {fileID: 695345856}
   m_Layer: 11
   m_Name: SM_Playground_No68
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537941,7 +537968,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0, b: 1, a: 1}
+      key0: {r: 0.28586686, g: 0.28586686, b: 0.8301887, a: 1}
       key1: {r: 0, g: 0, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -537966,7 +537993,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 4
@@ -538050,7 +538077,7 @@ GameObject:
   - component: {fileID: 1707380542}
   m_Layer: 11
   m_Name: SM_Playground_No52
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538436,7 +538463,7 @@ GameObject:
   - component: {fileID: 1782166604}
   m_Layer: 11
   m_Name: SM_Playground_No32
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538502,7 +538529,7 @@ GameObject:
   - component: {fileID: 1141328042}
   m_Layer: 11
   m_Name: SM_Playground_No27
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538522,7 +538549,7 @@ GameObject:
   - component: {fileID: 227178356}
   m_Layer: 11
   m_Name: SM_Playground_No44
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538599,7 +538626,7 @@ GameObject:
   - component: {fileID: 1927729433}
   m_Layer: 11
   m_Name: SM_Playground_No50
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538836,7 +538863,7 @@ GameObject:
   - component: {fileID: 951671740}
   m_Layer: 11
   m_Name: SM_Playground_No70
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538898,7 +538925,7 @@ GameObject:
   - component: {fileID: 1829507054}
   m_Layer: 11
   m_Name: SM_Playground_No77
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538918,7 +538945,7 @@ GameObject:
   - component: {fileID: 1655696355}
   m_Layer: 11
   m_Name: SM_Playground_No59
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538986,7 +539013,7 @@ GameObject:
   - component: {fileID: 2100461991}
   m_Layer: 11
   m_Name: SM_Playground_No93
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539205,7 +539232,7 @@ GameObject:
   - component: {fileID: 1677583636}
   m_Layer: 11
   m_Name: SM_Playground_No90
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539353,7 +539380,7 @@ GameObject:
   - component: {fileID: 394534513}
   m_Layer: 11
   m_Name: SM_Playground_No24
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539453,7 +539480,7 @@ GameObject:
   - component: {fileID: 372517918}
   m_Layer: 11
   m_Name: SM_Playground_No3
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539473,7 +539500,7 @@ GameObject:
   - component: {fileID: 2082943488}
   m_Layer: 11
   m_Name: SM_Playground_No62
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539581,7 +539608,7 @@ GameObject:
   - component: {fileID: 1004094551}
   m_Layer: 11
   m_Name: SM_Playground_No87
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539658,7 +539685,7 @@ GameObject:
   - component: {fileID: 1009685077}
   m_Layer: 11
   m_Name: SM_Playground_No75
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539724,7 +539751,7 @@ GameObject:
   - component: {fileID: 1421460237}
   m_Layer: 11
   m_Name: SM_Playground_No16
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539744,7 +539771,7 @@ GameObject:
   - component: {fileID: 1227781383}
   m_Layer: 11
   m_Name: SM_Playground_No6
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539787,7 +539814,7 @@ GameObject:
   - component: {fileID: 135505623}
   m_Layer: 11
   m_Name: SM_Playground_No11
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -540267,7 +540294,7 @@ GameObject:
   - component: {fileID: 2068611671}
   m_Layer: 11
   m_Name: SM_Playground_No78
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -540354,7 +540381,7 @@ GameObject:
   - component: {fileID: 806600818}
   m_Layer: 11
   m_Name: SM_Playground_No53
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -540440,7 +540467,7 @@ GameObject:
   - component: {fileID: 1050481738}
   m_Layer: 11
   m_Name: SM_Playground_No92
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -540483,7 +540510,7 @@ GameObject:
   - component: {fileID: 1547979473}
   m_Layer: 11
   m_Name: SM_Playground_No1
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -540639,7 +540666,7 @@ GameObject:
   - component: {fileID: 135502409}
   m_Layer: 11
   m_Name: SM_Playground_No41
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -540674,7 +540701,7 @@ GameObject:
   - component: {fileID: 964266065}
   m_Layer: 11
   m_Name: SM_Playground_No64
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -540751,7 +540778,7 @@ GameObject:
   - component: {fileID: 1824482039}
   m_Layer: 11
   m_Name: SM_Playground_No34
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -541125,7 +541152,7 @@ GameObject:
   - component: {fileID: 1286141561}
   m_Layer: 11
   m_Name: SM_Playground_No14
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -541196,7 +541223,7 @@ GameObject:
   - component: {fileID: 1825129756}
   m_Layer: 11
   m_Name: SM_Playground_No97
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -541224,7 +541251,7 @@ GameObject:
   - component: {fileID: 992131741}
   m_Layer: 11
   m_Name: SM_Playground_No99
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -541378,7 +541405,7 @@ GameObject:
   - component: {fileID: 497321597}
   m_Layer: 11
   m_Name: SM_Playground_No48
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -541463,7 +541490,7 @@ GameObject:
   - component: {fileID: 1556239718}
   m_Layer: 11
   m_Name: SM_Playground_No88
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -541838,7 +541865,7 @@ GameObject:
   - component: {fileID: 1025121246}
   m_Layer: 11
   m_Name: SM_Playground_No33
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542087,7 +542114,7 @@ GameObject:
   - component: {fileID: 1542848068}
   m_Layer: 11
   m_Name: SM_Playground_No94
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542149,7 +542176,7 @@ GameObject:
   - component: {fileID: 27667723}
   m_Layer: 11
   m_Name: SM_Playground_No65
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542649,7 +542676,7 @@ GameObject:
   - component: {fileID: 698175017}
   m_Layer: 11
   m_Name: SM_Playground_No96
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542700,7 +542727,7 @@ GameObject:
   - component: {fileID: 2085908090}
   m_Layer: 11
   m_Name: SM_Playground_No22
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542762,7 +542789,7 @@ GameObject:
   - component: {fileID: 1865766014}
   m_Layer: 11
   m_Name: SM_Playground_No47
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -543928,7 +543955,7 @@ GameObject:
   - component: {fileID: 419783948}
   m_Layer: 11
   m_Name: SM_Playground_No29
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544047,7 +544074,7 @@ GameObject:
   - component: {fileID: 99094327}
   m_Layer: 11
   m_Name: SM_Playground_No100
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544105,7 +544132,7 @@ GameObject:
   - component: {fileID: 1908300785}
   m_Layer: 11
   m_Name: SM_Playground_No76
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544125,7 +544152,7 @@ GameObject:
   - component: {fileID: 1773680199}
   m_Layer: 11
   m_Name: SM_Playground_No23
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544160,7 +544187,7 @@ GameObject:
   - component: {fileID: 525365189}
   m_Layer: 11
   m_Name: SM_Playground_No80
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544195,7 +544222,7 @@ GameObject:
   - component: {fileID: 731860724}
   m_Layer: 11
   m_Name: SM_Playground_No46
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544230,7 +544257,7 @@ GameObject:
   - component: {fileID: 1394134082}
   m_Layer: 11
   m_Name: SM_Playground_No26
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544487,7 +544514,7 @@ GameObject:
   - component: {fileID: 348114618}
   m_Layer: 11
   m_Name: SM_Playground_No20
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544522,7 +544549,7 @@ GameObject:
   - component: {fileID: 1319377553}
   m_Layer: 11
   m_Name: SM_Playground_No38
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544558,7 +544585,7 @@ GameObject:
   - component: {fileID: 1428609411}
   m_Layer: 11
   m_Name: SM_Playground_No7
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544643,7 +544670,7 @@ GameObject:
   - component: {fileID: 595581894}
   m_Layer: 11
   m_Name: SM_Playground_No21
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544663,7 +544690,7 @@ GameObject:
   - component: {fileID: 690381772}
   m_Layer: 11
   m_Name: SM_Playground_No84
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544691,7 +544718,7 @@ GameObject:
   - component: {fileID: 1484819852}
   m_Layer: 11
   m_Name: SM_Playground_No98
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544974,7 +545001,7 @@ GameObject:
   - component: {fileID: 1450986948}
   m_Layer: 11
   m_Name: SM_Playground_No40
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545009,7 +545036,7 @@ GameObject:
   - component: {fileID: 1959112775}
   m_Layer: 11
   m_Name: SM_Playground_No67
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545831,7 +545858,7 @@ GameObject:
   - component: {fileID: 1434923952}
   m_Layer: 11
   m_Name: SM_Playground_No39
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545851,7 +545878,7 @@ GameObject:
   - component: {fileID: 425745182}
   m_Layer: 11
   m_Name: SM_Playground_No42
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545944,7 +545971,7 @@ GameObject:
   - component: {fileID: 423872063}
   m_Layer: 11
   m_Name: SM_Playground_No69
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545964,7 +545991,7 @@ GameObject:
   - component: {fileID: 1052318104}
   m_Layer: 11
   m_Name: SM_Playground_No28
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -546486,7 +546513,7 @@ GameObject:
   - component: {fileID: 874817735}
   m_Layer: 11
   m_Name: SM_Playground_No45
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -546686,7 +546713,7 @@ GameObject:
   - component: {fileID: 1075239572}
   m_Layer: 11
   m_Name: SM_Playground_No8
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -546922,7 +546949,7 @@ GameObject:
   - component: {fileID: 1851208817}
   m_Layer: 11
   m_Name: SM_Playground_No36
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547180,7 +547207,7 @@ GameObject:
   - component: {fileID: 130408449}
   m_Layer: 11
   m_Name: SM_Playground_No95
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547208,7 +547235,7 @@ GameObject:
   - component: {fileID: 114508284}
   m_Layer: 11
   m_Name: SM_Playground_No66
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547228,7 +547255,7 @@ GameObject:
   - component: {fileID: 594526625}
   m_Layer: 11
   m_Name: SM_Playground_No74
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547263,7 +547290,7 @@ GameObject:
   - component: {fileID: 1667569275}
   m_Layer: 11
   m_Name: SM_Playground_No18
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547383,6 +547410,11 @@ PrefabInstance:
       propertyPath: removeConstructionRay
       value: 
       objectReference: {fileID: 1532996488}
+    - target: {fileID: 2953044564702790973, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3309209515693942598, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
       propertyPath: m_Name
@@ -547469,6 +547501,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 26.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881645039356806713, guid: 5543168700b61b84ca91a9f9344e5bc3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6973634291777642046, guid: 5543168700b61b84ca91a9f9344e5bc3,
         type: 3}
@@ -547871,7 +547908,7 @@ GameObject:
   - component: {fileID: 781318473}
   m_Layer: 11
   m_Name: SM_Playground_No73
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547933,7 +547970,7 @@ GameObject:
   - component: {fileID: 595573676}
   m_Layer: 11
   m_Name: SM_Playground_No12
-  m_TagString: Untagged
+  m_TagString: Teleportation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -18,7 +18,7 @@ public class SubsidenceManager : MonoBehaviour
     private bool isSubsidence = false;
     private float currentWaterLevel = 1f;
     private float currentWaterLevelGlobal = 1f;
-    private float currentSubsidenceLevel = 0f;
+    public static float currentSubsidenceLevel = 0f;
 
     [SerializeField] private float subsidenceLevel1 = 2f;
     [SerializeField] private float subsidenceLevel2 = 5f;
@@ -61,6 +61,7 @@ public class SubsidenceManager : MonoBehaviour
     {
         currentWaterLevel -= waterLevelRatio;
     }
+
     void Start()
     {
         InitializeSubsidenceLevels();
@@ -107,7 +108,7 @@ public class SubsidenceManager : MonoBehaviour
         ActivateSubsidenceLevels();
         ApplyWaterLevelEffect();
         Flooded(SubsidenceScore); //Kiểm tra mức độ lũ lụt 
-        Debug.Log("SubsidenceScore: " + SubsidenceScore);
+        //Debug.Log("SubsidenceScore: " + SubsidenceScore);
         GameManager gg = FindObjectOfType<GameManager>();
         if (gg != null && gg.CurrentGameStatus() == GameStatus.InProgress)
         {

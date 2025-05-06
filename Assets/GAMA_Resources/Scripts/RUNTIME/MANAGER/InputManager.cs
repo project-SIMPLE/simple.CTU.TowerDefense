@@ -33,7 +33,8 @@ public class InputManager : MonoBehaviour
             }
             
         }
-        buildRay.SetActive(buildManager.IsBuilding);
+        //buildRay.SetActive(buildManager.IsBuilding);
+
         if (buildAction.action.ReadValue<float>() >= 0.5f)
         {
             buildManager.Build();

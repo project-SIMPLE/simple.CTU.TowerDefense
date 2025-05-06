@@ -9,8 +9,8 @@ public class BuildSystemManager : MonoBehaviour
     [SerializeField] Transform constructionAnchor;
     [SerializeField] private BuildUI buildIU;
     
-    private bool isBuilding = false;
-    private int currentBuildingIndex;
+    private bool isBuilding = true; //false --> NhSon cho phep xay dung khong can menu 
+    private int currentBuildingIndex = 1; // co dinh xay dung may bom
     private GameObject ghostConstruction;
 
     [SerializeField] private SubsidenceManager subsidenceManager;
@@ -43,11 +43,13 @@ public class BuildSystemManager : MonoBehaviour
 
     public void StartBuilding(int constructionIndex)
     {
+        
         if (!IsBuildable(constructionIndex)) return;
 
         isBuilding = true;
-        currentBuildingIndex = constructionIndex;
+        //currentBuildingIndex = constructionIndex;
     }
+
     private void UpdateCooldowns(float deltaTime)
     {
         foreach(var construction in constructions)
@@ -66,7 +68,7 @@ public class BuildSystemManager : MonoBehaviour
     public void FinishBuilding()
     {
         Destroy(ghostConstruction.gameObject);
-        isBuilding = false;
+        isBuilding = true;// false;
     }
     
     public void Build(){
@@ -95,6 +97,7 @@ public class BuildSystemManager : MonoBehaviour
             if (currentBuildingIndex == 0)
             {
                 StatisticsManager.Instance.IncreateSluiceGateCount();
+                //StatisticsManager.Instance.IncreateWaterPumpCount();
             }
             else if (currentBuildingIndex == 1)
             {
@@ -103,6 +106,7 @@ public class BuildSystemManager : MonoBehaviour
             else if (currentBuildingIndex == 2)
             {
                 StatisticsManager.Instance.IncreateLakeCount();
+                //StatisticsManager.Instance.IncreateWaterPumpCount();
             }
             StatisticsManager.Instance.AddActionHistory(
                 "Build",

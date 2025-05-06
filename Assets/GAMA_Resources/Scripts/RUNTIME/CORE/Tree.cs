@@ -20,6 +20,7 @@ public class Tree : MonoBehaviour, IDamageable
     // runtime privates
     public static int currentHealh;
     public Animator anim;
+    AnimatorStateInfo stateInfo;
     public TextMeshProUGUI hp;
     private int count;
   //  private int condition = 0;
@@ -35,31 +36,28 @@ public class Tree : MonoBehaviour, IDamageable
         //currentHealh = health;
         currentHealh = 800;
         anim = GetComponent<Animator>();
+        stateInfo = anim.GetCurrentAnimatorStateInfo(0);
         // Debug.Log("Tree_currentHealh"+ currentHealh);
     }
     // private bool created = false;
     // int tick=0;
 
-     public void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealh -= damage;
         //Debug.Log("TakeDamage_currentHealh: " + currentHealh);
         //hp.text = currentHealh.ToString();
-        
-
-        
+    
         if (currentHealh <= -20)
         {
             
-             Dictionary<string, string> args = new Dictionary<string, string> {
+            Dictionary<string, string> args = new Dictionary<string, string> {
                 {"idP", ConnectionManager.Instance.GetConnectionId()},
                 {"idT", gameObject.GetInstanceID()+"" }};
 
                 ConnectionManager.Instance.SendExecutableAsk("delete_tree", args);
-            
 
-
-                // Debug.Log("currentHealh < 0: ");
+            // Debug.Log("currentHealh < 0: ");
             // anim.Play("Tree_Die", -1,0f);
 
             if (GameUI.Instance != null  && gameObject != null)
@@ -75,11 +73,11 @@ public class Tree : MonoBehaviour, IDamageable
     {           
         count = currentHealh;
         //Debug.Log("VoidUpdate_currentHealh: " + count);
-        if (count > 0)
-        {
-            hp.text = count.ToString();
-        }
-        else hp.text = "Tree Die";
+        // if (count > 0)
+        // {
+        //     hp.text = count.ToString();
+        // }
+        // else hp.text = "Tree Die";
 
         // Test Animation
         if(Input.GetKeyDown("1"))
@@ -101,12 +99,22 @@ public class Tree : MonoBehaviour, IDamageable
         {
             //condition = 1; 
             // Debug.Log("khoi dong animation Tree Bad: ");
-            anim.Play("Tree_Bad");
+            if (!stateInfo.IsName("Tree_Bad"))
+            {
+                anim.Play("Tree_Bad");
+                Debug.Log("Active Animation Tree_Bad");
+            }
+            //anim.Play("Tree_Bad");
         }
         if (count < 1 && count > -20)
         {
             //condition = 2;
             // Debug.Log("khoi dong animation Tree die: ");
+            if (!stateInfo.IsName("Tree_Die"))
+            {
+                anim.Play("Tree_Die");
+                Debug.Log("Active Animation Tree_Die");
+            }
             anim.Play("Tree_Die",-1,0f);
 
         }

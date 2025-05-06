@@ -101,10 +101,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1662556757458053752}
   - {fileID: 6480196299046273728}
-  - {fileID: 3757146434586650822}
   - {fileID: 5167441803554252878}
+  - {fileID: 1662556757458053752}
+  - {fileID: 3757146434586650822}
   m_Father: {fileID: 2937620718010243241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 7724236256955695664}
   - component: {fileID: 7347297476183386490}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button_Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,7 +408,7 @@ RectTransform:
   m_GameObject: {fileID: 1575987251974367368}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.49, y: 0.49, z: 0.49}
+  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5927208439599572584}
@@ -416,7 +416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.4999845, y: 87.5}
+  m_AnchoredPosition: {x: 0.6, y: -65.2}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1903296403108060705
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b8af00e9140d09344871666d98b22326, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18cd8cf9dabb4a546982612342b58eb7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -501,9 +501,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WheelMenu, Assembly-CSharp
-        m_MethodName: SandBag
+      - m_Target: {fileID: 2707729657017210754}
+        m_TargetAssemblyTypeName: BuildUI, Assembly-CSharp
+        m_MethodName: ToggleRemoveConstruction
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 1
+      - m_Target: {fileID: 2707729657017210754}
+        m_TargetAssemblyTypeName: BuildUI, Assembly-CSharp
+        m_MethodName: ToggleMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -511,7 +523,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 1
 --- !u!1 &1812340635451697149
 GameObject:
@@ -677,8 +689,8 @@ RectTransform:
   m_GameObject: {fileID: 1994425368864951506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 4}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2937620718010243241}
   m_Father: {fileID: 0}
@@ -828,7 +840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -34.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8329418592011960527
@@ -980,12 +992,12 @@ GameObject:
   - component: {fileID: 1948962103335616446}
   - component: {fileID: 5259312748543458157}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1662556757458053752
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1036,7 +1048,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7adc4ca76f4460343b052e34b5e16273, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68ee2f4c6213a5c44a97c8a39f3ca1f9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1149,7 +1161,7 @@ GameObject:
   - component: {fileID: 3978805611388756467}
   - component: {fileID: 3903790644946166151}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button_Pump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1174,8 +1186,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 89.49999, y: -2.4999998}
-  m_SizeDelta: {x: 140, y: 140}
+  m_AnchoredPosition: {x: -3.4, y: 26.2}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8455927210100222065
 CanvasRenderer:
@@ -1205,7 +1217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9cdfde7795da4494ba38768cf89da5e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 948e6e568ec944147a66ea2169489ac4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1956,15 +1968,15 @@ RectTransform:
   m_GameObject: {fileID: 6881645039356806713}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1299999, y: 2.1299999, z: 2.1299999}
+  m_LocalScale: {x: 0.88, y: 0.88, z: 0.88}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2937620718010243241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.4999845, y: 2.5000002}
-  m_SizeDelta: {x: -157.40002, y: -153.40002}
+  m_AnchoredPosition: {x: -1.5, y: -20.9}
+  m_SizeDelta: {x: -78.20003, y: -153.40002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8428853149283199574
 CanvasRenderer:
@@ -1994,7 +2006,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 372af4d0d82d88f438de911938967779, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 571667739a517c34c97cff5454147bf3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2300,12 +2312,12 @@ GameObject:
   - component: {fileID: 458076283640160978}
   - component: {fileID: 2532120667943492891}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Button_Lake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5167441803554252878
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2325,7 +2337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.4999845, y: -87.5}
+  m_AnchoredPosition: {x: 91.9, y: -4.6}
   m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4456618626208458464
@@ -2356,7 +2368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: edcd02ddbc8a6624f904d51c90b3b5e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f11f7ecaa09c7d4c8ff236d93650bfd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
