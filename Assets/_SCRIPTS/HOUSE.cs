@@ -6,13 +6,26 @@ public class HOUSE : MonoBehaviour
 {
     public Animator anim;
     AnimatorStateInfo stateInfo;
-    public float SubsidenceScore = 0.0f;
-
+    private float SubsidenceScore = 0.0f;
+    public AudioSource crackSound;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+        // Tự động lấy AudioSource gắn trên GameObject
+        crackSound = GetComponent<AudioSource>();
+        crackSound.volume = 1.0f;  // Âm lượng từ 0.0 (im lặng) đến 1.0 (to nhất)
+        crackSound.spatialBlend = 1.0f;       // 3D âm thanh
+        crackSound.minDistance = 5f;          // Dưới 5m: âm thanh rõ
+        crackSound.maxDistance = 30f;         // Trên 30m: hầu như im lặng
+        crackSound.rolloffMode = AudioRolloffMode.Logarithmic;
+        // Kiểm tra có gắn AudioSource không
+        if (crackSound == null)
+        {
+            Debug.LogWarning("Không tìm thấy AudioSource trên " + gameObject.name);
+        }
     }
 
     // Update is called once per frame
@@ -22,6 +35,7 @@ public class HOUSE : MonoBehaviour
         if(Input.GetKeyDown("4"))
         {
             anim.Play("AM_HouseCollapsed", -1,0f);
+            StartCoroutine(PlayPartOfAudio(3.0f, 5.0f));
         }
         if(Input.GetKeyDown("1"))
         {
@@ -36,9 +50,22 @@ public class HOUSE : MonoBehaviour
             if (!stateInfo.IsName("AM_HouseCollapsed"))
             {
                 anim.Play("AM_HouseCollapsed");
+                StartCoroutine(PlayPartOfAudio(3.0f, 5.0f));
                 Debug.Log("Active Animation AM_HouseCollapsed");
             }
 
         }
+    }
+
+
+
+    IEnumerator PlayPartOfAudio(float startTime, float duration)
+    { 
+        //Phát âm thanh chỉ trong khoảng thời gian ngắn
+        crackSound.time = startTime;
+        crackSound.Play();
+
+        yield return new WaitForSeconds(duration);
+        crackSound.Stop();
     }
 }

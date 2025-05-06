@@ -15,7 +15,7 @@ public class Tree : MonoBehaviour, IDamageable
     */
 
     [Header("Stats")]
-//    [SerializeField] private int health = 2;
+    // [SerializeField] private int health = 2;
 
     // runtime privates
     public static int currentHealh;
@@ -23,7 +23,9 @@ public class Tree : MonoBehaviour, IDamageable
     AnimatorStateInfo stateInfo;
     public TextMeshProUGUI hp;
     private int count;
-  //  private int condition = 0;
+    public AudioSource crackSound;
+    private bool hasFallen = false;
+    // private int condition = 0;
 
     // Getters
     public int Health
@@ -38,6 +40,19 @@ public class Tree : MonoBehaviour, IDamageable
         anim = GetComponent<Animator>();
         stateInfo = anim.GetCurrentAnimatorStateInfo(0);
         // Debug.Log("Tree_currentHealh"+ currentHealh);
+
+        // Tự động lấy AudioSource gắn trên GameObject
+        crackSound = GetComponent<AudioSource>();
+        crackSound.volume = 0.1f;  // Âm lượng từ 0.0 (im lặng) đến 1.0 (to nhất)
+        crackSound.spatialBlend = 1.0f;       // 3D âm thanh
+        crackSound.minDistance = 5f;          // Dưới 5m: âm thanh rõ
+        crackSound.maxDistance = 30f;         // Trên 30m: hầu như im lặng
+        crackSound.rolloffMode = AudioRolloffMode.Logarithmic;
+        // Kiểm tra có gắn AudioSource không
+        if (crackSound == null)
+        {
+            Debug.LogWarning("Không tìm thấy AudioSource trên " + gameObject.name);
+        }
     }
     // private bool created = false;
     // int tick=0;
@@ -87,10 +102,12 @@ public class Tree : MonoBehaviour, IDamageable
         if(Input.GetKeyDown("2"))
         {
         anim.Play("Tree_Bad", -1,0f);
+        StartCoroutine(PlayPartOfAudio(0f, 2.0f));
         }
         if(Input.GetKeyDown("3"))
         {
         anim.Play("Tree_Die", -1,0f);
+        StartCoroutine(PlayPartOfAudio(0f, 2.0f));
         }
 
 
@@ -103,6 +120,7 @@ public class Tree : MonoBehaviour, IDamageable
             {
                 anim.Play("Tree_Bad");
                 Debug.Log("Active Animation Tree_Bad");
+                StartCoroutine(PlayPartOfAudio(0f, 2.0f));
             }
             //anim.Play("Tree_Bad");
         }
@@ -114,8 +132,9 @@ public class Tree : MonoBehaviour, IDamageable
             {
                 anim.Play("Tree_Die");
                 Debug.Log("Active Animation Tree_Die");
+                StartCoroutine(PlayPartOfAudio(0f, 2.0f));
             }
-            anim.Play("Tree_Die",-1,0f);
+            //anim.Play("Tree_Die",-1,0f);
 
         }
         
@@ -159,5 +178,28 @@ public class Tree : MonoBehaviour, IDamageable
     {
         // Debug.Log("Tree mau ve khong: ");
         return currentHealh <= 0;
+    }
+
+    public void Fall()
+    {   //Kiểm tra và phát âm thanh gãy đổ
+        if (hasFallen || crackSound == null) return;
+
+        // Gọi animation đổ cây (nếu có)
+        // GetComponent<Animator>().SetTrigger("Fall");
+
+        // Phát âm thanh gãy đổ
+        //crackSound.Play();
+        StartCoroutine(PlayPartOfAudio(0f, 2.0f));
+        hasFallen = true;
+    }
+
+    IEnumerator PlayPartOfAudio(float startTime, float duration)
+    { 
+        //Phát âm thanh chỉ trong khoảng thời gian ngắn
+        crackSound.time = startTime;
+        crackSound.Play();
+
+        yield return new WaitForSeconds(duration);
+        crackSound.Stop();
     }
 }
