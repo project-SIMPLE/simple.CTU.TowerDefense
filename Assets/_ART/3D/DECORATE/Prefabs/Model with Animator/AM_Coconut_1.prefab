@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 3189760341082705879}
   - component: {fileID: 2719544925563258637}
   - component: {fileID: 3007811323692919188}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AM_Coconut_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   hp: {fileID: 4751808876425358285}
+  crackSound: {fileID: 0}
 --- !u!82 &3007811323692919188
 AudioSource:
   m_ObjectHideFlags: 0
@@ -663,6 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   hp: {fileID: 0}
+  crackSound: {fileID: 0}
 --- !u!4 &6151742869675281973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7640525890620895297, guid: 63516a56d912f4e378d5d8e77b7cafe8,

@@ -36,7 +36,7 @@ public class Tree : MonoBehaviour, IDamageable
     void Start()
     {
         //currentHealh = health;
-        currentHealh = 800;
+        currentHealh = 600;
         anim = GetComponent<Animator>();
         stateInfo = anim.GetCurrentAnimatorStateInfo(0);
         // Debug.Log("Tree_currentHealh"+ currentHealh);
@@ -112,7 +112,7 @@ public class Tree : MonoBehaviour, IDamageable
 
 
         // Check Condition Tree
-        if (count < 500 && count > 480)
+        if (count < 350 && count > 320)
         {
             //condition = 1; 
             // Debug.Log("khoi dong animation Tree Bad: ");

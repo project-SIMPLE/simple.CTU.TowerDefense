@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 4794940995558872907}
   - component: {fileID: 6919120530773284359}
   - component: {fileID: 4739405262099859338}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AM_Bananier
   m_TagString: Untagged
   m_Icon: {fileID: 0}

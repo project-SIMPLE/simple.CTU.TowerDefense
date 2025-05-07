@@ -16,22 +16,25 @@ public class DayToNightSky : MonoBehaviour
     private Color startTint;
     
     public AudioSource audioSound;
+    public AudioClip newClip;
 
     void Start()
     {
         RenderSettings.skybox = skyboxMaterial;
         audioSound = GetComponent<AudioSource>();
+        skyboxMaterial.SetColor("_Tint", dayTint);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T)) // Trigger
+        if (Input.GetKeyDown("5")) // Trigger
         {
             if (!isTransitioning)
             {
-                audioSound.Play();
+                //audioSound.Play();
+                ChangeAudioClip(newClip);
                 timer = 0f;
-                //startTint = skyboxMaterial.GetColor("_Tint");
+                startTint = skyboxMaterial.GetColor("_Tint");
                 isTransitioning = true;
             }
         }
@@ -42,9 +45,10 @@ public class DayToNightSky : MonoBehaviour
         {
             if (!isTransitioning)
             {
-                audioSound.Play();
+                //audioSound.Play();
+                ChangeAudioClip(newClip);
                 timer = 0f;
-                //startTint = skyboxMaterial.GetColor("_Tint");
+                startTint = skyboxMaterial.GetColor("_Tint");
                 isTransitioning = true;
             }
         }
@@ -55,14 +59,21 @@ public class DayToNightSky : MonoBehaviour
             float t = Mathf.Clamp01(timer / transitionDuration);
 
             // Lerp SkyTint
-            //Color currentTint = Color.Lerp(startTint, nightTint, t);
-            //skyboxMaterial.SetColor("_Tint", currentTint);
+            Color currentTint = Color.Lerp(startTint, nightTint, t);
+            skyboxMaterial.SetColor("_Tint", currentTint);
 
             // Lerp ánh sáng
-            directionalLight.intensity = Mathf.Lerp(1.8f, 0.33f, t);
+            directionalLight.intensity = Mathf.Lerp(2.0f, 0.2f, t);
 
             if (t >= 1f)
                 isTransitioning = false;
         }
+    }
+
+    void ChangeAudioClip(AudioClip newClip)
+    {
+        audioSound.Stop(); // Dừng clip hiện tại
+        audioSound.clip = newClip; // Gán clip mới
+        audioSound.Play(); // Phát clip mới
     }
 }

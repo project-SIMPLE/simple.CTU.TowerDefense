@@ -12,8 +12,8 @@ public class waterSound : MonoBehaviour
         audioSound = GetComponent<AudioSource>();
         audioSound.volume = 1.0f;  // Âm lượng từ 0.0 (im lặng) đến 1.0 (to nhất)
         audioSound.spatialBlend = 1.0f;       // 3D âm thanh
-        audioSound.minDistance = 0.5f;          // Dưới 5m: âm thanh rõ
-        audioSound.maxDistance = 2f;         // Trên 30m: hầu như im lặng
+        audioSound.minDistance = 1.26f;          // Dưới 5m: âm thanh rõ
+        audioSound.maxDistance = 3.36f;         // Trên 30m: hầu như im lặng
         audioSound.rolloffMode = AudioRolloffMode.Logarithmic;
     }
 
