@@ -45,7 +45,7 @@ public class HOUSE : MonoBehaviour
         //Debug.Log("static value: " + SubsidenceManager.currentSubsidenceLevel);
         Debug.Log("SubsidenceScore: " + SubsidenceScore);
        
-        if (SubsidenceScore > 1.2f)
+        if (SubsidenceScore > 1.0f)
         {
             if (!stateInfo.IsName("AM_HouseCollapsed"))
             {

@@ -117,7 +117,11 @@ public class GameUI : MonoBehaviour
         // NumberPumper = 10;
         // TotalNeutralWater = 100;
         // TotalMiningWater = 100;
-        ScoreGame = ((1 - (SubsidenceScore / 10) + ((LiveTreeNumber+1) / (TotalTree+1)) + (1 - ((NumberPumper+1) / 10)) + (((TotalNeutralWater+1)/200+1) / (TotalMiningWater+1)))) * 100;
+        ScoreGame = ((1 - (SubsidenceScore / 10)) + ((LiveTreeNumber+1) / (TotalTree+1)) + (1 - ((NumberPumper+1) / 10)) + (((TotalNeutralWater+1)/200+1) / (TotalMiningWater+1))) * 100;
+        
+        //ScoreGame = ((1 - (SubsidenceScore / 10)) + (LiveTreeNumber / TotalTree) + (1 - (NumberPumper / 10)) + ((TotalNeutralWater/200+1) / (TotalMiningWater+1))) * 100;
+        
+        
         ScoreGame = Mathf.Round(ScoreGame * 100.0f) * 0.01f;
     }
     void Update()
@@ -135,8 +139,10 @@ public class GameUI : MonoBehaviour
             Debug.Log("Total Tree:"+ TotalTree);
             Debug.Log("Dead Tree:"+ DeadTreeNumber);
             Debug.Log("Live Tree:"+ LiveTreeNumber);
+            Debug.Log("SubsidenceScore:"+ SubsidenceScore);
+            Debug.Log("ScoreGame:"+ ScoreGame);
             // Son : update menu win and lose 
-            if (LiveTreeNumber > 0) //       (DeadTreeNumber/LiveTreeNumber) < (0.4)
+            if (LiveTreeNumber > 0 && SubsidenceScore < 1) //       (DeadTreeNumber/LiveTreeNumber) < (0.4)
             {
                 finalContent_Win.SetActive(true);
             }

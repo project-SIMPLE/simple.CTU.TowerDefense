@@ -27,21 +27,21 @@ public class DayToNightSky : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("5")) // Trigger
-        {
-            if (!isTransitioning)
-            {
-                //audioSound.Play();
-                ChangeAudioClip(newClip);
-                timer = 0f;
-                startTint = skyboxMaterial.GetColor("_Tint");
-                isTransitioning = true;
-            }
-        }
+        // if (Input.GetKeyDown("5")) // Trigger
+        // {
+        //     if (!isTransitioning)
+        //     {
+        //         //audioSound.Play();
+        //         ChangeAudioClip(newClip);
+        //         timer = 0f;
+        //         startTint = skyboxMaterial.GetColor("_Tint");
+        //         isTransitioning = true;
+        //     }
+        // }
 
         SubsidenceScore = SubsidenceManager.currentSubsidenceLevel;
 
-        if (SubsidenceScore > 0.9f)
+        if (SubsidenceScore > 0.7f)
         {
             if (!isTransitioning)
             {
@@ -65,8 +65,8 @@ public class DayToNightSky : MonoBehaviour
             // Lerp ánh sáng
             directionalLight.intensity = Mathf.Lerp(2.0f, 0.2f, t);
 
-            if (t >= 1f)
-                isTransitioning = false;
+            // if (t >= 1f)
+            //     isTransitioning = false;
         }
     }
 

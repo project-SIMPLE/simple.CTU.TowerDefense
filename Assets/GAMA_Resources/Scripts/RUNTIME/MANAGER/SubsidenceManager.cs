@@ -203,10 +203,37 @@ public class SubsidenceManager : MonoBehaviour
         //     waterSurfacePosition.y = waterSurface.transform.position.y + 0.01f;
         //     waterSurface.transform.position = waterSurfacePosition;
         // }
-        if (level == SubsidenceScore && waterSurfacePosition.y < SubsidenceScore - 0.3f)
+        if (SubsidenceScore == 0)
         {
-            waterSurfacePosition.y = waterSurface.transform.position.y + 0.005f;
-            waterSurface.transform.position = waterSurfacePosition;
+            if (level == SubsidenceScore && waterSurfacePosition.y < (SubsidenceScore - 1.0f))
+            {
+                waterSurfacePosition.y = waterSurface.transform.position.y + 0.005f;
+                waterSurface.transform.position = waterSurfacePosition;
+            }
+        }
+        else if (SubsidenceScore <= 0.5)
+        {
+            if (level == SubsidenceScore && waterSurfacePosition.y < (SubsidenceScore - 0.5f))
+            {
+                waterSurfacePosition.y = waterSurface.transform.position.y + 0.005f;
+                waterSurface.transform.position = waterSurfacePosition;
+            }
+        }
+        else if (SubsidenceScore > 0.5 && SubsidenceScore < 1.5f)
+        {
+            if (level == SubsidenceScore && waterSurfacePosition.y < (SubsidenceScore - 0.1f))
+            {
+                waterSurfacePosition.y = waterSurface.transform.position.y + 0.005f;
+                waterSurface.transform.position = waterSurfacePosition;
+            }
+        }
+        else 
+        {
+            if (level == SubsidenceScore && waterSurfacePosition.y < (SubsidenceScore - 0.3f))
+            {
+                waterSurfacePosition.y = waterSurface.transform.position.y + 0.005f;
+                waterSurface.transform.position = waterSurfacePosition;
+            }
         }
     }
 
