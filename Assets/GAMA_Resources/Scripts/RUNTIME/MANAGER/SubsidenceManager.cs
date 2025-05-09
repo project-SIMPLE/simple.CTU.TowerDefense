@@ -71,6 +71,7 @@ public class SubsidenceManager : MonoBehaviour
 
     void InitializeSubsidenceLevels()
     {
+        currentSubsidenceLevel = 0;
         for (int i = 1; i <= 3; i++)
         {
             GameObject subsidenceLevel = transform.Find("Subsidence_Lvl_" + i)?.gameObject;
@@ -203,7 +204,7 @@ public class SubsidenceManager : MonoBehaviour
         //     waterSurfacePosition.y = waterSurface.transform.position.y + 0.01f;
         //     waterSurface.transform.position = waterSurfacePosition;
         // }
-        if (SubsidenceScore == 0)
+        if (SubsidenceScore < 2.5)
         {
             if (level == SubsidenceScore && waterSurfacePosition.y < (SubsidenceScore - 1.0f))
             {
@@ -211,25 +212,9 @@ public class SubsidenceManager : MonoBehaviour
                 waterSurface.transform.position = waterSurfacePosition;
             }
         }
-        else if (SubsidenceScore <= 0.5)
-        {
-            if (level == SubsidenceScore && waterSurfacePosition.y < (SubsidenceScore - 0.5f))
-            {
-                waterSurfacePosition.y = waterSurface.transform.position.y + 0.005f;
-                waterSurface.transform.position = waterSurfacePosition;
-            }
-        }
-        else if (SubsidenceScore > 0.5 && SubsidenceScore < 1.5f)
-        {
-            if (level == SubsidenceScore && waterSurfacePosition.y < (SubsidenceScore - 0.1f))
-            {
-                waterSurfacePosition.y = waterSurface.transform.position.y + 0.005f;
-                waterSurface.transform.position = waterSurfacePosition;
-            }
-        }
         else 
         {
-            if (level == SubsidenceScore && waterSurfacePosition.y < (SubsidenceScore - 0.3f))
+            if (level == SubsidenceScore && waterSurfacePosition.y < 2.5)
             {
                 waterSurfacePosition.y = waterSurface.transform.position.y + 0.005f;
                 waterSurface.transform.position = waterSurfacePosition;

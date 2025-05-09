@@ -41,7 +41,7 @@ public class DayToNightSky : MonoBehaviour
 
         SubsidenceScore = SubsidenceManager.currentSubsidenceLevel;
 
-        if (SubsidenceScore > 0.7f)
+        if (SubsidenceScore > 1.7f)
         {
             if (!isTransitioning)
             {

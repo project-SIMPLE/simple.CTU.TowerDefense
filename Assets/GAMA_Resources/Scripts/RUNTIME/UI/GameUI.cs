@@ -136,13 +136,13 @@ public class GameUI : MonoBehaviour
             startContent.SetActive(false);
             //finalContent.SetActive(true);
             computeScore();
-            Debug.Log("Total Tree:"+ TotalTree);
-            Debug.Log("Dead Tree:"+ DeadTreeNumber);
-            Debug.Log("Live Tree:"+ LiveTreeNumber);
-            Debug.Log("SubsidenceScore:"+ SubsidenceScore);
-            Debug.Log("ScoreGame:"+ ScoreGame);
+            // Debug.Log("Total Tree:"+ TotalTree);
+            // Debug.Log("Dead Tree:"+ DeadTreeNumber);
+            // Debug.Log("Live Tree:"+ LiveTreeNumber);
+            // Debug.Log("SubsidenceScore:"+ SubsidenceScore);
+            // Debug.Log("ScoreGame:"+ ScoreGame);
             // Son : update menu win and lose 
-            if (LiveTreeNumber > 0 && SubsidenceScore < 1) //       (DeadTreeNumber/LiveTreeNumber) < (0.4)
+            if (LiveTreeNumber > 0 && SubsidenceScore < 2) //       (DeadTreeNumber/LiveTreeNumber) < (0.4)
             {
                 finalContent_Win.SetActive(true);
             }

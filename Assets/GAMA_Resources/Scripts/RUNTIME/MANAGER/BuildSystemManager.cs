@@ -68,7 +68,10 @@ public class BuildSystemManager : MonoBehaviour
     public void FinishBuilding()
     {
         Destroy(ghostConstruction.gameObject);
+        isBuilding = false;
+        StartCoroutine(DoSomethingWithDelay());
         isBuilding = true;// false;
+
     }
     
     public void Build(){
@@ -134,6 +137,13 @@ public class BuildSystemManager : MonoBehaviour
         {
             ghostConstruction = Instantiate( constructions[currentBuildingIndex].modelBuildPrefab, constructionAnchor);
         }     
+    }
+
+     IEnumerator DoSomethingWithDelay()
+    {
+        Debug.Log("Bắt đầu");
+        yield return new WaitForSeconds(1f); // Delay 1 giây
+        Debug.Log("Sau 1 giây");
     }
 
 }

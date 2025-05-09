@@ -16,7 +16,7 @@ public class HOUSE : MonoBehaviour
 
         // Tự động lấy AudioSource gắn trên GameObject
         crackSound = GetComponent<AudioSource>();
-        crackSound.volume = 1.0f;  // Âm lượng từ 0.0 (im lặng) đến 1.0 (to nhất)
+        crackSound.volume = 0.4f;  // Âm lượng từ 0.0 (im lặng) đến 1.0 (to nhất)
         crackSound.spatialBlend = 1.0f;       // 3D âm thanh
         crackSound.minDistance = 5f;          // Dưới 5m: âm thanh rõ
         crackSound.maxDistance = 30f;         // Trên 30m: hầu như im lặng
@@ -34,8 +34,11 @@ public class HOUSE : MonoBehaviour
         // Test Animation
         if(Input.GetKeyDown("4"))
         {
-            anim.Play("AM_HouseCollapsed", -1,0f);
-            StartCoroutine(PlayPartOfAudio(3.0f, 5.0f));
+             crackSound.Play();
+             StartCoroutine(DoSomethingWithDelay());
+             
+             //PlayPartOfAudio(3.0f, 5.0f);
+           
         }
         if(Input.GetKeyDown("1"))
         {
@@ -45,19 +48,25 @@ public class HOUSE : MonoBehaviour
         //Debug.Log("static value: " + SubsidenceManager.currentSubsidenceLevel);
         Debug.Log("SubsidenceScore: " + SubsidenceScore);
        
-        if (SubsidenceScore > 1.0f)
+        if (SubsidenceScore == 2.0f)
         {
             if (!stateInfo.IsName("AM_HouseCollapsed"))
             {
-                anim.Play("AM_HouseCollapsed");
-                StartCoroutine(PlayPartOfAudio(3.0f, 5.0f));
-                Debug.Log("Active Animation AM_HouseCollapsed");
+                crackSound.Play();
+                StartCoroutine(DoSomethingWithDelay());
+                //anim.Play("AM_HouseCollapsed");
+                //PlayPartOfAudio(3.0f, 5.0f);
+                //Debug.Log("Active Animation AM_HouseCollapsed");
             }
 
         }
     }
 
-
+ IEnumerator DoSomethingWithDelay()
+    {
+        yield return new WaitForSeconds(3f); // Delay 3 giây
+        anim.Play("AM_HouseCollapsed", -1,0f);
+    }
 
     IEnumerator PlayPartOfAudio(float startTime, float duration)
     { 
