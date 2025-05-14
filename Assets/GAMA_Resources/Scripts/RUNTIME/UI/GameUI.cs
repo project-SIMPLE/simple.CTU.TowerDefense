@@ -142,7 +142,7 @@ public class GameUI : MonoBehaviour
             // Debug.Log("SubsidenceScore:"+ SubsidenceScore);
             // Debug.Log("ScoreGame:"+ ScoreGame);
             // Son : update menu win and lose 
-            if (LiveTreeNumber > 0 && SubsidenceScore < 2) //       (DeadTreeNumber/LiveTreeNumber) < (0.4)
+            if (LiveTreeNumber > 0 && SubsidenceScore < 2.75f) //       (DeadTreeNumber/LiveTreeNumber) < (0.4)
             {
                 finalContent_Win.SetActive(true);
             }

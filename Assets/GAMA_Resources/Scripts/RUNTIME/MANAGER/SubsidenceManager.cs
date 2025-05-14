@@ -214,7 +214,7 @@ public class SubsidenceManager : MonoBehaviour
         }
         else 
         {
-            if (level == SubsidenceScore && waterSurfacePosition.y < 2.5)
+            if (level == SubsidenceScore && waterSurfacePosition.y < 1.8f)
             {
                 waterSurfacePosition.y = waterSurface.transform.position.y + 0.005f;
                 waterSurface.transform.position = waterSurfacePosition;
