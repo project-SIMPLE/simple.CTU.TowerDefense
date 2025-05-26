@@ -62602,7 +62602,7 @@ GameObject:
   - component: {fileID: 201302348}
   - component: {fileID: 201302347}
   m_Layer: 5
-  m_Name: Bttn
+  m_Name: Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215189,7 +215189,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 57560362}
   m_OnClick:
     m_PersistentCalls:
@@ -235468,7 +235468,7 @@ PrefabInstance:
     - target: {fileID: 1317084875773115876, guid: 78474847465becc4c919ad3874cd1e07,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: 1317084875773115876, guid: 78474847465becc4c919ad3874cd1e07,
         type: 3}
@@ -397891,7 +397891,7 @@ PrefabInstance:
     - target: {fileID: 1317084875773115876, guid: 78474847465becc4c919ad3874cd1e07,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 1317084875773115876, guid: 78474847465becc4c919ad3874cd1e07,
         type: 3}
@@ -490692,12 +490692,12 @@ RectTransform:
   m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1078384471}
   - {fileID: 431082664}
   - {fileID: 1634356060}
   - {fileID: 262474771}
   - {fileID: 886551052}
   - {fileID: 1320057861}
+  - {fileID: 1078384471}
   m_Father: {fileID: 1061001750}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -539319,7 +539319,7 @@ PrefabInstance:
     - target: {fileID: 1317084875773115876, guid: 78474847465becc4c919ad3874cd1e07,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1317084875773115876, guid: 78474847465becc4c919ad3874cd1e07,
         type: 3}
@@ -552570,6 +552570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 4.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186640580153044128, guid: 09a3061525e2e4edf893cf9eadab5b6c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2186640580153044128, guid: 09a3061525e2e4edf893cf9eadab5b6c,
         type: 3}

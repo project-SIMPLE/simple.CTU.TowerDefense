@@ -28,7 +28,7 @@ public class GameUI : MonoBehaviour
 
     [SerializeField] private PlayerResourcesManager playerResourcesManager;
     private SubsidenceManager subsidenceManager;
-
+    
 
     private WebSocket socket;
 //    private bool connected = false;
@@ -233,17 +233,18 @@ public class GameUI : MonoBehaviour
         // socket.OnOpen += HandleConnectionOpen;
         // socket.Connect();*/
 
+        startContent.gameObject.SetActive(false);
         gameManager.StartLevel();
         
         simulationManager.sendTrees();
         simulationManager.createEnemySpawner();
-        startContent.SetActive(false);
+
     }
 
     public void RetryUI()
     {
-        Restart();
         gameManager.RestartLevel();
+        Restart();
     }
 
     public List<float> toGAMACRS3D(Vector3 pos)
