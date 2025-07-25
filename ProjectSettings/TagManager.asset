@@ -18,6 +18,9 @@ TagManager:
   - levelManager
   - Tree
   - subsidenceManager
+  - Note
+  - GroupTree
+  - GroupRocks
   layers:
   - Default
   - TransparentFX
