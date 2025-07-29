@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2549594335716484266}
   - component: {fileID: 1060344052484667710}
   - component: {fileID: 4556444749909786925}
+  - component: {fileID: -4383677252901231828}
   - component: {fileID: 4943482922357632844}
   m_Layer: 0
   m_Name: NFreshWaterUV2
@@ -75,6 +76,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!114 &-4383677252901231828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888235625048416971}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e808fb22ba9474a9fad09e1b97dd9095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  pushForce: 5
 --- !u!136 &4943482922357632844
 CapsuleCollider:
   m_ObjectHideFlags: 0

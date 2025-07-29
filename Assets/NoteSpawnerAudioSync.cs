@@ -29,12 +29,12 @@ public class NoteSpawnerAudioSync : MonoBehaviour
             }
             else if (i%2==1)
             {
-                beatTimes[i]+= 1.0f; //0.514F;
+                beatTimes[i]+= 0.514F;
                 Debug.Log("beatTimes: " + beatTimes[i]);
             }
             else 
             {
-                beatTimes[i]+= 1.1f; //0.537F;
+                beatTimes[i]+= 0.537F;
                 Debug.Log("beatTimes: " + beatTimes[i]);
             }
         }
@@ -45,24 +45,32 @@ public class NoteSpawnerAudioSync : MonoBehaviour
     void Update()
     {
         
-
-        timer += Time.deltaTime;
-
-        if (timer >= beatTimes[beatIndex])
+        if (NoteMove.isPaused != true)
         {
-            if (beatIndex%2==1) // giảm độ nhanh
+            timer += Time.deltaTime;
+
+            if (timer >= beatTimes[beatIndex])
             {
-                int randomIndex = Random.Range(0, gameObjects.Length);
-                Debug.Log("Khoi tao note");
-                Instantiate(gameObjects[randomIndex], transform.position, transform.rotation);
-                timer = 0.0f;
-            } else {
-                Debug.Log("giữ nhịp");
-                timer = 0.0f;
+                // int randomIndex = Random.Range(0, gameObjects.Length);
+                // Instantiate(gameObjects[randomIndex], transform.position, transform.rotation);
+                
+                if (beatIndex%2==1) // giảm độ nhanh
+                {
+                    int randomIndex = Random.Range(0, gameObjects.Length);
+                    Debug.Log("Khoi tao note");
+                    Instantiate(gameObjects[randomIndex], transform.position, transform.rotation);
+                    timer = 0.0f;
+                } else {
+                    Debug.Log("giữ nhịp");
+                    timer = 0.0f;
+                }
+                // timer = 0.0f;
+                beatIndex++;
+                
             }
-            beatIndex++;
-            
         }
+        else return;
+        
     }
 
     

@@ -22,6 +22,7 @@ public class playerControllerVR : MonoBehaviour
         {
             //Debug.Log("Va chạm với Enemy!");
             StartCoroutine(PauseNotesCoroutine());
+            //NoteMove.isPaused = true;
         }
     }
 
@@ -31,7 +32,7 @@ public class playerControllerVR : MonoBehaviour
         NoteMove.isPaused = true;
 
         // Đợi 1 giây
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // Tiếp tục
         NoteMove.isPaused = false;
